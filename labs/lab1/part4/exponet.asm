@@ -1,40 +1,17 @@
 ########################################################
-# CPE 315: Lab - part 
+# CPE 315: Lab - part 4
 # Author: Victor Delaplaine 
 # Date: 2019-04-13
-# Description : 
+# Description : Input two numbers x and y,
+#		This program takes in x and y and returns
+#		x^y. Using no Mult operations
 #		
 #
-# Assumptions : (1) both x and y are positive 
+# Assumptions : (1) both x and y are positive
 #		(2) 
 #
 # Java Code : 
 #
-#		public static void main(String args[])
-#		{	
-#			
-#		}
-#		public int exponet(int x, int y)
-#		{
-			 
-#			return num - (nium/div)*div;
-#		}
-#		public int mutliply(int x, int y)
-#		{		
-			int prod = 0;
-			int exp = 1;	
-			int temp = x;
-			while(y != 0){	
-				temp = x;		
-				while(x != 0) //essentially x*x = prod
-				{
-					prod = x + prod;
-					x--;
-				}
-				y--;
-#			}
-
-#	}
 #######################################################
 	
 .data
