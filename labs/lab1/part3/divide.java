@@ -5,8 +5,9 @@ public class divide{
 	public static void main(String []args){
 		int upper = 2, lower = 10;
 		int div = 65536;
-		System.out.println("higher = " + divide(upper,lower,div).upper);
-		System.out.println("lower = " + divide(upper,lower,div).lower);
+
+		System.out.println("log2(256)=" + log2(256));
+		//System.out.println("lower = " + divide(upper,lower,div).lower);
 	}
 	//return x/y
 	public static twoInts divide (int upper, int lower, int divisor ) {
@@ -37,9 +38,16 @@ public class divide{
 
 		return l;
 	}
-	public static double log2(double num)
+	public static int log2(int num)
 	{
-		return (Math.log(num)/Math.log(2));
+		int result = 0;
+		while(num != 1)
+		{
+			num = num >> 1;
+			result++;
+		}
+		return result;
 	}
+	
 
 }
