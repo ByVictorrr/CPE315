@@ -52,7 +52,7 @@ main:
 	#Prompt user to enter num
 	#(assume the regs contain zero first)
 	
-	ori	$v0, $0, 4
+	li	$v0, 4
 	la 	$a0, promptNum
 	syscall 
 
@@ -72,7 +72,7 @@ main:
 
 	#print out result (v1)
 	add $a0, $v0, $zero
-	li $v0, 36
+	li $v0, 1
 	syscall 
 
 	#end program 
