@@ -1,0 +1,2 @@
+when base = 0 program feezes
+or exp=0

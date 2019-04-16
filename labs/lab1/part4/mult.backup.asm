@@ -97,7 +97,7 @@ main:
 	add $a1, $t1, $zero
 #=============================================	
 	# call function pow(base,exponet)
-	jal pow
+	jal multiply
 	
 	# Output the result
 	add $a0, $v0, $zero
@@ -133,11 +133,8 @@ main:
 multiply:
 	add $t0, $zero $zero # prod = 0	
 	add $t1, $zero $zero # i = 0
-	#check if num2 == 0 first
-	beq $a2, $zero, end_multiply
 	
 loop_multiply: 
-	#check general case
 	slt $t2, $t1, $a1 #$t2 = 1, if (num2 > i)
 			  #$t2 = 0, if (i >= num2)
 	beq $t2, $zero, end_multiply #goto end_multiply	
@@ -157,10 +154,10 @@ end_multiply:
 #	     : $a1 - exponet
 # Return  : $v0 - base^exponet
 # locals	   : $t0 - result
+#		   : $t1 - i
 #		   : $t2 - for condition check
 #		   : $t3 - hold base
 #		   : $t4 - holds exponet
-# saved : $s0 : i
 ############################################################
 ## Java Code:
 #public static int pow(int base, int exponet)
@@ -178,20 +175,18 @@ end_multiply:
 #}
 ########################################################
 pow:
-	bne $a1, $zero, pow_init #if exp != 0 then jump to loop else return 1
+	bne $a1, $zero, pow_loop #if exp != 0 then jump to loop else return 1
 	addi $v0, $zero, 1 #return 1
 	jr $ra #return
 
-pow_init:
 	#initalize result = base
 	add $t0, $a0, $zero #$t0 = result 
-	addi $s0, $zero, 1 #$s0 = i = 1
+	addi $t1, $t1, 1 #i=1
 	add $t3, $zero, $a0 # $t3 = base
 	add $t4, $zero, $a1 # $t4 = exponet
-
 pow_loop:
 	#check if i < exponet
-	slt $t2, $s0, $t4 # $t2 = 1 if (i < exponet)
+	slt $t2, $t1, $t4 # $t2 = 1 if (i < exponet)
 			  # $t2 = 0 if (i >= exponet)
 	beq $t2, $zero, end_pow # goto end_pow
 
@@ -203,19 +198,14 @@ pow_loop:
 	add $a0, $t0, $zero #$a0 = result 
 	add $a1, $t3, $zero #$a1 = base 
 	jal multiply # call the function
-
-	#mov return of mult to result
-	add $t0, $v0, $zero #result = mult(result, base)
-		
+	
 	# pop return address
 	lw $ra, 0($sp)
 	addi $sp, $sp, 4
-
-	addi $s0, $s0, 1 #i++	
+	
 	j pow_loop
 
 end_pow: 
-	add $v0, $t0, $zero 
 	jr $ra #return to address
 		
 		
