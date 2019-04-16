@@ -63,8 +63,8 @@ output:
 #	           out base^exponet
 # Parameters : n/a
 # Return : n/a
-# Tweaked Parmeter : $a1 = 
-#		     $a2 = div
+# Locals : $t0 - base
+#        : $t1 - exponet
 ############################################################
 main:
 #==================I/O=================
@@ -77,8 +77,8 @@ main:
 	addi $v0, $zero, 5	
 	syscall 	
 			
-	# $a0 = base
-	add $a0, $v0, $zero 
+	# $t0 - base
+	add $t0, $v0, $zero 
 
 	# Ask user to enter exponet
 	la $a0, promptExp
@@ -89,14 +89,19 @@ main:
 	addi $v0, $zero, 5	
 	syscall 	
 
-	# $a1 = exponet
-	add $a0, $v0, $zero 
+	# $t1 = exponet
+	add $t1, $v0, $zero 
+
+	#pass arguments
+	add $a0, $t0, $zero
+	add $a1, $t1, $zero
 #=============================================	
 	# call function pow(base,exponet)
-	jal pow
+	jal multiply
 	
 	# Output the result
 	add $a0, $v0, $zero
+
 	addi $v0, $zero, 1
 	syscall
 	
@@ -130,8 +135,8 @@ multiply:
 	add $t1, $zero $zero # i = 0
 	
 loop_multiply: 
-	slt $t2, $a1, $t1 #$t2 = 1, if (num2 < i)
-			  #$t2 = 0, if (num2 >= i)
+	slt $t2, $t1, $a1 #$t2 = 1, if (num2 > i)
+			  #$t2 = 0, if (i >= num2)
 	beq $t2, $zero, end_multiply #goto end_multiply	
 	add $t0, $t0, $a0 #prod = prod + num1
 	addi $t1, $t1, 1 # i++	
@@ -140,66 +145,6 @@ loop_multiply:
 end_multiply: 
 	add $v0, $t0, $zero
 	jr $ra #return 
-		
-############################################################
-# multiply subroutine: returns the exponet of base^exponet
-# Parameters : $a0 - base
-#	     : $a1 - exponet
-# Return : $v0 - base^exponet
-# Tweaked Parmeter : $t0 - result
-#		   : $t1 - i
-#		   : $t2 - for condition check
-#		   : $t3 - hold base
-############################################################
-## Java Code:
-#public static int pow(int base, int exponet)
-#	{
-#		//special case when exp is zero
-#		if (exponet==0) return 1;
-#
-#		int result  = base;
-#
-#		//multiplyiplying repeadily is same thing as x^y = x*....*x ytimes
-#		for (int i=1; i< exponet; i++)
-#			result = multiply(result,base); //start at i = 1 because it has done two multiplyiplications
-#		return result;
-#	}
-#}
-########################################################
-pow:
-	bne $a1, $zero, pow_loop #if exp != 0 then jump to loop else return 1
-	addi $v0, $zero, 1 #return 1
-	jr $ra #return
-
-	#initalize result = base
-	add $t0, $a0, $zero 
-	addi $t1, $t1, 1 #i=1
-	add $t3, $zero, $a0 # $t3 = base
-
-pow_loop:
-	#check if i < exponet
-	slt $t2, $t1, $a1 # $t2 = 1 if (i < exponet)
-			  # $t2 = 0 if (i >= exponet)
-	beq $t2, $zero, end_pow # goto end_pow
-
-	# save return address before calling
-	addi $sp, $sp, -4
-	sw $ra, 0($sp)
-
-	# calling function	
-	add $a0, $v0, $zero	
-	add $a1, $t3, $zero #multiply(result, base)
-	jal multiply # call the function
-	
-	# pop return address
-	lw $ra, 0($sp)
-	addi $sp, $sp, 4
-	
-	j pow_loop
-
-end_pow: 
-	jr $ra #return to address
-		
 		
 	
 	
