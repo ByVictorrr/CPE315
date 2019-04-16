@@ -3,8 +3,10 @@ import java.util.*;
 public class divide{ 
 
 	public static void main(String []args){
-		System.out.println("higher = " + divide(2,10,32).upper);
-		System.out.println("lower = " + divide(80,1,32).lower);
+		int upper = 2, lower = 10;
+		int div = 65536;
+		System.out.println("higher = " + divide(upper,lower,div).upper);
+		System.out.println("lower = " + divide(upper,lower,div).lower);
 	}
 	//return x/y
 	public static twoInts divide (int upper, int lower, int divisor ) {
@@ -24,7 +26,7 @@ public class divide{
 
 			result_lower = result_lower >> 1; //the lower shift right 
 			
-			masked_LSB = result_upper << 31; //shift masked to MSB to or with lower
+			masked_LSB = masked_LSB << 31; //shift masked to MSB to or with lower
 
 			result_lower = result_lower | masked_LSB;
 		}
@@ -35,7 +37,7 @@ public class divide{
 
 		return l;
 	}
-	public static int log2(int num)
+	public static double log2(double num)
 	{
 		return (Math.log(num)/Math.log(2));
 	}
