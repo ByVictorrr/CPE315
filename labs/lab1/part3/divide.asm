@@ -10,92 +10,216 @@
 #
 # Java Code : 
 #
-# 	public class divide {
-#		public static void main(String args[])
-#		{	
-#			
-#		}
-#		public int divide(int num, int div)
-#		{
-#			return num - (num/div)*div;
-#		}
+#import java.util.*; 
+#
+#public class divide{ 
+#
+#	public static void main(String []args){
+#		int upper = 2, lower = 10;
+#		int div = 65536;
+#		System.out.println("higher = " + divide(upper,lower,div).upper);
+#		System.out.println("lower = " + divide(upper,lower,div).lower);
 #	}
+#	//return x/y
+#	public static twoInts divide (int upper, int lower, int divisor ) {
+#		// x*z = x+x+...+x_ztimes
+#		//if (divisor == 0) return NULL;
+#
+#		// int is 32 bits so
+#		int result_upper = upper, result_lower = lower;
+#
+#		int masked_LSB = 0;
+#		for (int i = 0; i< log2(divisor); i++)
+#		{
+#
+#			masked_LSB  = result_upper & 1; //mask one to get LSB before shifting 
+#
+#			result_upper = result_upper >> 1 ; //then shift right to the by one
+#
+#			result_lower = result_lower >> 1; //the lower shift right 
+#			
+#			masked_LSB = masked_LSB << 31; //shift masked to MSB to or with lower
+#
+#			result_lower = result_lower | masked_LSB;
+#		}
+#		
+#		twoInts l = new twoInts();
+#		l.upper = result_upper;
+#		l.lower = result_lower;
+#
+#		return l;
+#	}
+#	public static double log2(double num)
+#	{
+#		return (Math.log(num)/Math.log(2));
+#	}
+#
+#}
 #######################################################
 	
 .data
 
-promptNum:
-	.asciiz "Enter num \n\n"
-promptDiv:
-	.asciiz "Enter div \n\n"
-output:
-	.asciiz "\n Remainder = "
+promptHigher:
+	.asciiz "Enter higher \n\n"
+promptLower:
+	.asciiz "Enter lower \n\n"
+promptDivisor:
+	.asciiz "Enter the divisor = \n\n"
+outputZeroDiv:
+	.asciiz "Cant divide by 0, this will give infinity\n\n"
+output1:
+	.asciiz "higher/divisor = \n\n"
+output2:
+	.asciiz "lower/divisor = \n\n"
 
 
 .text
-############################################################
-# main subroutine: prints out remainder of num/div
+########################################################################
+# main subroutine: prints out high/divisor and low/divsor
+#
 # Parameters : n/a
 # Return : n/a
-# Tweaked Parmeter : $a1 = num
-#		     $a2 = div
-############################################################
+#		 
+# Local :
+#	
+#	Saved : n/a
+#
+#	
+#	Temp  : $t0 - high
+#	      : $t1 - lower
+#	      : $t2 - divisor
+###########################################################################
 main:
+
+#==================I/O=================
+	# Output to the console input base
+	la $a0, promptHigher
+	addi $v0, $zero, 4 	
+	syscall 	
 	
-	
-############################################################
-# mod subroutine: returns the remainder num/div
-# Parameters : $a1 and $a2
-# Return : $v1 - num % div
-# Tweaked Parmeter : $t1 - result
-#		   : $t2 - n = 2^i
-#		   : $t3 - used for constant 1 
-############################################################
-mod: 
-	
-	
-import java.util.*; 
-
-public class divide{ 
-
-	public static void main(String []args){
-		int upper = 2, lower = 10;
-		int div = 65536;
-		System.out.println("higher = " + divide(upper,lower,div).upper);
-		System.out.println("lower = " + divide(upper,lower,div).lower);
-	}
-	//return x/y
-	public static twoInts divide (int upper, int lower, int divisor ) {
-		// x*z = x+x+...+x_ztimes
-		//if (divisor == 0) return NULL;
-
-		// int is 32 bits so
-		int result_upper = upper, result_lower = lower;
-
-		int masked_LSB = 0;
-		for (int i = 0; i< log2(divisor); i++)
-		{
-
-			masked_LSB  = result_upper & 1; //mask one to get LSB before shifting 
-
-			result_upper = result_upper >> 1 ; //then shift right to the by one
-
-			result_lower = result_lower >> 1; //the lower shift right 
+	# input to the console
+	addi $v0, $zero, 5	
+	syscall 	
 			
-			masked_LSB = masked_LSB << 31; //shift masked to MSB to or with lower
+	# $t0 - higher
+	add $t0, $v0, $zero 
 
-			result_lower = result_lower | masked_LSB;
-		}
-		
-		twoInts l = new twoInts();
-		l.upper = result_upper;
-		l.lower = result_lower;
+	# Ask user to enter exponet
+	la $a0, promptLower
+	addi $v0, $zero, 4 	
+	syscall 	
 
-		return l;
-	}
-	public static double log2(double num)
-	{
-		return (Math.log(num)/Math.log(2));
-	}
+	# input to the console
+	addi $v0, $zero, 5	
+	syscall 	
 
-}
+	# $t1 = lower
+	add $t1, $v0, $zero 
+
+	#pass arguments
+	add $a0, $t0, $zero
+	add $a1, $t1, $zero
+#==================================================	
+	# call function divide(higher,lower,divisor)
+	jal divide
+	
+	# Output the result
+	add $a0, $v0, $zero
+
+	addi $v0, $zero, 1
+	syscall
+	
+	#end program 
+	li $v0, 10
+	syscall
+
+	
+########################################################################
+# divide subroutine: Takes in three number upper, lower and divisor, and
+#		     returns upper/divsior and lower/divisor
+#
+# Parameters  : $a0 - upper 
+#	      : $a1 - lower
+#	      : $a2 - divisor
+# 
+# Return : $v0 - upper/divisor
+#	   $v1 - lower/divisor
+#
+# Local :
+#	
+#	Saved : n/a
+#
+#	
+#	Temp  : $t0 - result_upper 
+#	      : $t1 - result_lower
+#	      : $t2 - masked_LSB
+#	      : $t3 - i
+#	      : $t4 - condition test
+###########################################################################
+# Java Code:
+#	public static twoInts divide (int upper, int lower, int divisor ) {
+#		// x*z = x+x+...+x_ztimes
+#		if (divisor == 0){
+#			System.out.println("result = inifinity");
+#			return;
+#		}
+#
+#		// int is 32 bits so
+#		int result_upper = upper, result_lower = lower;
+#
+#		int masked_LSB = 0;
+#		for (int i = 0; i< log2(divisor); i++)
+#		{
+#
+#			masked_LSB  = result_upper & 1; //mask one to get LSB before shifting 
+#
+#			result_upper = result_upper >> 1 ; //then shift right to the by one
+#
+#			result_lower = result_lower >> 1; //the lower shift right 
+#			
+#			masked_LSB = masked_LSB << 31; //shift masked to MSB to or with lower
+#
+#			result_lower = result_lower | masked_LSB;
+#		}
+#		
+#		twoInts l = new twoInts();
+#		l.upper = result_upper;
+#		l.lower = result_lower;
+#
+#		return l;
+#	}
+#############################################################################
+divide: 
+	# check first if $a2 - divisor is 0
+	bne $a2, $zero, divide_init #goto divide_init if divisor != 0
+	#print out cant divide by zero
+
+	# Output the result
+	la $a0, outputZeroDiv
+
+	addi $v0, $zero, 1
+	syscall
+
+	jr $ra #return
+
+	Temp  : $t0 - result_upper 
+#	      : $t1 - result_lower
+#	      : $t2 - masked_LSB
+#	      : $t3 - i
+#	      : $t4 - condition test
+#
+#########
+divide_init:
+	add $t0, $a0, $zero #result_higher = higher
+	add $t1, $a1, $zero #result_lower = lower
+	add $t2, $zero, $zero #masked_LSB = 0
+	add $t3, $zero, $zero #i=0
+
+
+divide_loop:
+	slt $t4, $t3, $a2 # $t4 = 1 if (i<divisor)
+		          # $t4 = 0 if (i>=divisor)
+
+	
+	
+
