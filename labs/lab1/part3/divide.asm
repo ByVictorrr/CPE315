@@ -1,7 +1,7 @@
 #########################################################################
 # CPE 315: Lab - part 3
-# Author: Victor Delaplaine 
-# Date: 2019-04-13
+# Name: Victor Delaplaine 
+# Section: 03
 # Description :  Takes in three numbers higher, lower, divisor
 #		 prints out the higher/divisor and lower/divisor
 #		
@@ -10,9 +10,9 @@
 #
 # Java Code : 
 #
-#import java.util.*; 
+#	import java.util.*; 
 #
-#public class divide{ 
+#	public class divide{ 
 #
 #	public static void main(String []args){
 #		int upper = 2, lower = 10;
@@ -68,9 +68,9 @@ promptDivisor:
 outputZeroDiv:
 	.asciiz "Cant divide by 0, this will give infinity\n\n"
 output1:
-	.asciiz "higher/divisor = \n\n"
+	.asciiz "\n\nhigher/divisor = \n\n"
 output2:
-	.asciiz "lower/divisor = \n\n"
+	.asciiz "\n\nlower/divisor = \n\n"
 
 
 .text
@@ -295,14 +295,15 @@ divide_init:
 
 
 divide_loop:
-	slt $t4, $t3, $a2 # $t4 = 1 if (i<divisor)
-		          # $t4 = 0 if (i>=divisor)
+	slt $t4, $t3, $t5 # $t4 = 1 if (i<log2(divisor))
+		          # $t4 = 0 if (i>=log2(divisor))
 	beq $t4, $zero, divide_end
 	andi $t2, $t0, 1 # masked_LSB  = result_upper & 1
 	srl $t0, $t0, 1	 # result_upper = result_upper >> 1
 	srl $t1, $t1, 1	 #result_lower = result_lower >> 1;	
 	sll $t2, $t2, 31 #masked_LSB = masked_LSB << 31
 	or $t1, $t1, $t2 #result_lower = result_lower | masked_LSB;
+	addi $t3, $t3, 1 #i++
 	j divide_loop
 
 divide_end: 
