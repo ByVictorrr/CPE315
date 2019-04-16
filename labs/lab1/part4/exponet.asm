@@ -1,7 +1,7 @@
 ########################################################
 # CPE 315: Lab - part 4
-# Author: Victor Delaplaine 
-# Date: 2019-04-13
+# Name: Victor Delaplaine 
+# Section: 03
 # Description : Input two numbers x and y,
 #		This program takes in x and y and returns
 #		x^y. Using no Mult operations

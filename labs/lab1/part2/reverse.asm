@@ -1,7 +1,7 @@
-########################################################
+#################################################################################################
 # CPE 315: Lab 1 - part 2
 # Author: Victor Delaplaine 
-# Date: 4/8/19
+# Section: 03
 # Description : Reverses the bits of a 32 bit number,
 # 		That is change the lsb to msb.
 #
@@ -28,7 +28,7 @@
 #	}
 #
 #}
-#######################################################
+################################################################################################
 .globl prompt
 	
 .data
@@ -79,15 +79,32 @@ main:
 	li $v0, 10
 	syscall
 	
-############################################################
+############################################################################################################
 # reverse subroutine: returns the reversed bits of num
 # Parameters : $a0 - x
 # Return : $v0 - reverse(num)
-# Tweaked Parmeter : $t1 - revB
+# Locals : 
+#	Saved:n/a
+#
+#	Temp:	   : $t1 - revB
 #		   : $t2 - pos
 #		   : $t3 - mask then used for left shift by pos
 #		   : $t4 - test is pos > 0
-###########################################################
+##############################################################################################################
+# Java Code:
+#	public static int reverseBits(int num)
+#	{
+#			int  revB = 0;
+#			int pos ; //bit size -1 ;
+#			for (pos=7; pos>0; pos--)
+#			{
+#				revB=revB+(num & 1)<< pos; //first mask num in lsb, then shift that bit to left by pos bits 
+#				num = num >> 1; // then get the next bit in lsb and repeat at pos= pos-1 
+#			}
+#			return revB;
+#	}
+#
+################################################################################################################
 reverse: 
 	add $t1, $zero, $zero #revB=0
 	addi $t2, $zero, 31 #pos = 32-1

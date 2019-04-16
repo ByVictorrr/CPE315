@@ -1,8 +1,8 @@
 ########################################################
 # CPE 315: Lab 1 - part 1
-# Author: Victor Delaplaine 
-# Date: 4/8/19
-# Description : Takes in two numbers num, and div,
+# Name: Victor Delaplaine 
+# Section: 03
+# # Description : Takes in two numbers num, and div,
 #		then it gets the remainder of num/div
 #
 # Assumptions : (1) Both num and div are divisable by two,
@@ -36,10 +36,9 @@ output:
 .text
 ############################################################
 # main subroutine: prints out remainder of num/div
-# Parameters : n/a
+# Parameters : 
 # Return : n/a
-# Tweaked Parmeter : $a1 = num
-#		     $a2 = div
+# Locals : 
 ############################################################
 main:
 	
@@ -92,12 +91,26 @@ main:
 	
 ############################################################
 # mod subroutine: returns the remainder num/div
-# Parameters : $a1 and $a2
+# Parameters : $a1 - num
+#              $a2 - div
+#
+#
 # Return : $v1 - num % div
-# Tweaked Parmeter : $t1 - result
+# Local:
+#	Saved: n/a
+#
+#	Temp:
+#		   : $t1 - result
 #		   : $t2 - n = 2^i
 #		   : $t3 - used for constant 1 
-############################################################
+###########################################################################
+# Java Code:
+#		public int modulo(int num, int div)
+#		{
+#			return num - (num/div)*div;
+#		}
+#
+##########################################################################
 mod: 
 	add $t1, $zero, $a1 #result = num
 	add $t2, $zero, $a2 #n = div
