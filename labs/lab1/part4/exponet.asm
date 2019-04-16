@@ -108,17 +108,22 @@ main:
 	#end program 
 	li $v0, 10
 	syscall
-	
-############################################################
-# multiply subroutine: returns the multiplyiplication of a and b
+
+#######################################################################
+# multiply subroutine: returns the multiplyiplication of num1 and num2
 # Parameters : $a0 - num1 
 #	     : $a1 - num2
 # Return : $v0 - num1 * num2
-# Tweaked Parmeter : $t0 - product
-#		   : $t1 - i
-#		   : $t2 - for condition check
-############################################################
-## Java Code:
+#	
+# Local :
+#	Saved : $s0 - i
+#
+#	
+#	Temp  : $t0 - product
+#	      : $t1 - i
+#	      : $t2 - for condition check
+#######################################################################
+# Java Code:
 #	public static int  multiply(int num1, int num2)
 #	{
 #		int prod = 0;
@@ -127,8 +132,8 @@ main:
 #
 #		return prod;
 #	}	
-#}
-########################################################
+#
+######################################################################
 
 multiply:
 	add $t0, $zero $zero # prod = 0	
@@ -151,19 +156,24 @@ end_multiply:
 		
 	
 	
-############################################################
+#####################################################################
 # pow subroutine: returns the exponet of base^exponet
 # Parameters : $a0 - base
 #	     : $a1 - exponet
-# Return  : $v0 - base^exponet
-# locals	   : $t0 - result
-#		   : $t2 - for condition check
-#		   : $t3 - hold base
-#		   : $t4 - holds exponet
-# saved : $s0 : i
-############################################################
-## Java Code:
-#public static int pow(int base, int exponet)
+#
+# Return : $v0 - base^exponet
+# 
+#
+# Local :
+#	Saved : $s0 - i 
+#
+#	Temp  : $t0 - result
+#	      : $t1 - for condition check
+#             : $t2 - hold base
+#	      : $t3 - holds exponet
+#######################################################################
+# Java Code:
+#	public static int pow(int base, int exponet)
 #	{
 #		//special case when exp is zero
 #		if (exponet==0) return 1;
@@ -175,25 +185,25 @@ end_multiply:
 #			result = multiply(result,base); //start at i = 1 because it has done two multiplyiplications
 #		return result;
 #	}
-#}
-########################################################
+#
+#########################################################################
 pow:
 	bne $a1, $zero, pow_init #if exp != 0 then jump to loop else return 1
-	addi $v0, $zero, 1 #return 1
+	addi $v0, $zero, 1 # return 1
 	jr $ra #return
 
 pow_init:
 	#initalize result = base
 	add $t0, $a0, $zero #$t0 = result 
 	addi $s0, $zero, 1 #$s0 = i = 1
-	add $t3, $zero, $a0 # $t3 = base
-	add $t4, $zero, $a1 # $t4 = exponet
+	add $t2, $zero, $a0 # $t2 = base
+	add $t3, $zero, $a1 # $t3 = exponet
 
 pow_loop:
 	#check if i < exponet
-	slt $t2, $s0, $t4 # $t2 = 1 if (i < exponet)
-			  # $t2 = 0 if (i >= exponet)
-	beq $t2, $zero, end_pow # goto end_pow
+	slt $t1, $s0, $t3 # $t1 = 1 if (i < exponet)
+			  # $t1 = 0 if (i >= exponet)
+	beq $t1, $zero, end_pow # goto end_pow
 
 	# save return address before calling
 	addi $sp, $sp, -4
@@ -201,7 +211,7 @@ pow_loop:
 
 	# calling function	
 	add $a0, $t0, $zero #$a0 = result 
-	add $a1, $t3, $zero #$a1 = base 
+	add $a1, $t2, $zero #$a1 = base 
 	jal multiply # call the function
 
 	#mov return of mult to result
