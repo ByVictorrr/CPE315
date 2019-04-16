@@ -138,10 +138,25 @@ main:
 #==================================================	
 	# call function divide(higher,lower,divisor)
 	jal divide
+	add $t0, $v0, $zero
+	add $t1, $v1, $zero
 	
-	# Output the result
-	add $a0, $v0, $zero
+	# Output higher/divisor
+	la $a0, output1
+	addi $v0, $zero, 4 	
+	syscall
+	# Output the int
+	add $a0, $t0, $zero
+	addi $v0, $zero, 1
+	syscall
 
+
+	# Output lower/divisor
+	la $a0, output2
+	addi $v0, $zero, 4 	
+	syscall
+	# Output the int
+	add $a0, $t1, $zero
 	addi $v0, $zero, 1
 	syscall
 	
@@ -280,14 +295,15 @@ divide_init:
 
 
 divide_loop:
-	slt $t4, $t3, $a2 # $t4 = 1 if (i<divisor)
-		          # $t4 = 0 if (i>=divisor)
+	slt $t4, $t3, $t5 # $t4 = 1 if (i<log2(divisor))
+		          # $t4 = 0 if (i>=log2(divisor))
 	beq $t4, $zero, divide_end
 	andi $t2, $t0, 1 # masked_LSB  = result_upper & 1
 	srl $t0, $t0, 1	 # result_upper = result_upper >> 1
 	srl $t1, $t1, 1	 #result_lower = result_lower >> 1;	
 	sll $t2, $t2, 31 #masked_LSB = masked_LSB << 31
 	or $t1, $t1, $t2 #result_lower = result_lower | masked_LSB;
+	addi $t3, $t3, 1 #i++
 	j divide_loop
 
 divide_end: 
