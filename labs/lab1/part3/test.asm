@@ -138,25 +138,10 @@ main:
 #==================================================	
 	# call function divide(higher,lower,divisor)
 	jal divide
-	add $t0, $v0, $zero
-	add $t1, $v1, $zero
 	
-	# Output higher/divisor
-	la $a0, output1
-	addi $v0, $zero, 4 	
-	syscall
-	# Output the int
-	add $a0, $t0, $zero
-	addi $v0, $zero, 1
-	syscall
+	# Output the result
+	add $a0, $v0, $zero
 
-
-	# Output lower/divisor
-	la $a0, output2
-	addi $v0, $zero, 4 	
-	syscall
-	# Output the int
-	add $a0, $t1, $zero
 	addi $v0, $zero, 1
 	syscall
 	
