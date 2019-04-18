@@ -78,9 +78,17 @@ main:
 	# Pass num and div to function mod
 	jal reverse
 
+	add $t0, $v0, $zero
 
-	#print out result (v1)
-	add $a0, $v0, $zero
+	# print output text result
+	addi 	$v0, $zero, 4
+	lui	$a0, 0x1001
+	ori 	$a0, $a0, 13
+	syscall 
+
+
+	#print out result (t0)
+	add $a0, $t0, $zero
 	addi $v0, $zero, 1
 	syscall 
 
