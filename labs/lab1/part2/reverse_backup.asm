@@ -19,23 +19,14 @@
 #	{
 #			int  revB = 0;
 #			int pos ; //bit size -1 ;
-#			int mask;
 #			for (pos=7; pos>0; pos--)
 #			{
-#				mask = num & 1;
-#				for (int i = 0; i< pos; i++)
-#					mask = mask << 1; //first mask num in lsb, then shift that bit to left by pos bits 
-#
-#				revB = revB + mask;
-#
+#				revB=revB+(num & 1)<< pos; //first mask num in lsb, then shift that bit to left by pos bits 
 #				num = num >> 1; // then get the next bit in lsb and repeat at pos= pos-1 
-#
 #			}
 #			return revB;
 #	}
 #
-#
-
 #}
 ################################################################################################
 .globl prompt
@@ -99,56 +90,36 @@ main:
 #		   : $t2 - pos
 #		   : $t3 - mask then used for left shift by pos
 #		   : $t4 - test is pos > 0
-#		   : $t5 - i
 ##############################################################################################################
 # Java Code:
 #	public static int reverseBits(int num)
 #	{
 #			int  revB = 0;
 #			int pos ; //bit size -1 ;
-#			int mask;
 #			for (pos=7; pos>0; pos--)
 #			{
-#				mask = num & 1;
-#				for (int i = 0; i< pos; i++)
-#					mask = mask << 1; //first mask num in lsb, then shift that bit to left by pos bits 
-#
-#				revB = revB + mask;
-#
+#				revB=revB+(num & 1)<< pos; //first mask num in lsb, then shift that bit to left by pos bits 
 #				num = num >> 1; // then get the next bit in lsb and repeat at pos= pos-1 
-#
 #			}
 #			return revB;
 #	}
-#
-#
-#
 #
 ################################################################################################################
 reverse: 
 	add $t1, $zero, $zero #revB=0
 	addi $t2, $zero, 31 #pos = 32-1
 	
-loop_outer:	#first check if pos <= 0 if so goto end
+loop:	#first check if pos <= 0 if so goto end
 	slt $t4, $zero, $t2 # $t4 = 1, if 0 < pos
 	beq $t2, $zero, return  # if pos <= 0 goto return
-	andi $t3, $a0, 1 # $t3 = x & 1	
-	add $t5, $zero, $zero # i=0
+	andi $t3, $a0, 1 # $t3 = x & 1
 
-loop_inner: # for shifting variable amount
-	slt $t4, $t5, $t2 #$t4 = 1 if i<pos
-			  #$t4 = 0 if i>=pos
-	beq $t4, $zero, end_inner
-	
-	sll $t3, $t3, 1 # mask = mask << 1
-	addi $t5, $t5, 1 #i++
-	j loop_inner 
+	sllv $t3, $t3, $t2 # $t3 = $t3 << pos
 
-end_inner:
-	add $t1, $t1, $t3 #revB = revB + mask
+	add $t1, $t1, $t3 #revB = revB + $t3
 	srl $a0, $a0, 1 # num = num >> 1
 	addi $t2, $t2, -1 # pos = pos -1
-	j loop_outer #}
+	j loop #}
 
 return: add $v0, $t1, $zero
 	jr $ra

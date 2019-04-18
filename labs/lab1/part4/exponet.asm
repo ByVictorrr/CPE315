@@ -50,9 +50,9 @@
 .data
 
 promptBase:
-	.asciiz "Enter the base \n\n"
+	.asciiz "Enter the base \n\n" #strlen 18
 promptExp:
-	.asciiz "Enter exponet \n\n"
+	.asciiz "Enter exponet \n\n" #17
 output:
 	.asciiz "\n result = "
 
@@ -69,7 +69,7 @@ output:
 main:
 #==================I/O=================
 	# Output to the console input base
-	la $a0, promptBase
+	lui $a0, 0x1001
 	addi $v0, $zero, 4 	
 	syscall 	
 	
@@ -81,7 +81,8 @@ main:
 	add $t0, $v0, $zero 
 
 	# Ask user to enter exponet
-	la $a0, promptExp
+	lui $a0, 0x1001
+	ori $a0, $a0, 18
 	addi $v0, $zero, 4 	
 	syscall 	
 
@@ -98,10 +99,18 @@ main:
 #=============================================	
 	# call function pow(base,exponet)
 	jal pow
-	
-	# Output the result
-	add $a0, $v0, $zero
 
+	# store result
+	add $t0, $v0, $zero
+
+	# Ask user to enter exponet
+	lui $a0, 0x1001
+	ori $a0, $a0, 35
+	addi $v0, $zero, 4 	
+	syscall 	
+
+	#output result	
+	add $a0, $t0, $zero
 	addi $v0, $zero, 1
 	syscall
 	
@@ -206,8 +215,9 @@ pow_loop:
 	beq $t1, $zero, end_pow # goto end_pow
 
 	# save return address before calling
-	addi $sp, $sp, -4
+	addi $sp, $sp, -8
 	sw $ra, 0($sp)
+	sw $t2, 4($sp)
 
 	# calling function	
 	add $a0, $t0, $zero #$a0 = result 
@@ -218,6 +228,7 @@ pow_loop:
 	add $t0, $v0, $zero #result = mult(result, base)
 		
 	# pop return address
+	lw $t2, 4($sp)
 	lw $ra, 0($sp)
 	addi $sp, $sp, 4
 

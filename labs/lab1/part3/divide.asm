@@ -60,17 +60,17 @@
 .data
 
 promptHigher:
-	.asciiz "Enter higher \n\n"
+	.asciiz "Enter higher \n\n" #16 length
 promptLower:
-	.asciiz "Enter lower \n\n"
+	.asciiz "Enter lower \n\n" #15 length
 promptDivisor:
-	.asciiz "Enter the divisor = \n\n"
+	.asciiz "Enter the divisor = \n\n" #23 length
 outputZeroDiv:
-	.asciiz "Cant divide by 0, this will give infinity\n\n"
+	.asciiz "Cant divide by 0, this will give infinity\n\n" #44
 output1:
-	.asciiz "\n\nhigher/divisor = \n\n"
+	.asciiz "\n\nhigher/divisor = \n\n" #22
 output2:
-	.asciiz "\n\nlower/divisor = \n\n"
+	.asciiz "\n\nlower/divisor = \n\n" #21
 
 
 .text
@@ -93,7 +93,7 @@ main:
 
 #==================I/O=================
 	# Output to the console 
-	la $a0, promptHigher
+	lui $a0, 0x1001
 	addi $v0, $zero, 4 	
 	syscall 	
 	
@@ -105,7 +105,8 @@ main:
 	add $t0, $v0, $zero 
 
 	# Ask user to enter lower
-	la $a0, promptLower
+	lui $a0, 0x1001
+	ori $a0, 16
 	addi $v0, $zero, 4 	
 	syscall 	
 
@@ -118,7 +119,8 @@ main:
 
 
 	# Ask user to enter divisor
-	la $a0, promptDivisor
+	lui $a0, 0x1001
+	ori $a0, 31
 	addi $v0, $zero, 4 	
 	syscall 	
 
@@ -145,6 +147,7 @@ main:
 	la $a0, output1
 	addi $v0, $zero, 4 	
 	syscall
+
 	# Output the int
 	add $a0, $t0, $zero
 	addi $v0, $zero, 1
@@ -152,7 +155,13 @@ main:
 
 
 	# Output lower/divisor
-	la $a0, output2
+	lui $a0, 0x1001
+	ori $a0, 98
+	addi $v0, $zero, 4 	
+	syscall 	
+
+	lui $a0, 0x1001
+	ori $a0, $a0, 120
 	addi $v0, $zero, 4 	
 	syscall
 	# Output the int
@@ -266,7 +275,8 @@ divide:
 	#print out cant divide by zero
 
 	# Output the result
-	la $a0, outputZeroDiv
+	lui $a0, 0x1001
+	ori $a0, $a0, 54	
 
 	addi $v0, $zero, 1
 	syscall

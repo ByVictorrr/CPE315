@@ -30,7 +30,7 @@ promptNum:
 promptDiv:
 	.asciiz "Enter div \n\n"
 output:
-	.asciiz "\n Remainder = "
+	.asciiz "\nRemainder = "
 
 
 .text
@@ -41,12 +41,12 @@ output:
 # Locals : 
 ############################################################
 main:
-	
 	#Prompt user to enter num
 	#(assume the regs contain zero first)
 	
 	ori	$v0, $0, 4
-	la 	$a0, promptNum
+	lui 	$a0, 0x1001
+	
 	syscall 
 
 	#read 1st integer from user (num)
@@ -57,10 +57,10 @@ main:
 	add $a1, $zero, $v0	
 	
 	#Prompt user to enter div
-	#(assume the regs contain zero first)
-	
+	#(assume the regs contain zero first)	
 	ori	$v0, $0, 4
-	la 	$a0, promptDiv
+	lui     $a0, 0x1001
+	ori     $a0, $a0, 13
 	syscall 
 
 	#read 2nd integer from user (div)
@@ -72,21 +72,24 @@ main:
 			
 	# Pass num and div to function mod
 	jal mod	
+	add $t0, $v0, $zero # move result to temp
 
-	#Prompt user to enter div
+	#output result
 	#(assume the regs contain zero first)
 	
 	ori	$v0, $0, 4
-	la 	$a0, output
+	lui     $a0, 0x1001
+	ori     $a0, $a0, 26
+
 	syscall 
 
 	#print out result (v1)
-	li $v0, 1
-	add $a0, $v1, $zero
+	addi $v0, $zero, 1
+	add $a0, $t0, $zero
 	syscall 
 
 	#end program 
-	li $v0, 10
+	addi $v0, $zero, 10
 	syscall
 	
 ############################################################
@@ -95,7 +98,7 @@ main:
 #              $a2 - div
 #
 #
-# Return : $v1 - num % div
+# Return : $v0 - num % div
 # Local:
 #	Saved: n/a
 #
@@ -139,7 +142,7 @@ loop2:
 	j loop2 #}
 
 
-end: 	sub $v1, $a1, $t1 
+end: 	sub $v0, $a1, $t1 
 	jr $ra
 	
 	
