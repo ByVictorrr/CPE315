@@ -22,33 +22,29 @@ public class Parser
 
 	    try(Stream<String> stream = Files.lines(Paths.get(args[0]))){
 	    	//============Filter white spaces (\t, \s, ..)=========\\
-	    	//Case 1: filter out blank spaces
+	    	//test1.1: filter out blank spaces
 			lines = stream
 					.filter(whiteSpaceFilter.asPredicate())  //filter every that is not made fully of white sapce chars
 					.collect( Collectors.toList());
 
-			/*
-	    	//=============Filter comments out=====================\\
-			//case 2 filter comments out
-			//case 2.1: filter every line out starting with #
-			lines = lines.stream()
-					.filter( lines -> lines.startsWith("#"))
-					.collect( Collectors.toList());
-			//case 2.2: filter substrings after # for (int i = 0; i< lines.size(); i++)
-			{
-				String filtered =  lines.get(i).substring(0, lines.get(i).indexOf(" #")) ;
-				lines.set(i, filtered);  //deletes everything after #
-			}
-			//====================================================\\
-*/
-
-			
 		}
 		catch (IOException e)
 		{
 			e.getSuppressed();
 		}
 
+	    	//=============Filter comments out=====================\\
+			//test 2 filter comments out
+			//test 2.1: filter every line out starting with #
+			lines = lines.stream()
+					.filter( lines -> !lines.startsWith("#"))
+					.collect( Collectors.toList());
+
+			//test 2.2: filter substrings after # for (int i = 0; i< lines.size(); i++)
+			lines.forEach( s-> {
+				s = s.substring(0, s.indexOf(" #")) ;
+			});
+			//====================================================\\
 
 	}
 
