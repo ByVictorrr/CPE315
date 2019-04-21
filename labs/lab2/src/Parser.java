@@ -56,6 +56,7 @@ public class Parser {
 				lines.set(i, lines.get(i).substring(lines.get(i).indexOf(":"), lines.get(i).length()));
 			}
 				//now we have to filter out : before
+
 		}
 		return lines;
 	}
