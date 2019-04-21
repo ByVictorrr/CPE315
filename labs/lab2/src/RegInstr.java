@@ -7,7 +7,7 @@ public class RegInstr extends Instruction
     public String shamt; //5 bits
     public String funct; //6bits
 
-    public RegInstr(String opcode, String rs, String rd, String rt, String shamt, String funct){
+    public RegInstr(String opcode, String rs,String rt, String rd, String shamt, String funct){
         super.opcode = opcode;
         this.rs = rs;
         this.rt = rt;

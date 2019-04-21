@@ -31,37 +31,118 @@ public class driver {
 		Registers r = new Registers();
 		r.regMap.forEach((k, v) -> System.out.println(k + " :" + v));
 
+
+		System.out.println(getRs(parse.lines.get(0))); //test to see if it gets rs
+		System.out.println(getRt(parse.lines.get(0))); //test to see if it gets rs
+		System.out.println(parse.lines.get(0)); //test to see if it gets rs
 	}
 
 
-/*
+
+
+
+	/*
+
+
+
 	public List<Instruction> getInstructions(List<String> unFilteredInst) {
 
 		List<Instruction> instructions = new ArrayList<Instruction>();
 
 		for (int i = 0; i < unFilteredInst.size(); i++) { //Checking the formmaat of each instruction
 
+			String op = unFilteredInst.get(i).split(",")[0]; //get addi or add opcdoe
+			System.out.println(op);	 //test if get
 			if (typeInstruction.getFormat(typeInstruction.opcode.get(unFilteredInst.get(i))) == 0) //to see what type is the passed in line - list of instructions
 			{
 			//something like this	instructions[i] =(instructions)RegInstr;
-				instructions.add(new RegInstr(P));
+				//Step 1: get rs - getRs(String line)
+				//Step 2: get rd - getRd(String line)
+				//Step 3: get rt - getRt(String line)
+				//Step 4: get shamt - getShamt(String line)
+				//Step 5: get funct - getFunct(String line)
+
+
+
+				//It would be easier to parse for each field if we alter each time that Field and pass it on to next get func
+				instructions.add(new RegInstr(
+						op, //opcode
+						getRs(), //rs
+						getRt(), //rt
+						getRd(), //rd
+						getShamt(), //sahmt
+						getFunct() //funct
+						);
 				// it is reg type so it has the same fields
 			}
 			else  if (typeInstruction.getFormat(typeInstruction.opcode.get(unFilteredInst.get(i))) == 1)
 			{
-				instructions.add(new ImmedInstr());
 			//immediate instruction
+			//something like this	instructions[i] =(instructions)ImmedInstr;
+				//Step 1: get rs - getRs(String line)
+				//Step 2: get rt - getRt(String line)
+				//Step 3: get Immed - getImmed(String line);
 
+				instructions.add(new ImmedInstr(
+						op, //opcode
+						getRs(), //rs
+						getRt(), //rt
+						getImmed()
+						);
 			}
 			else
 			{
-				instructions.add(new JumpInstr());
 				//jump instruction
+			//something like this	instructions[i] =(instructions)jumpInstruction
+				//Step 1 - get target address either label or actual numbers
+
+				instructions.add(new JumpInstr(
+						op, //opcode
+						getAddr()
+						);
+
 			}
 		}
 		return instructions;
 		}
 
-		*/
+*/
+
+	public static String getOp(String line)
+	{
+		return line.split("\\s")[0];
+	}
+
+	public static String getRs(String line)
+	{
+		String firtPart = line.split(",")[0];
+
+		return firtPart.split("\\s")	[1];
+
+	}
+	public static String getRt(String line)
+	{
+		String firtPart = line.split(",")[1];
+
+
+		firtPart = firtPart.split(",")[0];
+
+		if (firtPart.contains("^\\s+")){
+			firtPart = firtPart.replaceAll("^\\s+","");
+		}
+		return firtPart;
+
+	}
+/*
+	public String getRd(String line) {
+
+	}
+	public String getShamt(String line)
+	{
+
+	}
+	public String getFunct(String line) {
+	}
+	*/
 }
 
