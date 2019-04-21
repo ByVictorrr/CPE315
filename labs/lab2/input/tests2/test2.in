@@ -1,7 +1,5 @@
-instr0
-instr1
-instr2
 label1:
+inst1
+label2: instr2
 instr3
-instr4
-label2:
+label2 : instr4

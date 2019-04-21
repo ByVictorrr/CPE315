@@ -13,7 +13,7 @@ public class Parser {
 	//=================vars=====================\\
 	public List<String> lines = new ArrayList<String>();
 	public Map<String,Integer> labelMap = new HashMap<>();
-
+	
 	//=================Function=====================\\
 	public void filterCommentsWhites(String[] args) {
 
@@ -48,29 +48,42 @@ public class Parser {
 		//========================================================================\\\
 	}
 
-	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
+	/*public List<Instructions> getInst(){
 
-		Pattern LabelFormat = Pattern.compile("[0-9a-zA-Z]+:");
+		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+:");
 		//get filtered String that correcponds to labels put them in a list
 		List<String> labels = lines.stream()
 				.filter(LabelFormat.asPredicate())
 				.collect(Collectors.toList());
+
+
+	}
+	*/
+	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
+
+		Pattern LabelFormat = Pattern.compile("[0-9a-zA-Z]+\\s?:");
+		//get filtered String that correcponds to labels put them in a list
+		List<String> labels = lines.stream()
+				.filter(LabelFormat.asPredicate())
+				.collect(Collectors.toList());
+
+		//this is give a test to see if we can incrment the address (if label is on the same line)
+  		  Pattern labelTest = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s?.*");
 
 		//===================get address of corrersponding address of labels===================\\
 		int Address = BaseAddress;
 
 		List<Integer> AddrList = new ArrayList<Integer>();
 
-		int indexLabel= 0;
-
+		//This only test is labels are on a new line after 
+		
 		for (int i = 0; i < lines.size(); i++) {
 
-			if (!LabelFormat.matcher(lines.get(i)).find()) //count each time a non label is found
+			if (!labelTest.matcher(lines.get(i)).find()) //count each time a non label is found
 			{
 					Address++;
 			}
 			else { //if it is a label store that address in it
-				System.out.println(Address);
 				AddrList.add(Address);
 			}
 		}
