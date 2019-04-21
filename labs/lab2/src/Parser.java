@@ -50,14 +50,15 @@ public class Parser {
 
 	public List<String> getInst(){
 
+		Pattern noBlankLines = Pattern.compile("[^\\s][a-z].*$");
 //===========================Filter out  just instruction============\\
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains(":") || lines.get(i).contains(": ") || lines.get(i).contains(" :")) {
 				lines.set(i, lines.get(i).substring(lines.get(i).indexOf(":"), lines.get(i).length()));
+				lines.set(i,lines.get(i).replaceAll("^:\\s?",""));
 			}
-				//now we have to filter out : before
-
 		}
+		lines = lines.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
 		return lines;
 	}
 
@@ -85,23 +86,26 @@ public class Parser {
 		//This only test is labels are on a new line after 
 		
 		for (int i = 0; i < lines.size(); i++) {
-			if (labelByItSelf.matcher(lines.get(i)).find() && i ==0)
-			{
-				AddrList.add(Address);
-			}
 
+			//Label Followed by a instruction
 			if (labelFollowedByInst.matcher(lines.get(i)).find())//count each time a non label is found
 			{
-
+				if(i==0)
+					AddrList.add(Address);
+				else {
 					Address++;
 					AddrList.add(Address);
 					System.out.println(Address);
-
+				}
 			}
+			//just instruction found
 			else if(instrMatch.matcher(lines.get(i)).find()) {
 				Address++;
 			}
+			//else label found
 			else { //if it is a label store that address in it
+			if(i == lines.size() -1) //if the last run is an incrutio
+				Address++;
 					AddrList.add(Address);
 			}
 		}
