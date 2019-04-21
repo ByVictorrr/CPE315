@@ -27,8 +27,10 @@ public class driver
 		in.initalizeMap();
 
 		System.out.println("0 - regType, 1-immediate, 2 - jump type");
-				System.out.println(in.getFormat(parse.lines.get(0)));
-		
+				//System.out.println(in.getFormat(parse.lines.get(0)));
+
+				Registers r = new Registers();
+				r.regMap.forEach((k,v)->System.out.println(k + " :" + v));
 	}
 }
 
