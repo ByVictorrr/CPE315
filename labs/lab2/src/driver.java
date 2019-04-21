@@ -22,9 +22,12 @@ public class driver
 		System.out.println('\n');
 
 		parse.getInst().forEach(s->System.out.println(s));
+//////////////TESST part 2 creating opcode map\\\\\\\\\\\\\
+		Instruction in = new Instruction();
+		in.initalizeMap();
 
-			/*parse.lines.forEach(System.out::println);*/
-
+		System.out.println("0 - regType, 1-immediate, 2 - jump type");
+				System.out.println(in.getFormat(parse.lines.get(0)));
 		
 	}
 }
