@@ -48,22 +48,22 @@ public class Parser {
 		//========================================================================\\\
 	}
 
-	/*public List<Instructions> getInst(){
+	public List<String> getInst(){
 
-		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+:");
-		//get filtered String that correcponds to labels put them in a list
-		List<String> labels = lines.stream()
-				.filter(LabelFormat.asPredicate())
-				.collect(Collectors.toList());
-
-
+//===========================Filter out  just instruction============\\
+		for (int i = 0; i < lines.size(); i++) {
+			if (lines.get(i).contains(":") || lines.get(i).contains(": ") || lines.get(i).contains(" :")) {
+				lines.set(i, lines.get(i).substring(lines.get(i).indexOf(":"), lines.get(i).length()));
+			}
+				//now we have to filter out : before
+		}
+		return lines;
 	}
 
 
 
 
 
-	*/
 	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
 
 		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+\\s?:");

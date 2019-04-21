@@ -19,6 +19,9 @@ public class driver
 		parse.labelMap = parse.getLabel(100);
 		parse.labelMap.forEach((k,v) -> System.out.println(k + ":" + v));
 
+
+		parse.getInst().forEach(s->System.out.println(s));
+
 			/*parse.lines.forEach(System.out::println);*/
 
 		
