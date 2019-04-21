@@ -15,7 +15,13 @@ public class driver
 
 		parse.filterCommentsWhites(args);
 			parse.lines.forEach(System.out::println);
-	}
 
+		parse.labelMap = parse.getLabel(100);
+		parse.labelMap.forEach((k,v) -> System.out.println(k + ":" + v));
+
+			parse.lines.forEach(System.out::println);
+
+		
+	}
 }
 

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 public class Parser {
 	//=================vars=====================\\
 	public List<String> lines = new ArrayList<String>();
-	public Map<String,Long> labelMap = new HashMap<>();
+	public Map<String,Integer> labelMap = new HashMap<>();
 
 	//=================Function=====================\\
 	public void filterCommentsWhites(String[] args) {
@@ -48,48 +48,44 @@ public class Parser {
 		//========================================================================\\\
 	}
 
-	public Map<String, Long> getLabel(Long BaseAddress){ //get Labels and filter out the
+	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
 
-		Pattern LabelFormat = Pattern.compile("[0-9a-zA-Z]+\\s+?:");
+		Pattern LabelFormat = Pattern.compile("[0-9a-zA-Z]+:");
 		//get filtered String that correcponds to labels put them in a list
 		List<String> labels = lines.stream()
-									.filter(LabelFormat.asPredicate())
-									.collect(Collectors.toList());
-
+				.filter(LabelFormat.asPredicate())
+				.collect(Collectors.toList());
 
 		//===================get address of corrersponding address of labels===================\\
-		Long Address = BaseAddress;
-		List<Long> AddrList = new ArrayList<>();
+		int Address = BaseAddress;
 
-		for (int i = 0; i< lines.size(); i++){
+		List<Integer> AddrList = new ArrayList<Integer>();
 
-			if(!LabelFormat.matcher(lines.get(i)).find()) //count each time a non label is found
+		int indexLabel= 0;
+
+		for (int i = 0; i < lines.size(); i++) {
+
+			if (!LabelFormat.matcher(lines.get(i)).find()) //count each time a non label is found
 			{
-				if (i != 0) { //if not first line
 					Address++;
-				}
 			}
-			AddrList
+			else { //if it is a label store that address in it
+				System.out.println(Address);
+				AddrList.add(Address);
+			}
 		}
+
 		//=================================================================================\\
 
 
 		//=======================put label, and corresonding addr in map=================================\\
 
-		for (String label: labels) {
-			labelMap.put(label, );
-		}
-					.filter(noFrontComments.asPredicate()) //get all lines that dont start with
-					.filter(noBlankLines.asPredicate()) //get all lines that dont start with
-					.collect(Collectors.toList());
 
-		for (int i = 0; i < lines.size(); i++) {
-			if (lines.get(i).contains(":")) {
-				lines.set(i, lines.get(i).substring(0, lines.get(i).indexOf(" :")));
-			}
-			numLines = i; //Use numlines for address number for the labels
+		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
+			labelMap.put(labels.get(i), AddrList.get(i));
 		}
-
+		return labelMap;
 	}
+
 }
 
