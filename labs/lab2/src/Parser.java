@@ -58,18 +58,24 @@ public class Parser {
 
 
 	}
+
+
+
+
+
 	*/
 	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
 
-		Pattern LabelFormat = Pattern.compile("[0-9a-zA-Z]+\\s?:");
+		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+\\s?:");
 		//get filtered String that correcponds to labels put them in a list
 		List<String> labels = lines.stream()
 				.filter(LabelFormat.asPredicate())
 				.collect(Collectors.toList());
 
 		//this is give a test to see if we can incrment the address (if label is on the same line)
-  		  Pattern labelTest = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s?.*");
-
+  		  Pattern labelFollowedByInst = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s+?[0-9a-zA-z]+$");
+  		  Pattern instrMatch = Pattern.compile("^[0-9a-zA-z]+\\s?[^:]+$");
+  		  Pattern labelByItSelf = Pattern.compile("^[0-9a-zA-z]+\\s+?:");
 		//===================get address of corrersponding address of labels===================\\
 		int Address = BaseAddress;
 
@@ -78,23 +84,38 @@ public class Parser {
 		//This only test is labels are on a new line after 
 		
 		for (int i = 0; i < lines.size(); i++) {
-
-			if (!labelTest.matcher(lines.get(i)).find()) //count each time a non label is found
+			if (labelByItSelf.matcher(lines.get(i)).find() && i ==0)
 			{
+				AddrList.add(Address);
+			}
+
+			if (labelFollowedByInst.matcher(lines.get(i)).find())//count each time a non label is found
+			{
+
 					Address++;
+					AddrList.add(Address);
+					System.out.println(Address);
+
+			}
+			else if(instrMatch.matcher(lines.get(i)).find()) {
+				Address++;
 			}
 			else { //if it is a label store that address in it
-				AddrList.add(Address);
+					AddrList.add(Address);
 			}
 		}
 
-		//=================================================================================\\
-
+		//===========================Filter out inline instructions with labels============\\
+		for (int i = 0; i < lines.size(); i++) {
+			if (lines.get(i).contains("#")) {
+				lines.set(i, lines.get(i).substring(0, lines.get(i).indexOf("#")));
+			}
+		}
 
 		//=======================put label, and corresonding addr in map=================================\\
 
-
 		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
+			labels.set(i, labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labelMap.put(labels.get(i), AddrList.get(i));
 		}
 		return labelMap;
