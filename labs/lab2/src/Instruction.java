@@ -43,7 +43,6 @@ public class Instruction{
 		for (int i  = 0 ; i< opMachine.size(); i++)
 		{
 			opcode.put(opMnemonic.get(i),opMachine.get(i));
-			opcode.forEach((k,v) -> System.out.println(k + ":"+ v));
 		}
 	}
 
