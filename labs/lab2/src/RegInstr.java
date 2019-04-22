@@ -10,6 +10,11 @@ public class RegInstr extends Instruction
     public Map <String,String> funct; //6bits
 
     public RegInstr(String opCode, String rs,String rt, String rd, String shamt, String funct){
+                this.rs = rs;
+                this.rt;
+                this.rd;
+                 this.shamt;
+                 this.funct;
 
     }
     //Regs are all 5 bits
