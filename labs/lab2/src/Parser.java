@@ -135,6 +135,9 @@ public class Parser {
 		String Rd = line.split(",")[0];
 		return Rd.split("\\s")	[1];
 	}
+
+
+
 	public static String getRs(String line)
 	{
 		String Rt = line.split(",")[1];

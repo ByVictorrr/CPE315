@@ -1,19 +1,16 @@
+import java.util.Map;
+
 public class RegInstr extends Instruction
 {
     //opcode will be inherited from Instruction
-    public String rs;
-    public String rt;
-    public String rd;
-    public String shamt; //5 bits
-    public String funct; //6bits
+    public Map <String,String> rs;
+    public Map<String,String> rt;
+    public Map<String,String> rd;
+    public Map <String,String> shamt; //5 bits
+    public Map <String,String> funct; //6bits
 
-    public RegInstr(String opcode, String rs,String rt, String rd, String shamt, String funct){
-        super.opcode = opcode;
-        this.rs = rs;
-        this.rt = rt;
-        this.rd= rd;
-        this.shamt = shamt;
-        this.funct = funct;
+    public RegInstr(String opCode, String rs,String rt, String rd, String shamt, String funct){
+
     }
     //Regs are all 5 bits
 }
