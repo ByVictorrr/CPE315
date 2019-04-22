@@ -8,10 +8,13 @@ public class JumpInstr extends Instruction
    public Map <String,String> addrImmed; //need to decode using label
 
 
-  public JumpInstr(Map<String,String> rs,
+  public JumpInstr(
+                   Map <String,String> op,
+                   Map<String,String> rs,
                    Map <String,String> rt,
                    Map<String,String> addrImmed
   ){
+      super.opCode = op;
       this.rs = rs;
       this.rt = rt;
       this.addrImmed = addrImmed;

@@ -154,7 +154,7 @@ public class Parser {
 		return Rt;
 	}
 
-/*
+
 	public String getShamt(String line)
 	{
 
