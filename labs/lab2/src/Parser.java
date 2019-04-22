@@ -11,9 +11,8 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	//=================vars=====================\\
-	public List<String> lines = new ArrayList<String>();
-	public Map<String,Integer> labelMap = new HashMap<>();
-	
+	public List<String> lines = new ArrayList<String>(); //this gives lines of instructions unFiltered
+	public Map<String,Integer> labelMap = new HashMap<>(); //gives map Label Name (key) => Address(value)
 	//=================Function=====================\\
 	public void filterCommentsWhites(String[] args) {
 
@@ -61,11 +60,6 @@ public class Parser {
 		lines = lines.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
 		return lines;
 	}
-
-
-
-
-
 	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
 
 		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+\\s?:");
@@ -126,5 +120,51 @@ public class Parser {
 		return labelMap;
 	}
 
+	//NEED TO FIX reading parsing up to next $ for regs ALSO PUT each of these function in the instruction Type class
+// getOp can go in Instruction class because everyinstruction has a opcode
+//When creating a new object of sub instruction pass line -> when passed parse it to each variable
+//Format for Reg: op rd, rs, rt
+
+	public static String getOp(String line)
+	{
+		return line.split("\\s")[0];
+	}
+
+	public static String getRd(String line)
+	{
+		String Rd = line.split(",")[0];
+		return Rd.split("\\s")	[1];
+	}
+	public static String getRs(String line)
+	{
+		String Rt = line.split(",")[1];
+		Rt = Rt.split(",")[0];
+
+		if (Rt.contains("^\\s+")){
+			Rt = Rt.replaceAll("^\\s+","");
+		}
+		return Rt;
+
+	}
+	public static String getRt(String line) {
+		String Rt = line.split(",")[2];
+		return Rt;
+	}
+
+/*
+	public String getShamt(String line)
+	{
+
+	}
+	public String getFunct(String line) {
+	}
+	public String getAddrImmed(String line)
+	{
+	}
+	public String getTargetAddr(String line)
+	{
+
+	}
+	*/
 }
 

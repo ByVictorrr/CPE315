@@ -31,20 +31,16 @@ public class driver {
 		Registers r = new Registers();
 		r.regMap.forEach((k, v) -> System.out.println(k + " :" + v));
 
-
+/*
+		System.out.println(getOp(parse.lines.get(0))); //test to see if it gets rs
+		System.out.println(getRd(parse.lines.get(0))); //test to see if it gets rs
 		System.out.println(getRs(parse.lines.get(0))); //test to see if it gets rs
 		System.out.println(getRt(parse.lines.get(0))); //test to see if it gets rs
 		System.out.println(parse.lines.get(0)); //test to see if it gets rs
+		*/
 	}
 
-
-
-
-
-	/*
-
-
-
+/*
 	public List<Instruction> getInstructions(List<String> unFilteredInst) {
 
 		List<Instruction> instructions = new ArrayList<Instruction>();
@@ -108,41 +104,6 @@ public class driver {
 
 */
 
-	public static String getOp(String line)
-	{
-		return line.split("\\s")[0];
-	}
 
-	public static String getRs(String line)
-	{
-		String firtPart = line.split(",")[0];
-
-		return firtPart.split("\\s")	[1];
-
-	}
-	public static String getRt(String line)
-	{
-		String firtPart = line.split(",")[1];
-
-
-		firtPart = firtPart.split(",")[0];
-
-		if (firtPart.contains("^\\s+")){
-			firtPart = firtPart.replaceAll("^\\s+","");
-		}
-		return firtPart;
-
-	}
-/*
-	public String getRd(String line) {
-
-	}
-	public String getShamt(String line)
-	{
-
-	}
-	public String getFunct(String line) {
-	}
-	*/
 }
 
