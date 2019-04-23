@@ -12,8 +12,9 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	//=================vars=====================\\
-	public List<String,Integer> linesMap = new HashMap<>(); //this gives lines of instructions unFiltered
+	public List<String> lines = new ArrayList<String>(); //this gives lines of instructions unFiltered
 	public Map<String,Integer> labelMap = new HashMap<>(); //gives map Label Name (key) => Address(value)
+    public Map<String,Integer> instructMap = new HashMap<>();
 	//=================Function=====================\\
 	public void filterCommentsWhites(String[] args) {
 
@@ -61,7 +62,7 @@ public class Parser {
 		lines = lines.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
 		return lines;
 	}
-	public Map<String, Integer> getLabel(Integer BaseAddress) { //get Labels and filter out the
+	public void setMaps(Integer BaseAddress) { //get Labels and filter out the
 
 		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+\\s?:");
 		//get filtered String that correcponds to labels put them in a list
@@ -76,8 +77,8 @@ public class Parser {
 		//===================get address of corrersponding address of labels===================\\
 		int Address = BaseAddress;
 
-		List<Integer> AddrList = new ArrayList<Integer>();
-
+		List<Integer> AddrListLabel = new ArrayList<Integer>();
+		List<Integer> AddrListInstr = new ArrayList<>();
 		//This only test is labels are on a new line after 
 		
 		for (int i = 0; i < lines.size(); i++) {
@@ -86,22 +87,25 @@ public class Parser {
 			if (labelFollowedByInst.matcher(lines.get(i)).find())//count each time a non label is found
 			{
 				if(i==0)
-					AddrList.add(Address);
+					AddrListLabel.add(Address);
 				else {
 					Address++;
-					AddrList.add(Address);
+					AddrListLabel.add(Address);
+					AddrListInstr.add(Address);
 					System.out.println(Address);
 				}
+
 			}
 			//just instruction found
 			else if(instrMatch.matcher(lines.get(i)).find()) {
+				AddrListInstr.add(Address);
 				Address++;
 			}
 			//else label found
 			else { //if it is a label store that address in it
 			if(i == lines.size() -1) //if the last run is an incrutio
 				Address++;
-					AddrList.add(Address);
+					AddrListLabel.add(Address);
 			}
 		}
 
@@ -116,9 +120,8 @@ public class Parser {
 
 		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
 			labels.set(i, labels.get(i).substring(0, labels.get(i).indexOf(":")));
-			labelMap.put(labels.get(i), AddrList.get(i));
+			labelMap.put(labels.get(i), AddrListLabel.get(i));
 		}
-		return labelMap;
 	}
 
 	//NEED TO FIX reading parsing up to next $ for regs ALSO PUT each of these function in the instruction Type class
