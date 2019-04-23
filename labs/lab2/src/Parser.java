@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	//=================vars=====================\\
-	public List<String> lines = new ArrayList<String>(); //this gives lines of instructions unFiltered
+	public List<String,Integer> linesMap = new HashMap<>(); //this gives lines of instructions unFiltered
 	public Map<String,Integer> labelMap = new HashMap<>(); //gives map Label Name (key) => Address(value)
 	//=================Function=====================\\
 	public void filterCommentsWhites(String[] args) {
