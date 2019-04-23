@@ -40,7 +40,7 @@ public class driver {
 		*/
 	}
 
-/*
+
 	public List<Instruction> getInstructions(List<String> unFilteredInst) {
 
 		List<Instruction> instructions = new ArrayList<Instruction>();
@@ -79,11 +79,10 @@ public class driver {
 				//Step 2: get rt - getRt(String line)
 				//Step 3: get Immed - getImmed(String line);
 
+
 				instructions.add(new ImmedInstr(
-						op, //opcode
-						getRs(), //rs
-						getRt(), //rt
-						getImmed()
+						new HashMap<String, String>().put(Parser.getRs(Parser.lines),.)
+
 						);
 			}
 			else
@@ -102,7 +101,7 @@ public class driver {
 		return instructions;
 		}
 
-*/
+
 
 
 }

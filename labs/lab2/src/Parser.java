@@ -1,5 +1,6 @@
 /* * Instructions.java * Copyright (C) 2019 victor <victor@TheShell> * * Distributed under terms of the MIT license. */
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -125,6 +126,35 @@ public class Parser {
 //When creating a new object of sub instruction pass line -> when passed parse it to each variable
 //Format for Reg: op rd, rs, rt
 
+
+//Returns a list of the fields in binary : corresponding to the type
+	public static List<String> getFields(String line, Instruction type)
+	{
+		List<String> binaryFields;
+		List<String> nmeumonicFields;
+
+		if (type instanceof RegInstr)
+		{
+			//step 1: parse into neumonic fields (getRs().....getShamt())
+			//step 2: map nemuics fields into binary fields
+			//step 3: return binary fields
+		}
+		else if (type instanceof ImmedInstr)
+		{
+			///step 1: parse into neumonic fields (getRs().....getShamt())
+			//step 2: map nemuics fields into binary fields
+			//step 3: return binary fields
+		}
+		}
+		else if (type instanceof JumpInstr)
+		{
+			//step 1: parse into neumonic fields (getRs().....getShamt())
+			//step 2: map nemuics fields into binary fields
+			//step 3: return binary fields
+		}
+		}
+
+	}
 	public static String getOp(String line)
 	{
 		return line.split("\\s")[0];
@@ -135,7 +165,6 @@ public class Parser {
 		String Rd = line.split(",")[0];
 		return Rd.split("\\s")	[1];
 	}
-
 
 
 	public static String getRs(String line)
