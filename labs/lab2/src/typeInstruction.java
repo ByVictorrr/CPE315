@@ -29,7 +29,7 @@ public class typeInstruction{
  * returns 1 - if it decides that string is immediate*
  * returns 2 - if it decides that string is jump 
  */
-	public static int getFormat(String s)
+	public static int getFormat(String opCode)
 	{
 		//To see if you opMap s is a register type
 		if (opMap.get(s).equals(opMap.get("add")) || //add
