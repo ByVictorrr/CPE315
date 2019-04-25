@@ -88,8 +88,9 @@ public class Parser {
 
 		List<Integer> AddrListLabel = new ArrayList<Integer>();
 		List<Integer> AddrListInstr = new ArrayList<>();
-		//This only test is labels are on a new line after 
-		
+		//This only test is labels are on a new line after
+
+		//Step 3: get address numbers
 		for (int i = 0; i < lines.size(); i++) {
 
 			//Label Followed by a instruction
@@ -133,12 +134,20 @@ public class Parser {
 
 		}
 		//=======================put label, and corresonding addr in map=================================\\
-		//3. filter out instruction
+		//4. filter out instruction
 		lines = getInst(lines);
 
 		for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
-		}
+		}//3. filter out instruction
+		lines = getInst(lines);
+
+
+		//5. sort maps by address
+
+
+
+
 	}
 
 	/*
