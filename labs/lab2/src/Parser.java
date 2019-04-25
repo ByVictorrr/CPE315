@@ -2,7 +2,6 @@
 
 import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -14,9 +13,9 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	//=================vars=====================\\
-	public List<String> lines = new ArrayList<String>(); //this gives lines of instructions unFiltered
-	public Map<String,Integer> labelMap = new HashMap<>(); //gives map Label Name (key) => Address(value)
-    public Map<String,Integer> instructMap = new HashMap<>();
+	public static List<String> lines = new ArrayList<String>(); //this gives lines of instructions unFiltered
+	public static Map<String,Integer> labelMap = new HashMap<>(); //gives map Label Name (key) => Address(value)
+    public static Map<String,Integer> instructMap = new HashMap<>();
 	//=================Function=====================\\
 
 	public void filterCommentsWhites(String[] args) {
@@ -147,7 +146,7 @@ public class Parser {
 
 		System.out.println(lines.size());
 		//lines.stream().forEach(s->System.out.println(s));
-			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
+			for (int i = 0; i < lines.size()-1; i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
 		lines = getInst(lines);
@@ -250,6 +249,33 @@ public class Parser {
 
 			if (getOp(inst).equals("beq") || getOp(inst).equals("bne"))
 			{
+				//Parse string along
+				nmeumonicFields.add(getOp(inst));
+				//Step 1.2 - get Rs
+				nmeumonicFields.add(getRs(inst));
+				//Step 1.3 - get Rt
+				nmeumonicFields.add(getRd(inst));
+				//Step 1.4 - get offset address = label - current_address
+
+				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+
+				System.out.println(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)));
+
+				nmeumonicFields.add(
+						getOffset(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)))
+				);
+
+
+				//System.out.println("instruction looking for = "+ getImmed(inst));
+
+				//Step 2: translate nuemonic fields -> binary fields
+				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+				//Step 2.2 - map rs nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
+				//Step 2.3 - map rt nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+				//Step 2.4 - map immed -> binary vaersion
+				binaryFields.add(nmeumonicFields.get(3));
 
 			}
 			else {
@@ -333,14 +359,32 @@ public class Parser {
 		return typeInstruction.functMap.get(getOp(line));
 	}
 
-	public static String getImmed(String line)
+	public static String getLabel(String line)
 	{
 		String imm = line.split(",")[2].trim();
-		String format = "%0" + 16 + "d";
-		imm = String.format(format,new Integer(decStringToBinary(imm)))	;
 		return imm;
 	}
 
+	public static String getImmed(String line)
+	{
+		String imm = line.split(",")[2].trim();
+		System.out.print("immediate"+decStringToBinary(imm));
+		String format = "%0" + 16 + "d";
+		//System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
+
+		return String.format(format,Integer.parseInt(decStringToBinary(imm)));
+	}
+
+
+	public static String getOffset(Integer result)
+	{
+		String format = "%0" + 16 + "d";
+		if(result<0) {
+			result = ~result;
+			result = result +1 ;
+		}
+		return String.format(format,result);
+	}
 	/*
 	public String getTargetAddr(String line)
 	{

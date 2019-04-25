@@ -16,11 +16,12 @@ public class driver {
 
 		//==============TEST1 - initalize maps ( get two maps - instruction and label map (neumoneic -> address))================\\
 		parse.setMaps(args, 100);
-		parse.instructMap = parse.getInstrMap();
-		parse.labelMap = parse.getLabelMap();
+		Parser.instructMap = parse.getInstrMap();
+		Parser.labelMap = parse.getLabelMap();
 
-		//parse.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
-		parse.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
+		System.out.println(parse.getLabelMap());
+		Parser.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
+		Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
 
 		//====================================END OF TEST1=======================================================================\\
 
@@ -33,7 +34,7 @@ public class driver {
 		List<Instruction> binaryInstr = new ArrayList<>();
 		//Step 2.3 - iterate throught the list check if each elements type, then get fields and then create object put it into the iBinary fields
 
-			for (Map.Entry<String, Integer> instruction : parse.instructMap.entrySet()) {
+			for (Map.Entry<String, Integer> instruction : Parser.instructMap.entrySet()) {
 
 				//Get the opcode of the given instructtion
 				String opCode = Parser.getOp(instruction.getKey());
