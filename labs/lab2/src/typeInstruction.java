@@ -44,10 +44,9 @@ public class typeInstruction{
 	public static int getFormat(String opCode)
 	{
 
-	    System.out.println(opCode.length());
-		System.out.println("beq".equals(opCode));
 		//CHECK IS opMap doesnt contain opcode
 		if(opMap.get(opCode) == null) {
+		    System.out.println("No such instruction\n");
 			return -1;
 		}
 		//To see if you opMap s is a register type

@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.util.*;
 import java.nio.file.Files;
@@ -32,7 +33,6 @@ public class driver {
 		List<Instruction> binaryInstr = new ArrayList<>();
 		//Step 2.3 - iterate throught the list check if each elements type, then get fields and then create object put it into the iBinary fields
 
-
 			for (Map.Entry<String, Integer> instruction : parse.instructMap.entrySet()) {
 
 				//Get the opcode of the given instructtion
@@ -40,16 +40,26 @@ public class driver {
 				//step 2.3.1 - check if its a reg type
 				if (typeInstruction.getFormat(opCode) == 0) { //get part of string before first $
 
-					//step 2.3.2 - get the fields of each instruction based on the format
-					List<String> fields = Parser.getFields(instruction.getKey(),0);
+					//Case 1 - could be jr - > rd = 0, rt = 0
+					if (opCode.equals("jr")) {
 
 
-					System.out.println("in position size = "+fields.size());
+					}
+					else {
+						//Case 2- anyother reg instruction
 
-					//Step 2,3.3 - format (opcode rs, rt, rd, shamt, funct)
-					binaryInstr.add(new RegInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3),fields.get(4),fields.get(5)));
+						//step 2.3.2 - get the fields of each instruction based on the format
+						List<String> fields = Parser.getFields(instruction.getKey(), 0);
 
-					System.out.println(binaryInstr.get(0).toString());
+
+						System.out.println("in position size = " + fields.size());
+
+						//Step 2,3.3 - format (opcode rs, rt, rd, shamt, funct)
+						binaryInstr.add(new RegInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(5)));
+
+					}
+
+
 				}
 				//step 2.3.2 - check if its a immed
 				else if (typeInstruction.getFormat(opCode) == 1) {
@@ -79,6 +89,7 @@ public class driver {
 		//====================================END OF TEST2==============================================================\\
 
 
+		binaryInstr.forEach(s-> System.out.println(s.toString()));
 		}
 
 

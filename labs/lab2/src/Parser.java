@@ -99,11 +99,11 @@ public class Parser {
 			{
 				if(i==0)
 					AddrListLabel.add(Address);
+
 				else {
 					Address++;
 					AddrListLabel.add(Address);
 					AddrListInstr.add(Address);
-					System.out.println(Address);
 				}
 
 			}
@@ -114,12 +114,13 @@ public class Parser {
 			}
 			//else label found
 			else { //if it is a label store that address in it
-			if(i == lines.size() -1) //if the last run is an incrutio
-				Address++;
-					AddrListLabel.add(Address);
+				if(i == lines.size() -1) //if the last run is an incrutio
+					Address++;
+				AddrListLabel.add(Address);
 			}
 		}
-
+		AddrListInstr.add(Address);
+		AddrListInstr.forEach(System.out::println);
 		//===========================Filter out inline instructions with labels============\\
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains("#")) {
@@ -139,6 +140,10 @@ public class Parser {
 		//4.1 if opcode$r -> opcode $r
 		lines = getInst(lines);
 
+		for (int i  = 0; i<lines.size(); i++)
+		System.out.println("instruct: " + lines.get(i));
+		System.out.println("instruct.size= " + lines.size());
+		System.out.println("AddrList inst size= " + AddrListInstr.size());
 
 
 		System.out.println(lines.size());
@@ -230,74 +235,9 @@ public class Parser {
 		List<String> binaryFields = new ArrayList<>();
 		List<String> nmeumonicFields = new ArrayList<>();
 
-		//if type == 0 - RegInstr
+		//=============================REG TYPE=======================================================\\
 		if (type == 0)
 		{
-<<<<<<< Updated upstream
-			//step 1: parse into neumonic fields (getRs().....getShamt())
-			//Step 1.1 - get opcode
-			nmeumonicFields.add(getOp(inst));
-			//Step 1.2 - get Rs
-			nmeumonicFields.add(getRs(inst));
-			//Step 1.3 - get Rt
-			nmeumonicFields.add(getRt(inst));
-			//Step 1.4 - get rd
-			nmeumonicFields.add(getRd(inst));
-			//Step 1.5 - get shamt
-			nmeumonicFields.add(getShamt(inst));
-			//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
-
-			System.out.println(nmeumonicFields.size());
-			//Step 2: translate nuemonic fields -> binary fields
-
-			//Step 2.1 - map opcode nmeuonic -> binary version
-			binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
-			//Step 2.2 - map rs nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
-			//Step 2.3 - map rt nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
-			//Step 2.4 - map rd nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
-
-	 		//Step 2.2 - map shamt nmeuonic -> binary version
-			binaryFields.add(decStringToBinary(decStringToBinary(nmeumonicFields.get(4))));
-
-			//Step 2.3 - map funct nmeuonic -> binary version
-			binaryFields.add(getFunct(inst));
-			//is binary fields already turned into binary? where does the conversion happen
-||||||| merged common ancestors
-			//step 1: parse into neumonic fields (getRs().....getShamt())
-			//Step 1.1 - get opcode
-			nmeumonicFields.add(getOp(inst));
-			//Step 1.2 - get Rs
-			nmeumonicFields.add(getRs(inst));
-			//Step 1.3 - get Rt
-			nmeumonicFields.add(getRt(inst));
-			//Step 1.4 - get rd
-			nmeumonicFields.add(getRd(inst));
-			//Step 1.5 - get shamt
-			nmeumonicFields.add(getShamt(inst));
-			//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
-
-			System.out.println(nmeumonicFields.size());
-			//Step 2: translate nuemonic fields -> binary fields
-
-			//Step 2.1 - map opcode nmeuonic -> binary version
-			binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
-			//Step 2.2 - map rs nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
-			//Step 2.3 - map rt nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
-			//Step 2.4 - map rd nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
-
-	 		//Step 2.2 - map shamt nmeuonic -> binary version
-			binaryFields.add(decStringToBinary(decStringToBinary(nmeumonicFields.get(4))));
-
-			//Step 2.3 - map funct nmeuonic -> binary version
-			binaryFields.add(getFunct(inst));
-
-=======
 		    //Case 1 - if jr instruct, rd = 0, rt =  0 , rs = reg jump to
 			if (getOp(inst).equals("jr"))
 			{
@@ -317,14 +257,14 @@ public class Parser {
 				//Step 2.1 - map opcode nmeuonic -> binary version
 				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
 				//Step 2.2 - map rs nmeuonic -> binary version
-				binaryFields.add(nmeumonicFields.get(1));
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
 				//Step 2.3 - map rt nmeuonic -> binary version
 				binaryFields.add(nmeumonicFields.get(2));
 				//Step 2.4 - map rd nmeuonic -> binary version
 				binaryFields.add(nmeumonicFields.get(3));
 
 				//Step 2.2 - map shamt nmeuonic -> binary version
-				binaryFields.add(decStringToBinary(decStringToBinary(nmeumonicFields.get(4))));
+				binaryFields.add(nmeumonicFields.get(4));
 
 				//Step 2.3 - map funct nmeuonic -> binary version
 				binaryFields.add(getFunct(inst));
@@ -349,53 +289,33 @@ public class Parser {
 				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
 				//Step 2.2 - map rs nmeuonic -> binary version
 				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
-				System.out.println("bifield(1) =" + nmeumonicFields.get(1));
 				//Step 2.3 - map rt nmeuonic -> binary version
 				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
 				//Step 2.4 - map rd nmeuonic -> binary version
 				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
 
 				//Step 2.2 - map shamt nmeuonic -> binary version
-				binaryFields.add(decStringToBinary(decStringToBinary(nmeumonicFields.get(4))));
+				binaryFields.add(nmeumonicFields.get(4));
 
 				//Step 2.3 - map funct nmeuonic -> binary version
 				binaryFields.add(getFunct(inst));
->>>>>>> Stashed changes
 
 			}
 			//step 3: return binary fields
 			return binaryFields;
 		}
+	//=================================================ImmedInst===========================================\\
 		//if type == 1 - ImmedInst
 		if (type == 1)
 		{
 			///step 1: parse into neumonic fields (getRs().....getShamt())
-			//Step 1.1 - get opcode
-			nmeumonicFields.add(getOp(inst));
-			//Step 1.2 - get Rs
-			nmeumonicFields.add(getRs(inst));
-			//Step 1.3 - get Rt
-			nmeumonicFields.add(getRt(inst));
-			//Step 1.4 - isolate immediate value (idk how to do that)
 			//step 2: map nemuics fields into binary fields
-			//Step 2.1 - map opcode nmeuonic -> binary version
-			binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
-			//Step 2.2 - map rs nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
-			//Step 2.3 - map rt nmeuonic -> binary version
-			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
-			//Step 2.whatever - convert to binary using isolated immediate value using decToBinary function
 			//step 3: return binary fields
-			return binaryFields;
 		}
 		//if type == 2 - jump instru
-		//when we make a jump its more than just the opcode of the jump and the address right? we actually have to make the jump
-		//idk how to explain it i hope you get it
 		if (type == 2)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
-			nmeumonicFields.add(getOp(inst));
-			//find address of label and convert to binary
 			//step 2: map nemuics fields into binary fields
 			//step 3: return binary fields
 		}
@@ -438,11 +358,11 @@ public class Parser {
 	public static String getShamt(String line)
 	{
 		if(!getOp(line).equals("sll"))
-			return "0";
+			return "00000";
 
-		String Rt = line.split(",")[2];
-		Rt = Rt.split("\\s")[1];
-		return Rt;
+		String val = line.split(",")[2];
+		val = val.trim();
+		return decStringToBinary(val);
 	}
 	public static String getFunct(String line) {
 		return typeInstruction.functMap.get(getOp(line));
