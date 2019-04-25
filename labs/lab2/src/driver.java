@@ -27,7 +27,6 @@ public class driver {
 
 
 
-		System.out.println(" above in position");
 		//==============TEST2 -  get the format of each instruction ===============================================================\\
 		//Step 2.1 - pass a list of instructions into a getFormat - which just detemines the type of instruction based on the opcode
 		List<Instruction> binaryInstr = new ArrayList<>();
@@ -36,21 +35,18 @@ public class driver {
 
 			for (Map.Entry<String, Integer> instruction : parse.instructMap.entrySet()) {
 
-				System.out.println(instruction.getKey());
-				//System.out.println(typeInstruction.getFormat(instruction.getKey().split("\\$")[0]));
-
 				//Get the opcode of the given instructtion
-				String opCode = instruction.getKey().split("\\$")[0];
-				opCode = opCode.split("\\s")[0]; //if white space take it out
+				String opCode = Parser.getOp(instruction.getKey());
 				//step 2.3.1 - check if its a reg type
 				if (typeInstruction.getFormat(opCode) == 0) { //get part of string before first $
 
 					//step 2.3.2 - get the fields of each instruction based on the format
-					List<String> fields = Parser.getFields(instruction.getKey(),RegInstr.class);
+					List<String> fields = Parser.getFields(instruction.getKey(),0);
 
 
-					System.out.println("in position");
+					System.out.println("in position size = "+fields.size());
 					fields.stream().forEach(s->System.out.println(s));
+
 					//Step 2,3.3 - format (opcode rs, rt, rd, shamt, funct)
 					binaryInstr.add(new RegInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3),fields.get(4),fields.get(5)));
 
@@ -59,8 +55,7 @@ public class driver {
 				else if (typeInstruction.getFormat(opCode) == 1) {
 
 					//step 2.3.2 - get the fields of each instruction based on the format
-					List<String> fields = Parser.getFields(instruction.getKey(),ImmedInstr.class);
-
+					List<String> fields = Parser.getFields(instruction.getKey(), 1);
 					fields.forEach(s->System.out.println(s));
 
 				//FOR Branch instructions get difference between: 16bit immed value just for brancH =  instruction.getValue() - labelMap.get(instruction.getValue())
@@ -73,7 +68,7 @@ public class driver {
 				else if (typeInstruction.getFormat(opCode) == 2) {
 
 					//step 2.3.2 - get the fields of each instruction based on the format
-					List<String> fields = Parser.getFields(instruction.getKey(),JumpInstr.class);
+					List<String> fields = Parser.getFields(instruction.getKey(),2);
 
 					//Step 2,3.3 - format (opcode rs, 26 -bit word address)
 					//binaryInstr.add(new JumpInstr(fields.get(0), fields.get(1)));

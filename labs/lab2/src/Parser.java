@@ -225,12 +225,13 @@ public class Parser {
 
 
 //Returns a list of the fields in binary : corresponding to the type
-	public static List<String> getFields(String inst, Type type)
+	public static List<String> getFields(String inst, int type)
 	{
 		List<String> binaryFields = new ArrayList<>();
 		List<String> nmeumonicFields = new ArrayList<>();
 
-		if (type instanceof RegInstr)
+		//if type == 0 - RegInstr
+		if (type == 0)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
 			//Step 1.1 - get opcode
@@ -243,9 +244,9 @@ public class Parser {
 			nmeumonicFields.add(getRd(inst));
 			//Step 1.5 - get shamt
 			nmeumonicFields.add(getShamt(inst));
-			//Step 1.5 - get function
-			nmeumonicFields.add(getFunct(inst));
+			//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
 
+			System.out.println(nmeumonicFields.size());
 			//Step 2: translate nuemonic fields -> binary fields
 
 			//Step 2.1 - map opcode nmeuonic -> binary version
@@ -258,22 +259,24 @@ public class Parser {
 			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
 
 	 		//Step 2.2 - map shamt nmeuonic -> binary version
-			binaryFields.add(decStringToBinary(nmeumonicFields.get(4)));
+			binaryFields.add(decStringToBinary(decStringToBinary(nmeumonicFields.get(4))));
 
 			//Step 2.3 - map funct nmeuonic -> binary version
-			binaryFields.add(decStringToBinary(nmeumonicFields.get(5)));
+			binaryFields.add(getFunct(inst));
 
 
 			//step 3: return binary fields
 			return binaryFields;
 		}
-		else if (type instanceof ImmedInstr)
+		//if type == 1 - ImmedInst
+		if (type == 1)
 		{
 			///step 1: parse into neumonic fields (getRs().....getShamt())
 			//step 2: map nemuics fields into binary fields
 			//step 3: return binary fields
 		}
-		else if (type instanceof JumpInstr)
+		//if type == 2 - jump instru
+		if (type == 2)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
 			//step 2: map nemuics fields into binary fields
@@ -284,7 +287,9 @@ public class Parser {
 
 	public static String getOp(String line)
 	{
-		return line.split("\\s")[0];
+		String op = (line.split("\\$")[0]); //get add from add$r1
+		return op.split("\\s")[0];  //remove blank space
+
 	}		//==============TEST1 - initalize maps (instruction and label map)================\\
 
 	public static String getRd(String line)
@@ -313,12 +318,17 @@ public class Parser {
 
 	public static String getShamt(String line)
 	{
+		if(!getOp(line).equals("sll"))
+			return "0";
+
 		String Rt = line.split(",")[2];
+		Rt = Rt.split("\\s")[1];
 		return Rt;
 	}
 	public static String getFunct(String line) {
-		String Rt = line.split(",")[2];
-		return Rt;
+	    System.out.println(typeInstruction.functMap(getOp(line)));
+
+		return typeInstruction.functMap.get(getOp(line));
 	}
 	/*
 	public String getAddrImmed(String line)

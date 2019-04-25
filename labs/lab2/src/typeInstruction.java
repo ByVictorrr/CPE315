@@ -8,22 +8,33 @@ public class typeInstruction{
 	public static Map<String, String> opMap;
 	static {
 		opMap= new HashMap<>();
-		opMap.put("and", "100100");
-		opMap.put("or", "100101");
-		opMap.put("add", "100000");
+		opMap.put("add", "000000");
+		opMap.put("sub", "000000");
+		opMap.put("and", "000000");
+		opMap.put("or", "000000");
 		opMap.put("addi", "001000");
 		opMap.put("sll", "000000");
-		opMap.put("sub", "100010");
-		opMap.put("slt", "101010");
+		opMap.put("slt", "000000");
 		opMap.put("beq", "000100");
 		opMap.put("bne", "000101");
 		opMap.put("lw", "100011");
 		opMap.put("sw", "101011");
 		opMap.put("j", "000010");
-		opMap.put("jr", "001000");
+		opMap.put("jr", "000000");
 		opMap.put("jal", "000011");
 	};
 
+	public static Map<String, String> functMap;
+	static {
+		opMap= new HashMap<>();
+		opMap.put("add", "100000");
+		opMap.put("sub", "100010");
+		opMap.put("and", "100100");
+		opMap.put("or", "100101");
+		opMap.put("sll", "000000");
+		opMap.put("slt", "101010");
+		opMap.put("jr", "001000");
+	};
 
 /*getFormat:  reads in a string s that instruction text
  * returns 0 - if it decides that string is  register
