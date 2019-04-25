@@ -259,11 +259,11 @@ public class Parser {
 
 				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
 
-				System.out.println(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)));
 
 				nmeumonicFields.add(
-						getOffset(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)))
+						getBinaryRep(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)), 16)
 				);
+					System.out.println("fourth feild = "+nmeumonicFields.get(3));
 
 
 				//System.out.println("instruction looking for = "+ getImmed(inst));
@@ -306,9 +306,28 @@ public class Parser {
 		//if type == 2 - jump instru
 		if (type == 2)
 		{
-			//step 1: parse into neumonic fields (getRs().....getShamt())
-			//step 2: map nemuics fields into binary fields
-			//step 3: return binary fields
+
+
+
+
+				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+
+
+				//System.out.println("instruction looking for = "+ getImmed(inst));
+
+				//Step 2: translate nuemonic fields -> binary fields
+				binaryFields.add(typeInstruction.opMap.get(getOp(inst)));
+				//Step 2.2 - map rs nmeuonic -> binary version
+
+
+				binaryFields.add(getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
+
+
+
+
+
+
+
 		}
 		return binaryFields;
 	}
@@ -376,21 +395,36 @@ public class Parser {
 	}
 
 
-	public static String getOffset(Integer result)
+	public static String getBinaryRep(Integer result, int numOfBits)
 	{
-		String format = "%0" + 16 + "d";
+		String format = "%0" + numOfBits + "d";
+		String offSet = String.format(format,result);
+
+
 		if(result<0) {
-			result = ~result;
-			result = result +1 ;
+			System.out.println("hi = " + result);
+			offSet = Integer.toBinaryString(result);
+			//cut string
+			offSet = offSet.substring(16,32);
+				System.out.println("offset  =" + offSet);
 		}
-		return String.format(format,result);
+		else{
+			offSet = String.format(format,result);
+		}
+
+		return offSet;
 	}
-	/*
-	public String getTargetAddr(String line)
+
+	public static String getTargetAddr(String line)
 	{
+		String tAddr = line.split("\\s")[1];
+		tAddr = tAddr.trim();
+
+		System.out.println("tAddr="+tAddr);
+		return tAddr;
 
 	}
-	*/
+
 	//Converts a num given in string format to binary string
 	public static String decStringToBinary(String dec)
 	{

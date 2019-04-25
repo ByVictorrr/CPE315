@@ -1,0 +1,4 @@
+addi $v0, $a0, $t1
+loop1:
+	j loop1
+add $t1, $t2, $t3

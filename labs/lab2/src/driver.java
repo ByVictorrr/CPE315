@@ -72,6 +72,7 @@ public class driver {
 
 					//Step 2,3.3 - format (opcode rs, rt, 16-bit immediate value)
 					binaryInstr.add(new ImmedInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3)));
+
 					System.out.println(binaryInstr.get(0).toString());
 
 				}
@@ -84,12 +85,16 @@ public class driver {
 					//Step 2,3.3 - format (opcode rs, 26 -bit word address)
 					//binaryInstr.add(new JumpInstr(fields.get(0), fields.get(1)));
 				}
+				else{
+
+					System.out.println("wrong type of format");
+				}
 
 			}
 			//At this point binaryInstr should be filled up with object of differnt types each having it fields converted
 		//====================================END OF TEST2==============================================================\\
 
-
+			System.out.println(binaryInstr.get(1).toString());
 		}
 
 
