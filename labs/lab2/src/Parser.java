@@ -1,6 +1,7 @@
 /* * Instructions.java * Copyright (C) 2019 victor <victor@TheShell> * * Distributed under terms of the MIT license. */
 import java.awt.*;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -149,7 +150,6 @@ public class Parser {
 
 
 	}
-
 	/*
 	public List<Instruction> getInstructions(List<String> unFilteredInst) {
 
@@ -211,23 +211,56 @@ public class Parser {
 		return instructions;
 		}
 */
+
+	//==================================get Field functions =======================================================\\
 	//NEED TO FIX reading parsing up to next $ for regs ALSO PUT each of these function in the instruction Type class
 // getOp can go in Instruction class because everyinstruction has a opcode
 //When creating a new object of sub instruction pass line -> when passed parse it to each variable
 //Format for Reg: op rd, rs, rt
-/*
+
 
 //Returns a list of the fields in binary : corresponding to the type
-	public static List<String> getFields(String line, Instruction type)
+	public static List<String> getFields(String inst, Type type)
 	{
-		List<String> binaryFields;
-		List<String> nmeumonicFields;
+		List<String> binaryFields = new ArrayList<>();
+		List<String> nmeumonicFields = new ArrayList<>();
 
 		if (type instanceof RegInstr)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
-			//step 2: map nemuics fields into binary fields
+			//Step 1.1 - get opcode
+			nmeumonicFields.add(getOp(inst));
+			//Step 1.2 - get Rs
+			nmeumonicFields.add(getRs(inst));
+			//Step 1.3 - get Rt
+			nmeumonicFields.add(getRt(inst));
+			//Step 1.4 - get rd
+			nmeumonicFields.add(getRd(inst));
+			//Step 1.5 - get shamt
+			nmeumonicFields.add(getShamt(inst));
+			//Step 1.5 - get function
+			nmeumonicFields.add(getFunct(inst));
+
+			//Step 2: translate nuemonic fields -> binary fields
+
+			//Step 2.1 - map opcode nmeuonic -> binary version
+			binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+			//Step 2.2 - map rs nmeuonic -> binary version
+			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
+			//Step 2.3 - map rt nmeuonic -> binary version
+			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+			//Step 2.4 - map rd nmeuonic -> binary version
+			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
+
+	 		//Step 2.2 - map shamt nmeuonic -> binary version
+			binaryFields.add(decStringToBinary(nmeumonicFields.get(4)));
+
+			//Step 2.3 - map funct nmeuonic -> binary version
+			binaryFields.add(decStringToBinary(nmeumonicFields.get(5)));
+
+
 			//step 3: return binary fields
+			return binaryFields;
 		}
 		else if (type instanceof ImmedInstr)
 		{
@@ -241,7 +274,7 @@ public class Parser {
 			//step 2: map nemuics fields into binary fields
 			//step 3: return binary fields
 		}
-
+		return binaryFields;
 	}
 
 	public static String getOp(String line)
@@ -273,12 +306,16 @@ public class Parser {
 	}
 
 
-	public String getShamt(String line)
+	public static String getShamt(String line)
 	{
-
+		String Rt = line.split(",")[2];
+		return Rt;
 	}
-	public String getFunct(String line) {
+	public static String getFunct(String line) {
+		String Rt = line.split(",")[2];
+		return Rt;
 	}
+	/*
 	public String getAddrImmed(String line)
 	{
 	}
@@ -287,5 +324,10 @@ public class Parser {
 
 	}
 	*/
+	//Converts a num given in string format to binary string
+	public static String decStringToBinary(String dec)
+	{
+		return Integer.toBinaryString(Integer.parseInt(dec));
+	}
 }
 
