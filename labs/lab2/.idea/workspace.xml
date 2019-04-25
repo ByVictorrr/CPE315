@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c88e69d6-7bb2-4321-b877-96ca4243fafa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/input/tests2/test7.in" beforeDir="false" afterPath="$PROJECT_DIR$/input/tests2/test7.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JumpInstr.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JumpInstr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/JumpInstr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JumpInstr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegInstr.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegInstr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegInstr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegInstr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,13 +22,22 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
+              <entry file="file://$PROJECT_DIR$/src/driver.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="205">
-                    <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+                  <state relative-caret-position="297">
+                    <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state>
+                    <caret column="19" selection-start-column="19" selection-end-column="19" />
                   </state>
                 </provider>
               </entry>
@@ -58,23 +60,23 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="22" />
-          <entry key="java" value="44" />
+          <entry key="java" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="22" />
-          <entry key="JAVA" value="44" />
+          <entry key="JAVA" value="45" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="105724" />
+          <entry key="java" value="110278" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="105724" />
+          <entry key="JAVA" value="110278" />
         </counts>
       </usages-collector>
     </session>
@@ -127,8 +129,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Registers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state relative-caret-position="598">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,15 +163,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4163">
-              <caret line="331" column="8" selection-start-line="331" selection-start-column="8" selection-end-line="331" selection-end-column="8" />
+            <state relative-caret-position="207">
+              <caret line="312" lean-forward="true" selection-start-line="312" selection-end-line="312" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#filterCommentsWhites#0;class#Parser#0" />
-                <element signature="e#13132#13133#0" expanded="true" />
-                <element signature="e#13187#13188#0" expanded="true" />
-                <element signature="e#14305#14306#0" expanded="true" />
-                <element signature="e#14364#14365#0" expanded="true" />
+                <element signature="e#13420#13421#0" expanded="true" />
+                <element signature="e#13475#13476#0" expanded="true" />
+                <element signature="e#14801#14802#0" expanded="true" />
+                <element signature="e#14860#14861#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -186,22 +188,22 @@
         <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/Instrutions.java" />
         <option value="$PROJECT_DIR$/src/Instrution.java" />
-        <option value="$PROJECT_DIR$/src/Registers.java" />
         <option value="$PROJECT_DIR$/src/Instruction.java" />
         <option value="$PROJECT_DIR$/src/typeInstruction.java" />
         <option value="$PROJECT_DIR$/src/ImmedInstr.java" />
         <option value="$PROJECT_DIR$/src/JumpInstr.java" />
         <option value="$PROJECT_DIR$/src/RegInstr.java" />
+        <option value="$PROJECT_DIR$/src/Registers.java" />
         <option value="$PROJECT_DIR$/src/driver.java" />
         <option value="$PROJECT_DIR$/src/Parser.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1678" />
-    <option name="y" value="-22" />
-    <option name="width" value="1684" />
-    <option name="height" value="1074" />
+    <option name="x" value="1707" />
+    <option name="y" value="7" />
+    <option name="width" value="528" />
+    <option name="height" value="1016" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -235,7 +237,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556193030112" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556200740977" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -267,10 +269,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1678" y="-22" width="1684" height="1074" extended-state="0" />
+    <frame x="1707" y="7" width="528" height="1016" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31379732" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="1.0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -338,9 +340,6 @@
     <entry file="file://$PROJECT_DIR$/src/Parser.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Labels.java">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Instruction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
@@ -348,16 +347,6 @@
           <folding>
             <element signature="e#127#128#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Instruction.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/RegInstr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -374,30 +363,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/driver.java">
+    <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state>
+          <caret column="19" selection-start-column="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Labels.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Instruction.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RegInstr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Registers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        <state relative-caret-position="598">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -406,15 +395,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4163">
-          <caret line="331" column="8" selection-start-line="331" selection-start-column="8" selection-end-line="331" selection-end-column="8" />
+        <state relative-caret-position="207">
+          <caret line="312" lean-forward="true" selection-start-line="312" selection-end-line="312" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#filterCommentsWhites#0;class#Parser#0" />
-            <element signature="e#13132#13133#0" expanded="true" />
-            <element signature="e#13187#13188#0" expanded="true" />
-            <element signature="e#14305#14306#0" expanded="true" />
-            <element signature="e#14364#14365#0" expanded="true" />
+            <element signature="e#13420#13421#0" expanded="true" />
+            <element signature="e#13475#13476#0" expanded="true" />
+            <element signature="e#14801#14802#0" expanded="true" />
+            <element signature="e#14860#14861#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="98" column="40" lean-forward="true" selection-start-line="98" selection-start-column="40" selection-end-line="98" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

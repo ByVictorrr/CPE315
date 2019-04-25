@@ -207,6 +207,7 @@ public class Parser {
 				binaryFields.add(getFunct(inst));
 
 			}
+
 			else {
 				//step 1: parse into neumonic fields (getRs().....getShamt())
 				//Step 1.1 - get opcode
@@ -281,6 +282,37 @@ public class Parser {
 				binaryFields.add(nmeumonicFields.get(3));
 
 			}
+			//if lw or sw
+			else if (getOp(inst).equals("lw") || getOp(inst).equals("sw"))
+			{
+					//Parse string along
+				nmeumonicFields.add(getOp(inst));
+				//Step 1.2 - get Rs
+				nmeumonicFields.add(getLwReg(inst));
+				//Step 1.3 - get Rt
+				nmeumonicFields.add(getRd(inst));
+				//Step 1.4 - get offset address = label - current_address
+				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+
+				//16 -bit imm
+				nmeumonicFields.add(getLwImmed(inst));
+
+
+
+				//System.out.println("instruction looking for = "+ getImmed(inst));
+
+				//Step 2: translate nuemonic fields -> binary fields
+				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+				//Step 2.2 - map rs nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
+				//Step 2.3 - map rt nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+				//Step 2.4 - map immed -> binary vaersion
+				binaryFields.add(getBinaryRep(Integer.parseInt(nmeumonicFields.get(3)),16));
+
+
+
+			}
 			else {
 				//Parse string along
 				nmeumonicFields.add(getOp(inst));
@@ -333,11 +365,27 @@ public class Parser {
 		return binaryFields;
 	}
 
+
+	public static String getLwReg(String line)
+	{
+		String op = (line.split(",")[0]); //get add from add$r1
+		System.out.println("opcode="+op.split("\\(")[1]);
+		return op.split("\\(")[1].split("\\)")[0].trim();  //remove blank space
+
+	}
+
+	public static String getLwImmed(String line)
+	{
+		String op = (line.split(",")[0]); //get add from add$r1
+		System.out.println("opcode="+op.split("\\(")[0]);
+		return op.split("\\(")[0].trim();  //remove blank space
+
+	}
 	public static String getOp(String line)
 	{
 		String op = (line.split("\\$")[0]); //get add from add$r1
 		System.out.println("opcode="+op.split("\\s")[0]);
-		return op.split("\\s")[0];  //remove blank space
+		return op.split("\\s")[0].trim();  //remove blank space
 
 	}		//==============TEST1 - initalize maps (instruction and label map)================\\
 
@@ -394,6 +442,7 @@ public class Parser {
 		String format = "%0" + 16 + "d";
 		//System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
 
+		System.out.println( "hi its victor = "+ Integer.parseInt(decStringToBinary(imm)));
 		return String.format(format,Integer.parseInt(decStringToBinary(imm)));
 	}
 
