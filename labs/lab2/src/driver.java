@@ -18,7 +18,6 @@ public class driver {
 		parse.instructMap = parse.getInstrMap();
 		parse.labelMap = parse.getLabelMap();
 
-		System.out.println(parse.lines.get(0));
 		parse.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
 		parse.instructMap.forEach((k, v) -> System.out.println("instruction map " + k + ":" + v + "\n"));
 

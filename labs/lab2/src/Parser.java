@@ -52,18 +52,16 @@ public class Parser {
 
 	public List<String> getInst(List<String>line){
 
-		List<String> temp = new ArrayList<>();
-
 		Pattern noBlankLines = Pattern.compile("[^\\s][a-z].*$");
 //===========================Filter out  just instruction============\\
-		for (int i = 0; i < temp.size(); i++) {
-			if (temp.get(i).contains(":") || temp.get(i).contains(": ") || temp.get(i).contains(" :")) {
-				temp.set(i, temp.get(i).substring(temp.get(i).indexOf(":"), temp.get(i).length()));
-				temp.set(i,temp.get(i).replaceAll("^:\\s?",""));
+		for (int i = 0; i < line.size(); i++) {
+			if (line.get(i).contains(":") || line.get(i).contains(": ") || line.get(i).contains(" :")) {
+				line.set(i, line.get(i).substring(line.get(i).indexOf(":"), line.get(i).length()));
+				line.set(i,line.get(i).replaceAll("^:\\s?",""));
 			}
 		}
-		temp = temp.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
-		return temp;
+		line = line.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
+		return line;
 	}
 
 	public Map<String,Integer> getInstrMap() {return instructMap; }
@@ -72,15 +70,15 @@ public class Parser {
 	public void setMaps(String [] args, Integer BaseAddress) { //get Labels and filter out the
 		//1. pass throught filtering out lines
 		filterCommentsWhites(args);
-		System.out.println(lines);
-		//2. set lines to instruction
-		lines = getInst(lines); //get lines
 
 		Pattern LabelFormat = Pattern.compile("^[0-9a-zA-Z]+\\s?:");
 		//get filtered String that correcponds to labels put them in a list
+
+		//2.Filter out labels
 		List<String> labels = lines.stream()
 				.filter(LabelFormat.asPredicate())
 				.collect(Collectors.toList());
+
 
 		//this is give a test to see if we can incrment the address (if label is on the same line)
   		  Pattern labelFollowedByInst = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s+?[0-9a-zA-z]+$");
@@ -125,14 +123,19 @@ public class Parser {
 			if (lines.get(i).contains("#")) {
 				lines.set(i, lines.get(i).substring(0, lines.get(i).indexOf("#")));
 			}
-		}
-		//=======================put label, and corresonding addr in map=================================\\
 
+		}
+		AddrListLabel.stream().forEach(s->System.out.println(s));
+		//=======================put label, and corresonding addr in map=================================\\
 		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
 			labels.set(i, labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labelMap.put(labels.get(i), AddrListLabel.get(i));
+
 		}
 		//=======================put label, and corresonding addr in map=================================\\
+		//3. filter out instruction
+		lines = getInst(lines);
+
 		for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}
