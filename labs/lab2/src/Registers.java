@@ -7,7 +7,7 @@ public class Registers {
 	public static Map<String, String> regMap = new HashMap<String, String>();
 
 	static{
-	regMap.put("$zero","00000");
+	regMap.put("$0","00000");
 
 	regMap.put("$v0","00010");
 

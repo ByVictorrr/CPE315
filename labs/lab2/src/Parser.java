@@ -147,7 +147,7 @@ public class Parser {
 
 		System.out.println(lines.size());
 		//lines.stream().forEach(s->System.out.println(s));
-			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
+			for (int i = 0; i < lines.size()-1; i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
 
@@ -175,7 +175,7 @@ public class Parser {
 		//Fields ={opcode,rd,rt,rs, shamt, funct}
 		if (type == 0)
 		{
-		    //Case 1 - if jr instruct, rd = 0, rt =  0 , rs = reg jump to, shamt = 0, funct
+		    //Case 1 - if jr instruct, rd = 0, rt =  0 , rs = reg jump to, shamt =: 0, funct
 			if (getOp(inst).equals("jr"))
 			{
 				//Step 1.1 - get opcode
@@ -217,6 +217,7 @@ public class Parser {
 				nmeumonicFields.add(getRt(inst));
 				//Step 1.4 - get rd
 				nmeumonicFields.add(getRd(inst));
+				System.out.println("currently " + getRd(inst));
 				//Step 1.5 - get shamt
 				nmeumonicFields.add(getShamt(inst));
 				//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
@@ -327,9 +328,8 @@ public class Parser {
 
 
 
-
-
 		}
+
 		return binaryFields;
 	}
 
@@ -344,8 +344,10 @@ public class Parser {
 	public static String getRd(String line)
 	{
 		String Rd = line.split(",")[0];
-		System.out.println("Rd="+Rd.split("\\s")[1]);
-		return Rd.split("\\s")[1].trim();
+		System.out.println("rd = "+Rd);
+		System.out.println("Rd="+Rd.split("\\s+")[1]);
+
+		return Rd.split("\\s+")[1].trim();
 	}
 
 

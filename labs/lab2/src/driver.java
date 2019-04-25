@@ -52,12 +52,6 @@ public class driver {
 				//step 2.3.1 - check if its a reg type
 				if (typeInstruction.getFormat(opCode) == 0) { //get part of string before first $
 
-					//Case 1 - could be jr - > rd = 0, rt = 0
-					if (opCode.equals("jr")) {
-
-
-					}
-					else {
 						//Case 2- anyother reg instruction
 
 						//step 2.3.2 - get the fields of each instruction based on the format
@@ -72,7 +66,7 @@ public class driver {
 					}
 
 
-				}
+
 				//step 2.3.2 - check if its a immed
 				else if (typeInstruction.getFormat(opCode) == 1) {
 
@@ -97,13 +91,14 @@ public class driver {
 				}
 				else{
 
-					System.out.println("wrong type of format");
+					System.out.println("invalid instruction: "+ Parser.getOp(instruction.getKey()));
 				}
 
 			}
 			System.out.println("Print Out starting rn:");
 			for (int i =0; i<binaryInstr.size(); i++)
 						System.out.println(binaryInstr.get(i).toString());
+
 			//At this point binaryInstr should be filled up with object of differnt types each having it fields converted
 		//====================================END OF TEST2==============================================================\\
 
