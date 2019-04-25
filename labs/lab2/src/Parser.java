@@ -291,6 +291,8 @@ public class Parser {
 			return binaryFields;
 		}
 		//if type == 2 - jump instru
+		//when we make a jump its more than just the opcode of the jump and the address right? we actually have to make the jump
+		//idk how to explain it i hope you get it
 		if (type == 2)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
