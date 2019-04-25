@@ -1,11 +1,13 @@
-public class JumpInstr extends Instruction
-{
+public class JumpInstr extends Instruction {
     //opcode will be inherited from Instruction
-   public String addr;
+    public String addr;
 
-  public JumpInstr(String op, String addr){
+    public JumpInstr(String op, String addr) {
         super.op = op;
         this.addr = addr;
     }
 
+    public String toString() {
+        return "opcode= " + super.toString() + " target = " + addr;
+    }
 }

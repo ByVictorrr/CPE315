@@ -26,14 +26,14 @@ public class typeInstruction{
 
 	public static Map<String, String> functMap;
 	static {
-		opMap= new HashMap<>();
-		opMap.put("add", "100000");
-		opMap.put("sub", "100010");
-		opMap.put("and", "100100");
-		opMap.put("or", "100101");
-		opMap.put("sll", "000000");
-		opMap.put("slt", "101010");
-		opMap.put("jr", "001000");
+		functMap= new HashMap<>();
+		functMap.put("add", "100000");
+		functMap.put("sub", "100010");
+		functMap.put("and", "100100");
+		functMap.put("or", "100101");
+		functMap.put("sll", "000000");
+		functMap.put("slt", "101010");
+		functMap.put("jr", "001000");
 	};
 
 /*getFormat:  reads in a string s that instruction text

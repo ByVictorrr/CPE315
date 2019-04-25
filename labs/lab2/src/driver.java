@@ -45,11 +45,11 @@ public class driver {
 
 
 					System.out.println("in position size = "+fields.size());
-					fields.stream().forEach(s->System.out.println(s));
 
 					//Step 2,3.3 - format (opcode rs, rt, rd, shamt, funct)
 					binaryInstr.add(new RegInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3),fields.get(4),fields.get(5)));
 
+					System.out.println(binaryInstr.get(0).toString());
 				}
 				//step 2.3.2 - check if its a immed
 				else if (typeInstruction.getFormat(opCode) == 1) {

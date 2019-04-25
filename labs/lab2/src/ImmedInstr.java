@@ -3,13 +3,17 @@ public class ImmedInstr extends Instruction
     //opcode will be inherited from Instruction
    public String rs;
    public String rt;
-   public String addrImmed;
+   public String immed;
 
-    public ImmedInstr(String op, String rs, String rt, String addrImmed){
+    public ImmedInstr(String op, String rs, String rt, String immed){
         super.op = op;
         this.rs = rs;
         this.rt = rt;
-        this.addrImmed = addrImmed;
+        this.immed = immed;
+    }
+     public String toString() {
+        return "opcode= " + super.toString() + ", rt=" +
+                this.rt  + "rs = " + this.rs + "immed = " + this.immed;
     }
 
 }

@@ -15,5 +15,11 @@ public class RegInstr extends Instruction
         this.shamt = shamt;
         this.funct = funct;
     }
+
+    public String toString() {
+        return "opcode= " + super.toString() + ",  rd =" + this.rd + ", rs=" +
+                this.rs  + " rt = " + this.rt + " shamt = " + this.shamt +  " funct = " + this.funct;
+    }
+
     //Regs are all 5 bits
 }
