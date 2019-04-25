@@ -262,13 +262,14 @@ public class Parser {
 				nmeumonicFields.add(getRd(inst));
 				//Step 1.4 - get offset address = label - current_address
 
-				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
-
+				System.out.println("label addr = " + Parser.labelMap.get(getLabel(inst)));
+				System.out.println("instr addr = " + Parser.instructMap.get(inst));
 
 				nmeumonicFields.add(
-						getBinaryRep(Parser.instructMap.get(inst) -  Parser.labelMap.get(getLabel(inst)), 16)
+						getBinaryRep( Parser.labelMap.get(getLabel(inst)) - (Parser.instructMap.get(inst)+1) , 16)
 				);
-					System.out.println("fourth feild = "+nmeumonicFields.get(3));
+
+
 
 
 				//System.out.println("instruction looking for = "+ getImmed(inst));
@@ -293,12 +294,13 @@ public class Parser {
 				//Step 1.3 - get Rt
 				nmeumonicFields.add(getRd(inst));
 				//Step 1.4 - get offset address = label - current_address
-				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+
+				//:System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
 
 				//16 -bit imm
 				nmeumonicFields.add(getLwImmed(inst));
 
-
+				System.out.println("lwImmed = " + getLwImmed(inst));
 
 				//System.out.println("instruction looking for = "+ getImmed(inst));
 
@@ -369,23 +371,24 @@ public class Parser {
 
 	public static String getLwReg(String line)
 	{
-		String op = (line.split(",")[0]); //get add from add$r1
-		System.out.println("opcode="+op.split("\\(")[1]);
-		return op.split("\\(")[1].split("\\)")[0].trim();  //remove blank space
+		String rs = (line.split(",")[1]); //get add from add$r1
+		rs = rs.split("\\(")[1].split("\\)")[0].trim();  //remove blank space
+		System.out.println("here rn =" + rs );
+		return  rs;
 
 	}
 
 	public static String getLwImmed(String line)
 	{
-		String op = (line.split(",")[0]); //get add from add$r1
-		System.out.println("opcode="+op.split("\\(")[0]);
-		return op.split("\\(")[0].trim();  //remove blank space
+		String lwImmed = (line.split(",")[1]); //get add from add$r1
+		lwImmed = lwImmed.split("\\(")[0].trim();  //remove blank space
+		System.out.println("getLWiMmed = " + lwImmed);
 
+		return  lwImmed;
 	}
 	public static String getOp(String line)
 	{
 		String op = (line.split("\\$")[0]); //get add from add$r1
-		System.out.println("opcode="+op.split("\\s")[0]);
 		return op.split("\\s")[0].trim();  //remove blank space
 
 	}		//==============TEST1 - initalize maps (instruction and label map)================\\
@@ -393,10 +396,12 @@ public class Parser {
 	public static String getRd(String line)
 	{
 		String Rd = line.split(",")[0];
-		System.out.println("rd = "+Rd);
-		System.out.println("Rd="+Rd.split("\\s+")[1]);
 
-		return Rd.split("\\s+")[1].trim();
+
+		System.out.println("Rd= " +Rd);
+		Rd = "$"+Rd.split("\\$")[1].trim();
+		//System.out.println("Rd= " +Rd);
+		return Rd;
 	}
 
 
@@ -433,18 +438,29 @@ public class Parser {
 	public static String getLabel(String line)
 	{
 		String imm = line.split(",")[2].trim();
+		System.out.println("immediate now = " + imm);
 		return imm;
 	}
 
 	public static String getImmed(String line)
 	{
 		String imm = line.split(",")[2].trim();
-		System.out.println("immediate = "+decStringToBinary(imm));
 		String format = "%0" + 16 + "d";
-		System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
 
-		System.out.println( "hi its victor = "+ Integer.parseInt(decStringToBinary(imm)));
-		return String.format(format,Integer.parseInt(decStringToBinary(imm)));
+		//if the immedate is a negative value
+		if (0 > Integer.parseInt(imm))
+		{
+			imm = Integer.toBinaryString(Integer.parseInt(imm));
+
+			imm = imm.substring(16,32);
+			System.out.println(" I am currently test neg immed = " + imm);
+		}
+		else{
+			imm =  String.format(format,Integer.parseInt(decStringToBinary(imm)));
+		}
+		System.out.print("binary = " + imm);
+
+		return imm;
 	}
 
 
