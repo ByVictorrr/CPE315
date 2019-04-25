@@ -6,8 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="c88e69d6-7bb2-4321-b877-96ca4243fafa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/ImmedInstr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/ImmedInstr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Instruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Instruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/MIPSReference.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/Parser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lab2/driver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lab2/run_tests" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JumpInstr.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/JumpInstr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JumpInstr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/JumpInstr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Registers.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Registers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/driver.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typeInstruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/typeInstruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/typeInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/typeInstruction.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +37,8 @@
             <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/driver.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="731">
-                    <caret line="32" column="54" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+                  <state relative-caret-position="529">
+                    <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
                     <folding>
                       <element signature="imports" expanded="true" />
                     </folding>
@@ -37,7 +50,7 @@
               <entry file="file://$PROJECT_DIR$/src/Parser.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="322">
-                    <caret line="16" column="60" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
+                    <caret line="17" column="60" selection-start-line="17" selection-start-column="60" selection-end-line="17" selection-end-column="60" />
                     <folding>
                       <element signature="imports" expanded="true" />
                       <element signature="method#filterCommentsWhites#0;class#Parser#0" />
@@ -65,23 +78,23 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="17" />
-          <entry key="java" value="34" />
+          <entry key="java" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="17" />
-          <entry key="JAVA" value="34" />
+          <entry key="JAVA" value="36" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="60127" />
+          <entry key="java" value="69646" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="60127" />
+          <entry key="JAVA" value="69646" />
         </counts>
       </usages-collector>
     </session>
@@ -89,31 +102,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ImmedInstr.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Instruction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+            <state relative-caret-position="529">
+              <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/JumpInstr.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="115">
+              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -134,6 +138,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Registers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#147#163#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Labels.java">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -151,13 +168,15 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1265">
-              <caret line="290" selection-start-line="290" selection-end-line="290" />
+            <state relative-caret-position="2512">
+              <caret line="319" column="37" selection-start-line="319" selection-start-column="37" selection-end-line="319" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#506#514#0" expanded="true" />
                 <element signature="method#filterCommentsWhites#0;class#Parser#0" />
                 <element signature="method#getInst#0;class#Parser#0" />
+                <element signature="e#10815#10816#0" expanded="true" />
+                <element signature="e#10875#10876#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -174,14 +193,14 @@
         <option value="$PROJECT_DIR$/src/main.java" />
         <option value="$PROJECT_DIR$/src/Instrutions.java" />
         <option value="$PROJECT_DIR$/src/Instrution.java" />
-        <option value="$PROJECT_DIR$/src/Registers.java" />
         <option value="$PROJECT_DIR$/src/RegInstr.java" />
         <option value="$PROJECT_DIR$/src/ImmedInstr.java" />
         <option value="$PROJECT_DIR$/src/Instruction.java" />
         <option value="$PROJECT_DIR$/src/JumpInstr.java" />
+        <option value="$PROJECT_DIR$/src/Registers.java" />
         <option value="$PROJECT_DIR$/src/typeInstruction.java" />
-        <option value="$PROJECT_DIR$/src/driver.java" />
         <option value="$PROJECT_DIR$/src/Parser.java" />
+        <option value="$PROJECT_DIR$/src/driver.java" />
       </list>
     </option>
   </component>
@@ -223,7 +242,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556161054145" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556165941695" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -303,16 +322,6 @@
     <entry file="file://$PROJECT_DIR$/src/ImmedInstr.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Registers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/JumpInstr.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -323,13 +332,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/JumpInstr.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
@@ -350,9 +352,6 @@
     <entry file="file://$PROJECT_DIR$/src/Registers.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/typeInstruction$1.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Registers$1.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -365,10 +364,31 @@
     <entry file="file://$PROJECT_DIR$/src/Parser.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Registers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#147#163#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JumpInstr.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/typeInstruction$1.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/typeInstruction.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+        <state relative-caret-position="529">
+          <caret line="50" column="64" selection-start-line="50" selection-start-column="64" selection-end-line="50" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -377,8 +397,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="32" column="54" selection-start-line="32" selection-start-column="54" selection-end-line="32" selection-end-column="54" />
+        <state relative-caret-position="529">
+          <caret line="37" column="53" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -387,13 +407,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1265">
-          <caret line="290" selection-start-line="290" selection-end-line="290" />
+        <state relative-caret-position="2512">
+          <caret line="319" column="37" selection-start-line="319" selection-start-column="37" selection-end-line="319" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#506#514#0" expanded="true" />
             <element signature="method#filterCommentsWhites#0;class#Parser#0" />
             <element signature="method#getInst#0;class#Parser#0" />
+            <element signature="e#10815#10816#0" expanded="true" />
+            <element signature="e#10875#10876#0" expanded="true" />
           </folding>
         </state>
       </provider>

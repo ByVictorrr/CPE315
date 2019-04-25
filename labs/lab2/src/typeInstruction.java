@@ -32,23 +32,30 @@ public class typeInstruction{
  */
 	public static int getFormat(String opCode)
 	{
+
+	    System.out.println(opCode.length());
+		System.out.println("beq".equals(opCode));
+		//CHECK IS opMap doesnt contain opcode
+		if(opMap.get(opCode) == null) {
+			return -1;
+		}
 		//To see if you opMap s is a register type
-		if (opMap.get(opCode).equals(opMap.get("add")) || //add
-			opMap.get(opCode).equals(opMap.get("or")) || //or
-			opMap.get(opCode).equals(opMap.get("and")) || //and
-			opMap.get(opCode).equals(opMap.get("sub")) || //sub
-			opMap.get(opCode).equals(opMap.get("slt")) || //slt
-			opMap.get(opCode).equals(opMap.get("jr"))) //jr
+		else if (opCode.equals("add") || //add
+			opCode.equals("or") || //or
+			opCode.equals("and") || //and
+			opCode.equals("sub") || //sub
+			opCode.equals("slt") || //slt
+			opCode.equals("jr")) //jr
 				return 0;
 		//TO see if opMap is immediate type
-		else if(opMap.get(opCode).equals(opMap.get("beq")) || //beq
-				opMap.get(opCode).equals(opMap.get("bne")) || //bne
-				opMap.get(opCode).equals(opMap.get("addi")) || //addi
-				opMap.get(opCode).equals(opMap.get("lwk")) || //lw
-				opMap.get(opCode).equals(opMap.get("sw"))) //sw
+		else if(opCode.equals("beq") || //beq
+				opCode.equals("bne") || //bne
+				opCode.equals("addi") || //addi
+				opCode.equals("lwk") || //lw
+				opCode.equals("sw")) //sw
 				return 1;
-		else if(opMap.get(opCode).equals(opMap.get("j")) || //j
-				opMap.get(opCode).equals(opMap.get("jal"))) //jal
+		else if(opCode.equals("j") || //j
+				opCode.equals("jal")) //jal
 				return 2;
 
 		return -1; //if not in thi isa

@@ -136,9 +136,14 @@ public class Parser {
 		}
 		//=======================put label, and corresonding addr in map=================================\\
 		//4. filter out instruction
+		//4.1 if opcode$r -> opcode $r
 		lines = getInst(lines);
 
-		for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
+
+
+		System.out.println(lines.size());
+		//lines.stream().forEach(s->System.out.println(s));
+			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
 		lines = getInst(lines);
