@@ -9,6 +9,8 @@ public class Registers {
 	static{
 	regMap.put("$0","00000");
 
+	regMap.put("$zero","00000");
+
 	regMap.put("$v0","00010");
 
 	regMap.put("$v1","00011");

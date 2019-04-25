@@ -141,6 +141,7 @@ public class Parser {
 		lines.forEach(System.out::println);
 		for (int i  = 0; i<lines.size(); i++)
 		System.out.println("instruct.size= " + lines.size());
+
 		System.out.println("AddrList inst size= " + AddrListInstr.size());
 
 
@@ -440,7 +441,7 @@ public class Parser {
 		String imm = line.split(",")[2].trim();
 		System.out.println("immediate = "+decStringToBinary(imm));
 		String format = "%0" + 16 + "d";
-		//System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
+		System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
 
 		System.out.println( "hi its victor = "+ Integer.parseInt(decStringToBinary(imm)));
 		return String.format(format,Integer.parseInt(decStringToBinary(imm)));
