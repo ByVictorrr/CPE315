@@ -12,8 +12,8 @@ public class ImmedInstr extends Instruction
         this.immed = immed;
     }
      public String toString() {
-        return "opcode= " + super.toString() + ", rt=" +
-                this.rt  + "rs = " + this.rs + "immed = " + this.immed;
+        return  super.toString() + " " +
+                this.rt  + " " + this.rs + " " + this.immed;
     }
 
 }

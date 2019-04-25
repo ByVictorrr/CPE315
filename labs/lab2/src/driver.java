@@ -66,12 +66,12 @@ public class driver {
 
 					//step 2.3.2 - get the fields of each instruction based on the format
 					List<String> fields = Parser.getFields(instruction.getKey(), 1);
-					fields.forEach(s->System.out.println(s));
 
 				//FOR Branch instructions get difference between: 16bit immed value just for brancH =  instruction.getValue() - labelMap.get(instruction.getValue())
 
 					//Step 2,3.3 - format (opcode rs, rt, 16-bit immediate value)
 					binaryInstr.add(new ImmedInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3)));
+					System.out.println(binaryInstr.get(0).toString());
 
 				}
 				//step 2.3.2 - check if its a jump
@@ -89,7 +89,6 @@ public class driver {
 		//====================================END OF TEST2==============================================================\\
 
 
-		binaryInstr.forEach(s-> System.out.println(s.toString()));
 		}
 
 

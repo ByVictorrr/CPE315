@@ -1,4 +1,5 @@
 /* * Instructions.java * Copyright (C) 2019 victor <victor@TheShell> * * Distributed under terms of the MIT license. */
+
 import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -68,7 +69,7 @@ public class Parser {
 	public Map<String,Integer> getInstrMap() {return instructMap; }
 	public Map<String,Integer> getLabelMap() {return labelMap; }
 
-	public void setMaps(String [] args, Integer BaseAddress) { //get Labels and filter out the
+	public void setMaps(String [] args, Integer BaseAddress) {
 		//1. pass throught filtering out lines
 		filterCommentsWhites(args);
 
@@ -119,8 +120,6 @@ public class Parser {
 				AddrListLabel.add(Address);
 			}
 		}
-		AddrListInstr.add(Address);
-		AddrListInstr.forEach(System.out::println);
 		//===========================Filter out inline instructions with labels============\\
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains("#")) {
@@ -156,71 +155,7 @@ public class Parser {
 
 		//5. sort maps by address
 
-
-
-
 	}
-	/*
-	public List<Instruction> getInstructions(List<String> unFilteredInst) {
-
-		List<Instruction> instructions = new ArrayList<Instruction>();
-
-		for (int i = 0; i < unFilteredInst.size(); i++) { //Checking the formmaat of each instruction
-
-			String op = unFilteredInst.get(i).split(",")[0]; //get addi or add opcdoe
-			System.out.println(op);	 //test if get
-			if (typeInstruction.getFormat(typeInstruction.opcode.get(unFilteredInst.get(i))) == 0) //to see what type is the passed in line - list of instructions
-			{
-			//something like this	instructions[i] =(instructions)RegInstr;
-				//Step 1: get rs - getRs(String line)
-				//Step 2: get rd - getRd(String line)
-				//Step 3: get rt - getRt(String line)
-				//Step 4: get shamt - getShamt(String line)
-				//Step 5: get funct - getFunct(String line)
-
-
-
-				//It would be easier to parse for each field if we alter each time that Field and pass it on to next get func
-				instructions.add(new RegInstr(
-						op, //opcode
-						getRs(), //rs
-						getRt(), //rt
-						getRd(), //rd
-						getShamt(), //sahmt
-						getFunct() //funct
-						);
-				// it is reg type so it has the same fields
-			}
-			else  if (typeInstruction.getFormat(typeInstruction.opcode.get(unFilteredInst.get(i))) == 1)
-			{
-			//immediate instruction
-			//something like this	instructions[i] =(instructions)ImmedInstr;
-				//Step 1: get rs - getRs(String line)
-				//Step 2: get rt - getRt(String line)
-				//Step 3: get Immed - getImmed(String line);
-
-
-				instructions.add(new ImmedInstr(
-						new HashMap<String, String>().put(Parser.getRs(Parser.lines),.)
-
-						);
-			}
-			else
-			{
-				//jump instruction
-			//something like this	instructions[i] =(instructions)jumpInstruction
-				//Step 1 - get target address either label or actual numbers
-
-				instructions.add(new JumpInstr(
-						op, //opcode
-						getAddr()
-						);
-
-			}
-		}
-		return instructions;
-		}
-*/
 
 	//==================================get Field functions =======================================================\\
 	//NEED TO FIX reading parsing up to next $ for regs ALSO PUT each of these function in the instruction Type class
@@ -236,9 +171,10 @@ public class Parser {
 		List<String> nmeumonicFields = new ArrayList<>();
 
 		//=============================REG TYPE=======================================================\\
+		//Fields ={opcode,rd,rt,rs, shamt, funct}
 		if (type == 0)
 		{
-		    //Case 1 - if jr instruct, rd = 0, rt =  0 , rs = reg jump to
+		    //Case 1 - if jr instruct, rd = 0, rt =  0 , rs = reg jump to, shamt = 0, funct
 			if (getOp(inst).equals("jr"))
 			{
 				//Step 1.1 - get opcode
@@ -308,10 +244,39 @@ public class Parser {
 		//if type == 1 - ImmedInst
 		if (type == 1)
 		{
-			///step 1: parse into neumonic fields (getRs().....getShamt())
-			//step 2: map nemuics fields into binary fields
-			//step 3: return binary fields
+			//Format: opcode rt, rs, immed
+			//Fields ={opcode,rs,rt,immed}
+			///step 1: parse into neumonic fields (into binary)
+
+			if (getOp(inst).equals("beq") || getOp(inst).equals("bne"))
+			{
+
+			}
+			else {
+				//Parse string along
+				nmeumonicFields.add(getOp(inst));
+				//Step 1.2 - get Rs
+				nmeumonicFields.add(getRs(inst));
+				//Step 1.3 - get Rt
+				nmeumonicFields.add(getRd(inst));
+				//Step 1.4 - get immed
+				nmeumonicFields.add(getImmed(inst));
+
+				System.out.println("instruction looking for = "+getImmed(inst));
+
+				//Step 2: translate nuemonic fields -> binary fields
+				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+				//Step 2.2 - map rs nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
+				//Step 2.3 - map rt nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+				//Step 2.4 - map immed -> binary vaersion
+				binaryFields.add(nmeumonicFields.get(3));
+
+			}
+			return binaryFields;
 		}
+		//=======================================================================================================\\
 		//if type == 2 - jump instru
 		if (type == 2)
 		{
@@ -367,10 +332,16 @@ public class Parser {
 	public static String getFunct(String line) {
 		return typeInstruction.functMap.get(getOp(line));
 	}
-	/*
-	public String getAddrImmed(String line)
+
+	public static String getImmed(String line)
 	{
+		String imm = line.split(",")[2].trim();
+		String format = "%0" + 16 + "d";
+		imm = String.format(format,new Integer(decStringToBinary(imm)))	;
+		return imm;
 	}
+
+	/*
 	public String getTargetAddr(String line)
 	{
 
