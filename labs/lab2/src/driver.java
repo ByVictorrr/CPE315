@@ -7,6 +7,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.regex.Pattern;
 
+import static java.util.stream.Collectors.toMap;
+
 
 public class driver {
 
@@ -15,7 +17,7 @@ public class driver {
 	public static void main(String[] args) {
 
 		//==============TEST1 - initalize maps ( get two maps - instruction and label map (neumoneic -> address))================\\
-		parse.setMaps(args, 100);
+		parse.setMaps(args, 0);
 		Parser.instructMap = parse.getInstrMap();
 		Parser.labelMap = parse.getLabelMap();
 
@@ -23,9 +25,16 @@ public class driver {
 		Parser.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
 		Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
 
+
+
 		//====================================END OF TEST1=======================================================================\\
 
-
+		//Sort the Map
+		Map<String,Integer> sortedInstrMap = Parser.instructMap
+        .entrySet()
+        .stream()
+        .sorted(Map.Entry.comparingByValue())
+        .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
 
 
@@ -34,8 +43,10 @@ public class driver {
 		List<Instruction> binaryInstr = new ArrayList<>();
 		//Step 2.3 - iterate throught the list check if each elements type, then get fields and then create object put it into the iBinary fields
 
-			for (Map.Entry<String, Integer> instruction : Parser.instructMap.entrySet()) {
+			for (Map.Entry<String, Integer> instruction : sortedInstrMap.entrySet())
+		{
 
+			    System.out.println("instruction currrently"+instruction.getKey());
 				//Get the opcode of the given instructtion
 				String opCode = Parser.getOp(instruction.getKey());
 				//step 2.3.1 - check if its a reg type
@@ -73,8 +84,6 @@ public class driver {
 					//Step 2,3.3 - format (opcode rs, rt, 16-bit immediate value)
 					binaryInstr.add(new ImmedInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3)));
 
-					System.out.println(binaryInstr.get(0).toString());
-
 				}
 				//step 2.3.2 - check if its a jump
 				else if (typeInstruction.getFormat(opCode) == 2) {
@@ -83,7 +92,8 @@ public class driver {
 					List<String> fields = Parser.getFields(instruction.getKey(),2);
 
 					//Step 2,3.3 - format (opcode rs, 26 -bit word address)
-					//binaryInstr.add(new JumpInstr(fields.get(0), fields.get(1)));
+					binaryInstr.add(new JumpInstr(fields.get(0), fields.get(1)));
+
 				}
 				else{
 
@@ -91,10 +101,14 @@ public class driver {
 				}
 
 			}
+			System.out.println("Print Out starting rn:");
+			for (int i =0; i<binaryInstr.size(); i++)
+						System.out.println(binaryInstr.get(i).toString());
 			//At this point binaryInstr should be filled up with object of differnt types each having it fields converted
 		//====================================END OF TEST2==============================================================\\
 
-			System.out.println(binaryInstr.get(1).toString());
+
+
 		}
 
 

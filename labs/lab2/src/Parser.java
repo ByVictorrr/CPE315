@@ -138,18 +138,20 @@ public class Parser {
 		//4.1 if opcode$r -> opcode $r
 		lines = getInst(lines);
 
+		lines.forEach(System.out::println);
 		for (int i  = 0; i<lines.size(); i++)
-		System.out.println("instruct: " + lines.get(i));
 		System.out.println("instruct.size= " + lines.size());
 		System.out.println("AddrList inst size= " + AddrListInstr.size());
 
 
+
 		System.out.println(lines.size());
 		//lines.stream().forEach(s->System.out.println(s));
-			for (int i = 0; i < lines.size()-1; i++) { //get key (label name ) -> value (address)//
+			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
-		lines = getInst(lines);
+
+		System.out.println(instructMap.get("j loop1"));
 
 
 		//5. sort maps by address
@@ -308,10 +310,7 @@ public class Parser {
 		{
 
 
-
-
-				System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
-
+		//		System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
 
 				//System.out.println("instruction looking for = "+ getImmed(inst));
 
@@ -319,6 +318,8 @@ public class Parser {
 				binaryFields.add(typeInstruction.opMap.get(getOp(inst)));
 				//Step 2.2 - map rs nmeuonic -> binary version
 
+			System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
+			System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
 
 				binaryFields.add(getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
 
@@ -387,7 +388,7 @@ public class Parser {
 	public static String getImmed(String line)
 	{
 		String imm = line.split(",")[2].trim();
-		System.out.print("immediate"+decStringToBinary(imm));
+		System.out.println("immediate = "+decStringToBinary(imm));
 		String format = "%0" + 16 + "d";
 		//System.out.print("binary = " + String.format(format,Integer.parseInt(decStringToBinary(imm))));
 
@@ -398,7 +399,7 @@ public class Parser {
 	public static String getBinaryRep(Integer result, int numOfBits)
 	{
 		String format = "%0" + numOfBits + "d";
-		String offSet = String.format(format,result);
+		String offSet;
 
 
 		if(result<0) {
@@ -409,7 +410,9 @@ public class Parser {
 				System.out.println("offset  =" + offSet);
 		}
 		else{
-			offSet = String.format(format,result);
+			String binary = Integer.toBinaryString(result);
+			offSet = String.format(format,Integer.parseInt(binary));
+
 		}
 
 		return offSet;

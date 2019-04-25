@@ -8,6 +8,6 @@ public class JumpInstr extends Instruction {
     }
 
     public String toString() {
-        return "opcode= " + super.toString() + " target = " + addr;
+        return super.toString() + " " + addr;
     }
 }

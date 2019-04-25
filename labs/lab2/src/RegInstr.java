@@ -17,7 +17,7 @@ public class RegInstr extends Instruction
     }
 
     public String toString() {
-        return "opcode= " + super.toString() + " " + this.rs + " " +
+        return super.toString() + " " + this.rs + " " +
                 this.rt  + " " + this.rd + " " + this.shamt +  " " + this.funct;
     }
 
