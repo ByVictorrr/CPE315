@@ -22,6 +22,13 @@ public class driver {
 		Parser.labelMap = parse.getLabelMap();
 
 		System.out.println(parse.getLabelMap());
+		//Sort the Map
+		Map<String,Integer> sortedInstrMap = Parser.instructMap
+        .entrySet()
+        .stream()
+        .sorted(Map.Entry.comparingByValue())
+        .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+
 		Parser.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
 		Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
 
@@ -29,12 +36,6 @@ public class driver {
 
 		//====================================END OF TEST1=======================================================================\\
 
-		//Sort the Map
-		Map<String,Integer> sortedInstrMap = Parser.instructMap
-        .entrySet()
-        .stream()
-        .sorted(Map.Entry.comparingByValue())
-        .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
 
 
@@ -92,6 +93,7 @@ public class driver {
 				else{
 
 					System.out.println("invalid instruction: "+ Parser.getOp(instruction.getKey()));
+					break;
 				}
 
 			}

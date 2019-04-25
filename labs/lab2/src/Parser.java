@@ -58,7 +58,9 @@ public class Parser {
 		for (int i = 0; i < line.size(); i++) {
 			if (line.get(i).contains(":") || line.get(i).contains(": ") || line.get(i).contains(" :")) {
 				line.set(i, line.get(i).substring(line.get(i).indexOf(":"), line.get(i).length()));
-				line.set(i,line.get(i).replaceAll("^:\\s?",""));
+
+				line.set(i,line.get(i).replaceAll("^:\\s?","").trim());
+
 			}
 		}
 		line = line.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
@@ -95,8 +97,10 @@ public class Parser {
 		for (int i = 0; i < lines.size(); i++) {
 
 			//Label Followed by a instruction
+
 			if (labelFollowedByInst.matcher(lines.get(i)).find())//count each time a non label is found
 			{
+			    System.out.println("address = " + Address);
 				if(i==0)
 					AddrListLabel.add(Address);
 
@@ -118,6 +122,9 @@ public class Parser {
 					Address++;
 				AddrListLabel.add(Address);
 			}
+
+
+			System.out.println("address = " + Address + ", addrInstrc.size = " + AddrListInstr.size());
 		}
 		//===========================Filter out inline instructions with labels============\\
 		for (int i = 0; i < lines.size(); i++) {
@@ -126,9 +133,10 @@ public class Parser {
 			}
 
 		}
-		AddrListLabel.stream().forEach(s->System.out.println(s));
 		//=======================put label, and corresonding addr in map=================================\\
 		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
+
+		    System.out.println( "currently FUcking here = " +labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labels.set(i, labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labelMap.put(labels.get(i), AddrListLabel.get(i));
 
@@ -139,6 +147,7 @@ public class Parser {
 		lines = getInst(lines);
 
 		lines.forEach(System.out::println);
+
 		for (int i  = 0; i<lines.size(); i++)
 		System.out.println("instruct.size= " + lines.size());
 
@@ -148,11 +157,11 @@ public class Parser {
 
 		System.out.println(lines.size());
 		//lines.stream().forEach(s->System.out.println(s));
-			for (int i = 0; i < lines.size()-1; i++) { //get key (label name ) -> value (address)//
+			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
 
-		System.out.println(instructMap.get("j loop1"));
+
 
 
 		//5. sort maps by address
