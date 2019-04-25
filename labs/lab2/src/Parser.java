@@ -263,7 +263,7 @@ public class Parser {
 
 			//Step 2.3 - map funct nmeuonic -> binary version
 			binaryFields.add(getFunct(inst));
-
+			//is binary fields already turned into binary? where does the conversion happen
 
 			//step 3: return binary fields
 			return binaryFields;
@@ -272,8 +272,23 @@ public class Parser {
 		if (type == 1)
 		{
 			///step 1: parse into neumonic fields (getRs().....getShamt())
+			//Step 1.1 - get opcode
+			nmeumonicFields.add(getOp(inst));
+			//Step 1.2 - get Rs
+			nmeumonicFields.add(getRs(inst));
+			//Step 1.3 - get Rt
+			nmeumonicFields.add(getRt(inst));
+			//Step 1.4 - isolate immediate value (idk how to do that)
 			//step 2: map nemuics fields into binary fields
+			//Step 2.1 - map opcode nmeuonic -> binary version
+			binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+			//Step 2.2 - map rs nmeuonic -> binary version
+			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(1)));
+			//Step 2.3 - map rt nmeuonic -> binary version
+			binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+			//Step 2.whatever - convert to binary using isolated immediate value using decToBinary function
 			//step 3: return binary fields
+			return binaryFields;
 		}
 		//if type == 2 - jump instru
 		if (type == 2)
