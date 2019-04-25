@@ -296,6 +296,8 @@ public class Parser {
 		if (type == 2)
 		{
 			//step 1: parse into neumonic fields (getRs().....getShamt())
+			nmeumonicFields.add(getOp(inst));
+			//find address of label and convert to binary
 			//step 2: map nemuics fields into binary fields
 			//step 3: return binary fields
 		}
