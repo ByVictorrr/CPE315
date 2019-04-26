@@ -22,16 +22,16 @@ public class driver {
         .sorted(Map.Entry.comparingByValue())
         .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
-		sortedInstrMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
-	//	Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
+		//sortedInstrMap.forEach((k, v) -> // System.out.println("label map " + k + ":" + v + "\n"));
+	//	Parser.instructMap.forEach((k, v) -> // System.out.println("instruction map:" + k + "->" + v + "\n"));
 
-		System.out.println("instruct map size = " + sortedInstrMap.size());
+		//// System.out.println("instruct map size = " + sortedInstrMap.size());
 
 
 		//====================================END OF TEST1=======================================================================\\
 
 
-
+		List<String> invalidOps = new ArrayList<>();
 
 		//==============TEST2 -  get the format of each instruction ===============================================================\\
 		//Step 2.1 - pass a list of instructions into a getFormat - which just detemines the type of instruction based on the opcode
@@ -41,7 +41,6 @@ public class driver {
 			for (Map.Entry<String, Integer> instruction : sortedInstrMap.entrySet())
 		{
 
-			    System.out.println("instruction currrently"+instruction.getKey());
 				//Get the opcode of the given instructtion
 				String opCode = Parser.getOp(instruction.getKey());
 				//step 2.3.1 - check if its a reg type
@@ -53,7 +52,6 @@ public class driver {
 						List<String> fields = Parser.getFields(instruction.getKey(), 0);
 
 
-						System.out.println("in position size = " + fields.size());
 
 						//Step 2,3.3 - format (opcode rs, rt, rd, shamt, funct)
 						binaryInstr.add(new RegInstr(fields.get(0), fields.get(1), fields.get(2), fields.get(3), fields.get(4), fields.get(5)));
@@ -85,15 +83,24 @@ public class driver {
 
 				}
 				else{
-
-					System.out.println("invalid instruction: "+ Parser.getOp(instruction.getKey()));
-					break;
+					invalidOps.add(Parser.getOp(instruction.getKey()));
+					//// System.out.println("invalid instruction: "+ Parser.getOp(instruction.getKey()));
+					//break;
 				}
 
 			}
-			System.out.println("Print Out starting rn: size = " + binaryInstr.size());
 			for (int i =0; i<binaryInstr.size(); i++)
 						System.out.println(binaryInstr.get(i).toString());
+
+			//print oout invalid instructions;
+			if (!invalidOps.isEmpty())
+			{
+				 System.out.print("invalid instruction: ");
+				for (int i =0; i<invalidOps.size(); i++)
+					 System.out.println(invalidOps.get(i));
+			}
+
+
 
 			//At this point binaryInstr should be filled up with object of differnt types each having it fields converted
 		//====================================END OF TEST2==============================================================\\

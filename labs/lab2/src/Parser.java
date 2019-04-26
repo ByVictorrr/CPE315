@@ -50,10 +50,9 @@ public class Parser {
 				lines.set(i,lines.get(i).trim());
 		}
 
-		System.out.println("checking items ");
-		lines.forEach(System.out::println);
+		//System.out.println("checking items ");
 		//========================================================================\\\
-		System.out.println("done Reading items ");
+		//System.out.println("done Reading items ");
 	}
 
 	public List<String> getInst(List<String>line){
@@ -68,17 +67,16 @@ public class Parser {
 
 				line.set(i,line.get(i).replaceAll("^:\\s?","").trim());
 
-				System.out.println("debugger = " + line.get(i));
+				//System.out.println("debugger = " + line.get(i));
 
 			}
 		}
 		//Filter out white blank lines
 		filteredLines = line.stream().filter(s->!s.trim().isEmpty()).collect(Collectors.toList());
 
-		line.forEach(System.out::println);
-	//	line.forEach(System.out::println);
+	//	line.forEach(//System.out::println);
 
-		System.out.println("done bish");
+		//System.out.println("done bish");
 		return filteredLines;
 	}
 
@@ -114,7 +112,7 @@ public class Parser {
 			//Label Followed instruction
 			if (labelFollowedByInst.matcher(lines.get(i)).find())
 			{
-			    System.out.println("labelFollowedByinstr = " + Address);
+			    //System.out.println("labelFollowedByinstr = " + Address);
 				if(i==0) {
 					AddrListLabel.add(Address);
 					AddrListInstr.add(Address);
@@ -131,7 +129,7 @@ public class Parser {
 			//just instruction found
 			else if(instrMatch.matcher(lines.get(i)).find()) {
 
-				System.out.println("just intruction found" + Address);
+				//System.out.println("just intruction found" + Address);
 
 				AddrListInstr.add(Address);
 				Address++;
@@ -142,14 +140,14 @@ public class Parser {
 					Address++;
 
 				AddrListLabel.add(Address);
-					System.out.println("just label found" + Address);
+					//System.out.println("just label found" + Address);
 			}
 
 
-			System.out.println("address = " + Address + ", addrInstrc.size = " + AddrListInstr.size());
+			//System.out.println("address = " + Address + ", addrInstrc.size = " + AddrListInstr.size());
 		}
 
-		AddrListInstr.forEach(System.out::println);
+		//AddrListInstr.forEach(System.out::println);
 		//===========================Filter out inline instructions with labels============\\
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains("#")) {
@@ -160,7 +158,7 @@ public class Parser {
 		//=======================put label, and corresonding addr in map=================================\\
 		for (int i = 0; i < labels.size(); i++) { //get key (label name ) -> value (address)//
 
-		    System.out.println( "currently FUcking here = " +labels.get(i).substring(0, labels.get(i).indexOf(":")));
+		    //System.out.println( "currently FUcking here = " +labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labels.set(i, labels.get(i).substring(0, labels.get(i).indexOf(":")));
 			labelMap.put(labels.get(i), AddrListLabel.get(i));
 
@@ -170,17 +168,16 @@ public class Parser {
 		//4.1 if opcode$r -> opcode $r
 		lines = getInst(lines);
 
-		System.out.print("Ater lines sorted");
-		lines.forEach(System.out::println);
+		//System.out.print("Ater lines sorted");
 
-		System.out.println("instruct.size= " + lines.size());
+		//System.out.println("instruct.size= " + lines.size());
 
-		System.out.println("AddrList inst size= " + AddrListInstr.size());
-
+		//System.out.println("AddrList inst size= " + AddrListInstr.size());
 
 
-		System.out.println(lines.size());
-		//lines.stream().forEach(s->System.out.println(s));
+
+		//System.out.println(lines.size());
+		//lines.stream().forEach(s->//System.out.println(s));
 			for (int i = 0; i < lines.size(); i++) { //get key (label name ) -> value (address)//
 			instructMap.put(lines.get(i), AddrListInstr.get(i));
 		}//3. filter out instruction
@@ -283,7 +280,7 @@ public class Parser {
 				nmeumonicFields.add(getRt(inst));
 				//Step 1.4 - get rd
 				nmeumonicFields.add(getRd(inst));
-				System.out.println("currently " + getRd(inst));
+				//System.out.println("currently " + getRd(inst));
 				//Step 1.5 - get shamt
 				nmeumonicFields.add(getShamt(inst));
 				//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
@@ -326,8 +323,8 @@ public class Parser {
 				nmeumonicFields.add(getRd(inst));
 				//Step 1.4 - get offset address = label - current_address
 
-				System.out.println("label addr = " + Parser.labelMap.get(getLabel(inst)));
-				System.out.println("instr addr = " + Parser.instructMap.get(inst));
+				//System.out.println("label addr = " + Parser.labelMap.get(getLabel(inst)));
+				//System.out.println("instr addr = " + Parser.instructMap.get(inst));
 
 				nmeumonicFields.add(
 						getBinaryRep( Parser.labelMap.get(getLabel(inst)) - (Parser.instructMap.get(inst)+1) , 16)
@@ -336,7 +333,7 @@ public class Parser {
 
 
 
-				//System.out.println("instruction looking for = "+ getImmed(inst));
+				////System.out.println("instruction looking for = "+ getImmed(inst));
 
 				//Step 2: translate nuemonic fields -> binary fields
 				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
@@ -359,14 +356,14 @@ public class Parser {
 				nmeumonicFields.add(getLwReg(inst));
 				//Step 1.4 - get offset address = label - current_address
 
-				//:System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+				//://System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
 
 				//16 -bit imm
 				nmeumonicFields.add(getLwImmed(inst));
 
-				System.out.println("lwImmed = " + getLwImmed(inst));
+				//System.out.println("lwImmed = " + getLwImmed(inst));
 
-				//System.out.println("instruction looking for = "+ getImmed(inst));
+				////System.out.println("instruction looking for = "+ getImmed(inst));
 
 				//Step 2: translate nuemonic fields -> binary fields
 				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
@@ -390,7 +387,7 @@ public class Parser {
 				//Step 1.4 - get immed
 				nmeumonicFields.add(getImmed(inst));
 
-				System.out.println("instruction looking for = "+getImmed(inst));
+				//System.out.println("instruction looking for = "+getImmed(inst));
 
 				//Step 2: translate nuemonic fields -> binary fields
 				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
@@ -410,16 +407,16 @@ public class Parser {
 		{
 
 
-		//		System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
+		//		//System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
 
-				//System.out.println("instruction looking for = "+ getImmed(inst));
+				////System.out.println("instruction looking for = "+ getImmed(inst));
 
 				//Step 2: translate nuemonic fields -> binary fields
 				binaryFields.add(typeInstruction.opMap.get(getOp(inst)));
 				//Step 2.2 - map rs nmeuonic -> binary version
 
-			System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
-			System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
+			//System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
+			//System.out.println("binaryrep = " + getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
 
 				binaryFields.add(getBinaryRep(labelMap.get(getTargetAddr(inst)),26));
 
@@ -437,7 +434,7 @@ public class Parser {
 	{
 		String rs = (line.split(",")[1]); //get add from add$r1
 		rs = rs.split("\\(")[1].split("\\)")[0].trim();  //remove blank space
-		System.out.println("here rn =" + rs );
+		//System.out.println("here rn =" + rs );
 		return  rs;
 
 	}
@@ -446,7 +443,7 @@ public class Parser {
 	{
 		String lwImmed = (line.split(",")[1]); //get add from add$r1
 		lwImmed = lwImmed.split("\\(")[0].trim();  //remove blank space
-		System.out.println("getLWiMmed = " + lwImmed);
+		//System.out.println("getLWiMmed = " + lwImmed);
 
 		return  lwImmed;
 	}
@@ -454,7 +451,7 @@ public class Parser {
 	{
 		String op = (line.split("\\$")[0]); //get add from add$r1
         op = op.split("\\s")[0].trim();  //remove blank space
-		System.out.println("op code fucking currently = " + op);
+		//System.out.println("op code fucking currently = " + op);
 		return op;
 	}		//==============TEST1 - initalize maps (instruction and label map)================\\
 
@@ -462,9 +459,9 @@ public class Parser {
 	{
 		String Rd = line.split(",")[0];
 
-		System.out.println("Rd= " +Rd);
-		Rd = "$"+Rd.split("\\$")[1].trim();
 		//System.out.println("Rd= " +Rd);
+		Rd = "$"+Rd.split("\\$")[1].trim();
+		////System.out.println("Rd= " +Rd);
 		return Rd;
 	}
 
@@ -475,14 +472,14 @@ public class Parser {
 		Rs = Rs.split(",")[0];
 			Rs = Rs.trim();
 
-		System.out.println("Rs="+Rs);
+		//System.out.println("Rs="+Rs);
 		return Rs;
 
 	}
 	public static String getRt(String line) {
 		String Rt = line.split(",")[2];
 		Rt = Rt.trim();
-		System.out.println("Rt="+Rt);
+		//System.out.println("Rt="+Rt);
 		return Rt;
 	}
 
@@ -505,7 +502,7 @@ public class Parser {
 	public static String getLabel(String line)
 	{
 		String imm = line.split(",")[2].trim();
-		System.out.println("immediate now = " + imm);
+		//System.out.println("immediate now = " + imm);
 		return imm;
 	}
 
@@ -520,12 +517,12 @@ public class Parser {
 			imm = Integer.toBinaryString(Integer.parseInt(imm));
 
 			imm = imm.substring(16,32);
-			System.out.println(" I am currently test neg immed = " + imm);
+			//System.out.println(" I am currently test neg immed = " + imm);
 		}
 		else{
 			imm =  String.format(format,Integer.parseInt(decStringToBinary(imm)));
 		}
-		System.out.print("binary = " + imm);
+		//System.out.print("binary = " + imm);
 
 		return imm;
 	}
@@ -538,11 +535,11 @@ public class Parser {
 
 
 		if(result<0) {
-			System.out.println("hi = " + result);
+			//System.out.println("hi = " + result);
 			offSet = Integer.toBinaryString(result);
 			//cut string
 			offSet = offSet.substring(16,32);
-				System.out.println("offset  =" + offSet);
+				//System.out.println("offset  =" + offSet);
 		}
 		else{
 			String binary = Integer.toBinaryString(result);
@@ -558,7 +555,7 @@ public class Parser {
 		String tAddr = line.split("\\s")[1];
 		tAddr = tAddr.trim();
 
-		System.out.println("tAddr="+tAddr);
+		//System.out.println("tAddr="+tAddr);
 		return tAddr;
 
 	}

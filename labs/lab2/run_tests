@@ -1,9 +1,9 @@
 #!/bin/bash
 
-for file in $( ls inputs/* ); do
+for file in $( ls outputs ); do
    echo -n "Testing with ${file} -- "
 
-   BASE=`basename ${file} .in`
+   BASE=`basename ${file}`
 
    # program testing
    cat < ${file} > outputs/${BASE}.out

@@ -46,7 +46,7 @@ public class typeInstruction{
 
 		//CHECK IS opMap doesnt contain opcode
 		if(opMap.get(opCode) == null) {
-		    System.out.println("No such instruction\n");
+		    //System.out.println("No such instruction\n");
 			return -1;
 		}
 		//To see if you opMap s is a register type
