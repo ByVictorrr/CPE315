@@ -1,5 +1,6 @@
 /* * Instructions.java * Copyright (C) 2019 victor <victor@TheShell> * * Distributed under terms of the MIT license. */
 
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.*;
@@ -48,22 +49,32 @@ public class Parser {
 		for (int i = 0; i < lines.size(); i++) {
 				lines.set(i,lines.get(i).trim());
 		}
+
+		System.out.println("checking items ");
+		lines.forEach(System.out::println);
 		//========================================================================\\\
+		System.out.println("done Reading items ");
 	}
 
 	public List<String> getInst(List<String>line){
 
-		Pattern noBlankLines = Pattern.compile("[^\\s][a-z].*$");
 //===========================Filter out  just instruction============\\
 		for (int i = 0; i < line.size(); i++) {
 			if (line.get(i).contains(":") || line.get(i).contains(": ") || line.get(i).contains(" :")) {
 				line.set(i, line.get(i).substring(line.get(i).indexOf(":"), line.get(i).length()));
 
+				//System.out.println("debugger = " + line.get(i));
+
 				line.set(i,line.get(i).replaceAll("^:\\s?","").trim());
+
+				System.out.println("debugger = " + line.get(i));
 
 			}
 		}
-		line = line.stream().filter(noBlankLines.asPredicate()).collect(Collectors.toList());
+		line.forEach(System.out::println);
+	//	line.forEach(System.out::println);
+
+		System.out.println("done bish");
 		return line;
 	}
 
@@ -84,7 +95,7 @@ public class Parser {
 
 
 		//this is give a test to see if we can incrment the address (if label is on the same line)
-  		  Pattern labelFollowedByInst = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s+?[0-9a-zA-z]+$");
+  		  Pattern labelFollowedByInst = Pattern.compile("^[0-9a-zA-z]+\\s?:\\s*[0-9a-zA-z].*$");
   		  Pattern instrMatch = Pattern.compile("^[0-9a-zA-z]+\\s?[^:]+$");
 		//===================get address of corrersponding address of labels===================\\
 		int Address = BaseAddress;
@@ -93,39 +104,48 @@ public class Parser {
 		List<Integer> AddrListInstr = new ArrayList<>();
 		//This only test is labels are on a new line after
 
-		//Step 3: get address numbers
+		//=======================GETTING ADDR corrsponding to the line string===========================================\\
 		for (int i = 0; i < lines.size(); i++) {
 
-			//Label Followed by a instruction
-
-			if (labelFollowedByInst.matcher(lines.get(i)).find())//count each time a non label is found
+			//Label Followed instruction
+			if (labelFollowedByInst.matcher(lines.get(i)).find())
 			{
-			    System.out.println("address = " + Address);
-				if(i==0)
-					AddrListLabel.add(Address);
-
-				else {
-					Address++;
+			    System.out.println("labelFollowedByinstr = " + Address);
+				if(i==0) {
 					AddrListLabel.add(Address);
 					AddrListInstr.add(Address);
+					Address++;
+
+				}
+				else {
+					AddrListLabel.add(Address);
+					AddrListInstr.add(Address);
+					Address++;
 				}
 
 			}
 			//just instruction found
 			else if(instrMatch.matcher(lines.get(i)).find()) {
+
+				System.out.println("just intruction found" + Address);
+
 				AddrListInstr.add(Address);
 				Address++;
 			}
-			//else label found
+
 			else { //if it is a label store that address in it
 				if(i == lines.size() -1) //if the last run is an incrutio
 					Address++;
+
 				AddrListLabel.add(Address);
+					System.out.println("just label found" + Address);
 			}
 
 
 			System.out.println("address = " + Address + ", addrInstrc.size = " + AddrListInstr.size());
 		}
+
+		AddrListInstr.forEach(System.out::println);
 		//===========================Filter out inline instructions with labels============\\
 		for (int i = 0; i < lines.size(); i++) {
 			if (lines.get(i).contains("#")) {
@@ -146,9 +166,9 @@ public class Parser {
 		//4.1 if opcode$r -> opcode $r
 		lines = getInst(lines);
 
+		System.out.print("Ater lines sorted");
 		lines.forEach(System.out::println);
 
-		for (int i  = 0; i<lines.size(); i++)
 		System.out.println("instruct.size= " + lines.size());
 
 		System.out.println("AddrList inst size= " + AddrListInstr.size());
