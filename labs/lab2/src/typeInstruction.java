@@ -55,14 +55,15 @@ public class typeInstruction{
 			opCode.equals("and") || //and
 			opCode.equals("sub") || //sub
 			opCode.equals("slt") || //slt
-			opCode.equals("jr")) //jr
+			opCode.equals("jr")  ||//jr
+		    opCode.equals("sll"))
 				return 0;
 		//TO see if opMap is immediate type
 		else if(opCode.equals("beq") || //beq
 				opCode.equals("bne") || //bne
 				opCode.equals("addi") || //addi
-				opCode.equals("lwk") || //lw
-				opCode.equals("sw")) //sw
+				opCode.equals("sw") ||
+				opCode.equals("lw"))
 				return 1;
 		else if(opCode.equals("j") || //j
 				opCode.equals("jal")) //jal

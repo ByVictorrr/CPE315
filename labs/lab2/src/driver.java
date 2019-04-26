@@ -15,7 +15,6 @@ public class driver {
 		Parser.instructMap = parse.getInstrMap();
 		Parser.labelMap = parse.getLabelMap();
 
-		System.out.println(parse.getLabelMap());
 		//Sort the Map
 		Map<String,Integer> sortedInstrMap = Parser.instructMap
         .entrySet()
@@ -23,9 +22,10 @@ public class driver {
         .sorted(Map.Entry.comparingByValue())
         .collect(toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
 
-		Parser.labelMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
-		Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
+		sortedInstrMap.forEach((k, v) -> System.out.println("label map " + k + ":" + v + "\n"));
+	//	Parser.instructMap.forEach((k, v) -> System.out.println("instruction map:" + k + "->" + v + "\n"));
 
+		System.out.println("instruct map size = " + sortedInstrMap.size());
 
 
 		//====================================END OF TEST1=======================================================================\\
@@ -91,7 +91,7 @@ public class driver {
 				}
 
 			}
-			System.out.println("Print Out starting rn:");
+			System.out.println("Print Out starting rn: size = " + binaryInstr.size());
 			for (int i =0; i<binaryInstr.size(); i++)
 						System.out.println(binaryInstr.get(i).toString());
 

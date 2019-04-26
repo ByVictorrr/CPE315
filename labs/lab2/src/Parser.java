@@ -58,12 +58,13 @@ public class Parser {
 
 	public List<String> getInst(List<String>line){
 
+		List<String> filteredLines = new ArrayList<>();
 //===========================Filter out  just instruction============\\
 		for (int i = 0; i < line.size(); i++) {
-			if (line.get(i).contains(":") || line.get(i).contains(": ") || line.get(i).contains(" :")) {
-				line.set(i, line.get(i).substring(line.get(i).indexOf(":"), line.get(i).length()));
+			//Get rid of labells if on same line as instruction
+			if (line.get(i).contains(":") || line.get(i).contains(": ") || line.get(i).contains(" :") ) {
 
-				//System.out.println("debugger = " + line.get(i));
+				line.set(i, line.get(i).substring(line.get(i).indexOf(":"), line.get(i).length()));
 
 				line.set(i,line.get(i).replaceAll("^:\\s?","").trim());
 
@@ -71,11 +72,14 @@ public class Parser {
 
 			}
 		}
+		//Filter out white blank lines
+		filteredLines = line.stream().filter(s->!s.trim().isEmpty()).collect(Collectors.toList());
+
 		line.forEach(System.out::println);
 	//	line.forEach(System.out::println);
 
 		System.out.println("done bish");
-		return line;
+		return filteredLines;
 	}
 
 	public Map<String,Integer> getInstrMap() {return instructMap; }
@@ -237,7 +241,38 @@ public class Parser {
 				binaryFields.add(getFunct(inst));
 
 			}
+			//Special parse case
+			else if (getOp(inst).equals("sll"))
+			{
+					//Step 1.1 - get opcode
+				nmeumonicFields.add(getOp(inst));
+				//Step 1.2 - get Rs
+				nmeumonicFields.add("00000"); //just beause rs is right char
+				//Step 1.3 - get Rt using getRS because location in parse
+				nmeumonicFields.add(getRs(inst));
+				//Step 1.4 - get rd
+				nmeumonicFields.add(getRd(inst));
+				//Step 1.5 - get shamt
+				nmeumonicFields.add(getShamt(inst));
+				//Step 1.6 - getFunc is already known so therefor its just used to conver to binary
 
+				//Step 2: translate nuemonic fields -> binary fields
+				//Step 2.1 - map opcode nmeuonic -> binary version
+				binaryFields.add(typeInstruction.opMap.get(nmeumonicFields.get(0)));
+				//Step 2.2 - map rs nmeuonic -> binary version
+				binaryFields.add(nmeumonicFields.get(1));
+				//Step 2.3 - map rt nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(2)));
+				//Step 2.4 - map rd nmeuonic -> binary version
+				binaryFields.add(Registers.regMap.get(nmeumonicFields.get(3)));
+
+				//Step 2.2 - map shamt nmeuonic -> binary version
+				binaryFields.add(nmeumonicFields.get(4));
+
+				//Step 2.3 - map funct nmeuonic -> binary version
+				binaryFields.add(getFunct(inst));
+
+			}
 			else {
 				//step 1: parse into neumonic fields (getRs().....getShamt())
 				//Step 1.1 - get opcode
@@ -319,9 +354,9 @@ public class Parser {
 					//Parse string along
 				nmeumonicFields.add(getOp(inst));
 				//Step 1.2 - get Rs
-				nmeumonicFields.add(getLwReg(inst));
-				//Step 1.3 - get Rt
 				nmeumonicFields.add(getRd(inst));
+				//Step 1.3 - get Rt
+				nmeumonicFields.add(getLwReg(inst));
 				//Step 1.4 - get offset address = label - current_address
 
 				//:System.out.println("parser  map = " + Parser.labelMap.get(getLabel(inst)));
@@ -418,14 +453,14 @@ public class Parser {
 	public static String getOp(String line)
 	{
 		String op = (line.split("\\$")[0]); //get add from add$r1
-		return op.split("\\s")[0].trim();  //remove blank space
-
+        op = op.split("\\s")[0].trim();  //remove blank space
+		System.out.println("op code fucking currently = " + op);
+		return op;
 	}		//==============TEST1 - initalize maps (instruction and label map)================\\
 
 	public static String getRd(String line)
 	{
 		String Rd = line.split(",")[0];
-
 
 		System.out.println("Rd= " +Rd);
 		Rd = "$"+Rd.split("\\$")[1].trim();
@@ -456,9 +491,12 @@ public class Parser {
 		if(!getOp(line).equals("sll"))
 			return "00000";
 
+		String format = "%05d";
 		String val = line.split(",")[2];
 		val = val.trim();
-		return decStringToBinary(val);
+		val  =  String.format(format,Integer.parseInt(decStringToBinary(val)));
+
+		return val;
 	}
 	public static String getFunct(String line) {
 		return typeInstruction.functMap.get(getOp(line));
