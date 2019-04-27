@@ -95,9 +95,7 @@ public class lab2 {
 			//print oout invalid instructions;
 			if (!invalidOps.isEmpty())
 			{
-				 System.out.print("invalid instruction: ");
-				for (int i =0; i<invalidOps.size(); i++)
-					 System.out.println(invalidOps.get(i));
+				 System.out.print("invalid instruction: "+ invalidOps.get(0));
 			}
 
 
