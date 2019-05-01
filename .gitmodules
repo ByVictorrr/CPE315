@@ -1,0 +1,3 @@
+[submodule "labs/lab3/cpe315"]
+	path = labs/lab3/cpe315
+	url = https://github.com/ItisEeron/cpe315
