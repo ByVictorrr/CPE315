@@ -68,7 +68,7 @@ public class Cache {
 				break;
 			}
 		}
-		System.out.println("tag of the input stream : " + vals.get(TAG));
+		//System.out.println("tag of the input stream : " + vals.get(TAG));
 			//Step 2 - sort each row (list by LRU)
 			cacheEntry[vals.get(INDEX)] = cacheEntry[vals.get(INDEX)].stream()
 																	.sorted(Comparator.comparingInt(Block::getPriority))
@@ -77,7 +77,7 @@ public class Cache {
 			//Step 2 - check if we got a hit
 			if (hit == 0) {
 				Block replacment = blocks.get(0);
-				//Step 3 - see which has highest priority (lowest nubmer)
+				//Step 3 - see which has highest priority (lowest number)
                 swapLRU(replacment, vals.get(TAG), priority);
 			}//if
 	}//end of function
@@ -101,7 +101,7 @@ public class Cache {
 			 return addr.intValue();
 		 }
 		 private Integer getIndex(Long addr, Cache type){
-			 return addr.intValue() %  type.getIndexSizePerCache();
+			 return (addr.intValue() / this.associativity) %  type.getIndexSizePerCache();
 		 }
 		 private Integer getBlkOffset(Long addr, Cache type){
 			 return addr.intValue() % type.getBlockSize();
@@ -115,9 +115,10 @@ public class Cache {
 		 	Integer index;
 		 	Integer tag;
 		 	Long address = getAddr(hexToBin(addr));
-		 	blk = getBlkOffset(address = address/4, type);
-		 	index = getIndex(address = address/type.getBlockSize(), type);
-		 	tag = getTag(address=address/type.getIndexSizePerCache());
+		 	address >>= 2;
+		 	blk = getBlkOffset(address, type);
+		 	index = getIndex(address, type);
+		 	tag = address.intValue() >> (32-type.getIndexSize()-type.getBlockSize());
 
 		 	vals.add(TAG, tag);
 		 	vals.add(BLKOFF, blk);
