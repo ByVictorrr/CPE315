@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.System.exit;
 
@@ -8,12 +10,13 @@ public class Cache
 	/*Characteristics*/
 	private Integer size;
 	private Integer blockSize;
+	private Integer indexSize;
 	private Integer associativity;
 
 	/*Entry*/
 	//using a List for multiple ways;
 	//Index ->stream
-	private List<Pair<AddrStream[][],Integer>> ways;
+	private List<Map<Integer, Line>> ways;
 	/*Statistics*/
 	private Integer hits;
 	private Integer num_reads;
@@ -23,7 +26,13 @@ public class Cache
 		this.associativity = associativity;
 		this.blockSize = blockSize;
 		this.size = size;
+		this.indexSize = AddrStream.logb2(size/blockSize);
 		this.ways = new ArrayList<>(associativity);
+
+		for(int i = 0; i < associativity ; i++){
+			for(int j = 0; j < this.indexSize; j++)
+			this.ways.get(i).put(j, new Line(this.blockSize));
+		}
 		this.hits = 0;
 		this.num_reads = 0;
 	}
@@ -31,34 +40,51 @@ public class Cache
 	//Inserts in cache if
 	public void readCache(AddrStream stream) {
 		Integer hit = 0;
+		List<Integer> list_LRU = new ArrayList<>();
+		int j = 0;
 		//Step 1 - go through each way
-		for (Pair<AddrStream[][],Integer> way  : ways) {
+        for(Map<Integer, Line> way: ways) {
 			//Step 2 - go through each entry see if that tag is in one of
 			for (int i = stream.getBlkOffset(); i >= 0; i--) {
-				if (way.getKey()[stream.getIndex()][i].getTag().equals(stream.getTag())) {
+				//Case 1 - if the stream index has the same tag as one of the tags in that line
+				if (way.get(stream.getIndex()).getLineMap().get(i).getTag().equals(stream.getTag())) {
 					hit = 1;
-				}
-			}
-		}
-			//Step 2 - if hit == 0 then store this stream
-			Integer LRU = 0;
-			int j = 0;
-			if(hit == 0){
-				for (int i = 0; i< associativity; i++){
-					if(i == 0)
-						LRU = ways.get(i).getValue();
-
-				if(LRU <= ways.getValue()){
-					j=i;
-				}
+				}//if
 			}//for
+			//Find the highest LRU if there is hit
+			if (hit == 1){
+				list_LRU.set(j++, way.get(stream.getIndex()).getLRU());
+			}//if
+		}//for
+       //========================================================================================//
+        //Step 3 - see if hit == 0, therefore we need to insert, and find the least recent line in ith way
+		if(hit == 0){
+			ways.get(maxIndex(list_LRU)).get(
+
+			)
+		}
 				this.ways.get(j).getKey()[stream.getIndex()][stream.getBlkOffset()];
-		}//if
+		//==========================================================================//
 
 
 		this.hits += hit;
 		this.num_reads++;
 	}
+
+
+	public static int maxIndex(List<Integer> list) {
+		Integer i=0, maxIndex=-1, max=null;
+		for (Integer x : list) {
+			if ((x!=null) && ((max==null) || (x>max))) {
+				max = x;
+				maxIndex = i;
+			}
+			i++;
+		}
+		return maxIndex;
+	}
+
+
 	public void printResults(int cache_num, int size){
 		String format_size = "";
 		System.out.println("Cache #" + cache_num);

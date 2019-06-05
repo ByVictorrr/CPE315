@@ -1,6 +1,4 @@
 
-import javax.print.DocFlavor;
-
 import static java.lang.System.exit;
 
 public class AddrStream {
@@ -33,6 +31,13 @@ public class AddrStream {
         this.index = getIndex(addr_ref, bits_indexSize);
         this.blkOffset = getBlkOffset(addr_ref, bits_blockOffsetSize);
         this.byteOffset = getByteOffset(addr_ref, bits_byteOffsetSize);
+    }
+    public AddrStream(){
+        this.Addr  = new Long(0);
+        this.tag =  new Long(0);
+        this.index = 0;
+        this.blkOffset = 0;
+        this.byteOffset = 0;
     }
 
 
@@ -96,7 +101,7 @@ public class AddrStream {
         return byteOffset_value;
     }
 
-    private Integer logb2(int val){return (int)(Math.log((double)val)/Math.log(2.0));}
+    public static Integer logb2(int val){return (int)(Math.log((double)val)/Math.log(2.0));}
 
     private Integer blockSizeToBitsSize(Integer word){
         Integer bits = 0;
