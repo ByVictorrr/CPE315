@@ -17,6 +17,7 @@ public class Line {
         //How many words are in one block
         for(int i = 0; i < block_size; i++)
             this.LineMap.put(i, new AddrStream());
+        LRU = 0;
     }
 
     public Map<Integer, AddrStream> getLineMap() {
@@ -25,5 +26,13 @@ public class Line {
 
     public Integer getLRU() {
         return LRU;
+    }
+
+    public void setLineMap(Map<Integer, AddrStream> lineMap) {
+        LineMap = lineMap;
+    }
+
+    public void setLRU(Integer LRU) {
+        this.LRU = LRU;
     }
 }

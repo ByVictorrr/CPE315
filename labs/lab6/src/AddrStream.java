@@ -151,6 +151,10 @@ public class AddrStream {
         return index;
     }
 
+    public void setTag(Long tag) {
+        this.tag = tag;
+    }
+
     public Integer getBlkOffset() {
         return blkOffset;
     }
