@@ -8,8 +8,10 @@ import static java.lang.System.exit;
 public class Cache {
 	private Integer indexSizePerCache;
 	/*=========Characteristics===========*/
-	private Integer size;
-	private Integer blockSize;
+	private Integer sizeOneWay;
+	private Integer sizeTotal;
+	private Integer blockSizeInWords;
+	private Integer blockSizeInBytes;
 	private Integer indexSize;
 	private Integer associativity;
 	/*==================================*/
@@ -27,15 +29,16 @@ public class Cache {
 	final int INDEX = 2;
 
 	/*================================*/
-	public Cache(Integer size, Integer blockSize, Integer associativity) {
+	public Cache(Integer sizeTotal, Integer blockSizeInWords, Integer associativity) {
 		this.associativity = associativity;
-		this.blockSize = blockSize;
-		this.size = size;
-		this.indexSize = logb2(size * 1024 / (blockSize * 4));
-		this.indexSizePerCache = indexSize / associativity;
-		this.cacheEntry = new ArrayList[indexSizePerCache];
+		this.blockSizeInWords = blockSizeInWords;
+		this.blockSizeInBytes = blockSizeInWords*4; // inBytes
+		this.sizeTotal = sizeTotal;
+		this.sizeOneWay = (sizeTotal * 1024)/associativity;  //in Bytes
+		this.indexSize = logb2(sizeOneWay/blockSizeInBytes);
+		this.cacheEntry = new ArrayList[indexSize];
 
-		for (int i = 0; i < indexSizePerCache; i++) {
+		for (int i = 0; i < indexSize; i++) {
 			this.cacheEntry[i] = new ArrayList<>();
 			for (int j = 0; j < associativity; j++)
 				cacheEntry[i].add(j,new Block());
@@ -60,19 +63,19 @@ public class Cache {
 	public void readFullWay(List<Integer> vals, int priority) {
 		Integer hit = 0;
 		List<Block> blocks;
+		//Sort
+		cacheEntry[vals.get(INDEX)] = cacheEntry[vals.get(INDEX)].stream()
+																	.sorted(Comparator.comparingInt(Block::getPriority))
+																	.collect(Collectors.toList());
 		//Step 1 - go through each way
 		for(int i = 0; i< this.associativity; i++) {
 			if (cacheEntry[vals.get(INDEX)].get(i).getTag().equals(vals.get(TAG))) {
 				hit = 1;
 				this.hits++;
+				changePriority(cacheEntry[vals.get(INDEX)], cacheEntry[vals.get(INDEX)].get(i));
 				break;
 			}
 		}
-		//System.out.println("tag of the input stream : " + vals.get(TAG));
-			//Step 2 - sort each row (list by LRU)
-			cacheEntry[vals.get(INDEX)] = cacheEntry[vals.get(INDEX)].stream()
-																	.sorted(Comparator.comparingInt(Block::getPriority))
-																	.collect(Collectors.toList());
 			blocks = cacheEntry[vals.get(INDEX)];
 			//Step 2 - check if we got a hit
 			if (hit == 0) {
@@ -81,6 +84,34 @@ public class Cache {
                 swapLRU(replacment, vals.get(TAG), priority);
 			}//if
 	}//end of function
+
+
+	private void changePriority(List<Block> l, Block b ){
+		//Step 1 - find least priority index higher than current b
+		int val = l.get(0).getPriority();
+		boolean blockfound = false;
+		for(Block bloc: l){
+			if(blockfound){
+				bloc.setPriority(bloc.getPriority() - 1);
+			}
+			if (val == bloc.getPriority()){
+				blockfound = true;
+				bloc.setPriority(l.get(findMax(l)).getPriority());
+			}
+		}
+	}
+	private int findMax(List<Block>l){
+		int max = 0;
+		int max_index = 0;
+		for (int i = 0; i<l.size(); i++)
+			if(max < l.get(i).getPriority()){
+				max = l.get(i).getPriority();
+				max_index = i;
+			}
+		return max_index;
+	}
+
+
 	private void swapLRU(Block replacement, int tag, int priority) {
 		replacement.setPriority(priority);
 		replacement.setTag(tag);
@@ -97,15 +128,13 @@ public class Cache {
 			 }
 			 return val;
 		 }
-		 private Integer getTag(Long addr){
-			 return addr.intValue();
-		 }
 		 private Integer getIndex(Long addr, Cache type){
-			 return (addr.intValue() / this.associativity) %  type.getIndexSizePerCache();
+			 return (addr.intValue() / this.associativity) %  type.getIndexSize();
 		 }
 		 private Integer getBlkOffset(Long addr, Cache type){
-			 return addr.intValue() % type.getBlockSize();
+			 return addr.intValue() % type.blockSizeInWords;
 		 }
+
 		 public final List<Integer> getValues(String addr, Cache type) {
 		 	final List<Integer> vals = new ArrayList<Integer>(3);
 		 	final int TAG = 0;
@@ -118,7 +147,7 @@ public class Cache {
 		 	address >>= 2;
 		 	blk = getBlkOffset(address, type);
 		 	index = getIndex(address, type);
-		 	tag = address.intValue() >> (32-type.getIndexSize()-type.getBlockSize());
+		 	tag = address.intValue() >> (32-type.getIndexSize()-logb2(type.blockSizeInWords));
 
 		 	vals.add(TAG, tag);
 		 	vals.add(BLKOFF, blk);
@@ -126,6 +155,7 @@ public class Cache {
 
 		 	return vals;
 		 }
+
 
 
 	public Integer getIndexSizePerCache() {
@@ -136,21 +166,8 @@ public class Cache {
 		this.indexSizePerCache = indexSizePerCache;
 	}
 
-	public Integer getSize() {
-		return size;
-	}
 
-	public void setSize(Integer size) {
-		this.size = size;
-	}
 
-	public Integer getBlockSize() {
-		return blockSize;
-	}
-
-	public void setBlockSize(Integer blockSize) {
-		this.blockSize = blockSize;
-	}
 
 	public Integer getIndexSize() {
 		return indexSize;
@@ -204,7 +221,7 @@ public class Cache {
 		}else{
 			exit(-1);
 		}
-		System.out.println("Cache sizes: " + format_size + "	" + this.associativity + "		" + "Block size: " + this.blockSize);
+		System.out.println("Cache sizes: " + format_size + "	" + this.associativity + "		" + "Block size: " + this.blockSizeInWords);
 		float hit_percent = ((float)this.hits/this.num_reads) * 100;
 		System.out.println("Hits: " + this.hits + "	" + "Hit Rate: " + + Math.round(hit_percent*100.0)/100.0 + "%" );
 	}
