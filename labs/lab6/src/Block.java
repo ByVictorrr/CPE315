@@ -1,10 +1,5 @@
 public class Block {
-    /*============Macros=====================================*/
-    private final Integer MOST_RECENT = 0;
-    private final Integer RECENT = 1;
-    private final Integer LESS_RECENT = 2;
-    private final Integer LEAST_RECENT = 3;
-    /*=======================================================*/
+
     private Integer priority;
     private Integer tag;
 

@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,8 +21,7 @@ public class Cache {
 	/*===========================*/
 
 	final int TAG = 0;
-	final int BLKOFF = 1;
-	final int INDEX = 2;
+	final int INDEX = 1;
 
 	/*================================*/
 	public Cache(Integer sizeTotal, Integer blockSize, Integer associativity) {
@@ -44,7 +44,7 @@ public class Cache {
 	//====================READING FUNCTIONS =================================\\
 
 	public void readAddr(String addr, int priority){
-		List<Integer> vals = this.getValues(addr, this);
+		List<Integer> vals = this.getValues(addr);
 		//Case 1- direct blocking
 	    if(this.associativity == 1){
 	        readSingleWay(vals, priority);
@@ -70,6 +70,7 @@ public class Cache {
 
 	public void readFullWay(List<Integer> vals, int priority) {
 		Integer hit = 0;
+		final Integer LRU = 0;
 		//Step 1 - reference the index given by addr
 		List<Block> blocks = cacheEntry[vals.get(INDEX)];
 		//Step 2 - sort the index given by addr
@@ -88,8 +89,8 @@ public class Cache {
 		}
 			//Case 2 - if we dont have a hit replace both the tag and priority
 			if (hit == 0) {
-			    blocks.get(0).setPriority(priority);
-			    blocks.get(0).setTag(vals.get(TAG));
+			    blocks.get(LRU).setPriority(priority);
+			    blocks.get(LRU).setTag(vals.get(TAG));
 			}//if
 	}//end of function
 
@@ -101,34 +102,26 @@ public class Cache {
 			return (int)(Math.log((double)val)/Math.log(2.0));
 		}
 
-		 public final List<Integer> getValues(String addr, Cache type) {
-		 	final List<Integer> vals = new ArrayList<Integer>(3);
+		 public final List<Integer> getValues(String addr) {
+		 	final List<Integer> vals = new ArrayList<Integer>(2);
 		 	final int TAG = 0;
-		 	final int BLKOFF = 1;
-		 	final int INDEX = 2;
-		 	Integer blk;
+		 	final int INDEX = 1;
 		 	Integer index;
 		 	Integer tag;
 		 	Long address = getAddr(addr);
-		 	System.out.println(address);
-		 	//Step 1 - get rid of byte offset
-			 address /=4;
-		 	//Step 2 - get block offset value
-		 	blk = address.intValue() % (type.blockSize*4); //in bytes
-			address /= (type.blockSize*4);
+		 	address /=4;
 		 	//step 3 - get index value
-			 index = address.intValue() % type.indexSize;
-			 address /= type.indexSize; //shift to left by logf
-		 	tag = address.intValue();
+			 index = (address.intValue()/blockSize) % this.indexSize;
+		 	tag = address.intValue()/(this.indexSize*blockSize);
 
 		 	vals.add(TAG, tag);
-		 	vals.add(BLKOFF, blk);
 		 	vals.add(INDEX, index);
 
-		 	System.out.println(type.indexSize);
+		 	/*
 		 	System.out.println("tag = " + vals.get(TAG));
 		 	System.out.println("index = " + vals.get(INDEX));
 		 	System.out.println("blk = " + vals.get(BLKOFF));
+		 	*/
 
 		 	return vals;
 		 }
@@ -176,11 +169,12 @@ public class Cache {
 	}
 
 	public void printResults(int cache_num, int size){
-		String format_size = "";
+		DecimalFormat decimalFormat = new DecimalFormat();
+		decimalFormat.setMinimumFractionDigits(2);
 		System.out.println("Cache #" + cache_num);
-		System.out.println("Cache sizes: " + this.sizeTotal + "	"  + "Associativity: " + this.associativity + "		" + "Block size: " + this.blockSize);
+		System.out.println("Cache sizes: " + this.sizeTotal + "B" + "	" + "Associativity: " + this.associativity + "	" + "Block size: " + this.blockSize);
 		float hit_percent = ((float)this.hits/this.num_reads) * 100;
-		System.out.println("Hits: " + this.hits + "	" + "Hit Rate: " + + Math.round(hit_percent*100.0)/100.0 + "%" );
+		System.out.println("Hits: " + this.hits + "	" + "Hit Rate: " +  decimalFormat.format(Math.round(hit_percent*100.0)/100.0) + "%" );
 	}
 }
 

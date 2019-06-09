@@ -15,7 +15,7 @@ public class lab6 {
 
 ///================CACHE stuff=====================//
         final List<Cache> caches = new ArrayList<>(7);
-        final Integer numCaches = 1;
+        final Integer numCaches = 7;
         final List<Integer> sizes = Arrays.asList(2, 2, 2, 2, 2, 2, 4).stream().map(p->p*1024).collect(Collectors.toList()); //in Bytes
         final List<Integer> blockSizes = Arrays.asList(1, 2, 4, 1, 1, 4, 1);
         final List<Integer> associativities = Arrays.asList(1, 1, 1, 2, 4, 4, 1); //num of ways
@@ -49,13 +49,14 @@ public class lab6 {
         //print results/
         for(Cache c: caches) {
             c.printResults(j+1,sizes.get(j));
+            System.out.println("---------------------------");
             j++;
         }
 
     }
 
     public static String removeSpaceAndNum(String unFiltered) {
-        return unFiltered.substring(1, unFiltered.length() - 1).trim();
+        return unFiltered.substring(1, unFiltered.length()).trim();
     }
 
 }
