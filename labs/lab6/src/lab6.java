@@ -15,10 +15,15 @@ public class lab6 {
 
 ///================CACHE stuff=====================//
         final List<Cache> caches = new ArrayList<>(7);
-        final Integer numCaches = 7;
-        final List<Integer> sizes = Arrays.asList(2, 2, 2, 2, 2, 2, 4);
+        final Integer numCaches = 1;
+        final List<Integer> sizes = Arrays.asList(2, 2, 2, 2, 2, 2, 4).stream().map(p->p*1024).collect(Collectors.toList()); //in Bytes
         final List<Integer> blockSizes = Arrays.asList(1, 2, 4, 1, 1, 4, 1);
-        final List<Integer> associativities = Arrays.asList(1, 1, 1, 2, 4, 4, 1);
+        final List<Integer> associativities = Arrays.asList(1, 1, 1, 2, 4, 4, 1); //num of ways
+
+        //=====================Debugging shit==========================================\\
+        //numCaches = 1;
+
+        //=============================================================================\\
 
         for(int i = 0; i< numCaches; i++)
             caches.add(i, new Cache(sizes.get(i), blockSizes.get(i), associativities.get(i)));
@@ -32,8 +37,9 @@ public class lab6 {
             e.getSuppressed();
         }
         int priority = 0;
+        //Low priority means less recent
         for(String addr: addrStreamString){
-            for(int i = 0; i < 7; i++){
+            for(int i = 0; i < numCaches; i++){
                caches.get(i).readAddr(addr, priority);
            }
            priority++;

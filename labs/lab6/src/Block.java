@@ -9,10 +9,9 @@ public class Block {
     private Integer tag;
 
     public Block(){
-        this.tag = 0;
+        this.tag = -1;
         this.priority = -1;
     }
-
     public Integer getPriority() {
         return priority;
     }
@@ -29,26 +28,9 @@ public class Block {
         this.tag = tag;
     }
 
-    public Integer isBlock(Integer tag, Integer priority){
-        int hit = 0;
-       if(this.tag.equals(tag)) {
-           this.priority = priority;
-           hit = 1;
-       }else{
-           this.priority = priority;
-           this.tag = tag;
-       }
-           return hit;
+    @Override
+    public String toString() {
+        return "Priority: " + priority + "  tag = " + tag;
     }
-
-    public Integer isBlockAssocative(Integer tag, Integer priority) {
-        int hits = 0;
-        if (this.tag.equals(tag)) {
-            this.priority = priority;
-            hits = 1;
-        }
-        return hits;
-    }
-
 
 }
