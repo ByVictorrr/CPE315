@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fa66e82a-cdb3-4cc5-9419-9fb8effca545" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Test/test1.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/test1Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/test2.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/test2Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/test3Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/test4Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ALU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Action.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActionGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ActionGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clear.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Clear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Cycler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Cycler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Dump.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EmptyInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EmptyInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ErrorInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FirstPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FirstPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Help.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/I_Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/I_Instruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Instruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InstructionFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/InstructionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LabelTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/LabelTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MemFetch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MemFetch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Memory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OPTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OPTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OPTable_Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/OPTable_Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineDump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineDump.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineRegisters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineRegisters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineStall.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PipelineStall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Prog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Prog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Quit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RF$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegisterInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegisterInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegisterTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RegisterTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Run.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Run.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RunCycle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RunCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SecondPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StallInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StallInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Step.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Step.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StepCycle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StepCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Stepper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Stepper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/lab4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/lab5.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test1.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test1Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test2 copy.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test2.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test2Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test3.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/Tests/test3Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Action.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/ActionGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Dump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Help.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/MemFetch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Quit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Steppers/Clear.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Steppers/Run.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Steppers/Step.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Steppers/Stepper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/AssemblerActions/Utility/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/ErrorInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/InstructionFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/JInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/RegisterInstructions/I_Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/RegisterInstructions/RInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/RegisterInstructions/RegisterInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/ALU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/Memory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/Prog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/RF$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/RF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Passes/FirstPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Passes/Pass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Passes/SecondPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/ReferenceTables/LabelTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/ReferenceTables/OPTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/ReferenceTables/OPTable_Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/ReferenceTables/RegisterTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/lab5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Utility/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Instructions/Instructions.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Instructions/RegisterInstructions/RInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Modules/BranchPredictor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Modules/Memory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Modules/Modules.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Passes/Pass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Passes/Passes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/Passes/SecondPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/ReferenceTables/ReferenceTables.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/lab5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5/src/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/Passes/FirstPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/Passes/FirstPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/inputs/asm/lab4_fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/Test/test3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tests/inputs/asm/lab4_fib20.asm" beforeDir="false" afterPath="$PROJECT_DIR$/Test/test4.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Simulator/Simulation/Simulate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/Simulator/Simulation/Simulate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/ActionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/ActionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Dump.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Dump.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/MemFetch.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/MemFetch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Quit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Quit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Steppers/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Steppers/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Steppers/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Steppers/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Steppers/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Steppers/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AssemblerActions/Steppers/Stepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/AssemblerActions/Steppers/Stepper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/ErrorInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/ErrorInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/InstructionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/InstructionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/Instructions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Instructions/Instructions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/JInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/JInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/I_Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/RegisterInstructions/I_Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/RInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/RegisterInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Instructions/RegisterInstructions/RegisterInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Modules/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Modules/ALU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Modules/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Modules/Modules.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Modules/Modules.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Modules/Prog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Modules/Prog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Modules/RF.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Modules/RF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Passes/FirstPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/Passes/FirstPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Passes/Pass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Passes/Passes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/Passes/Passes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/Passes/SecondPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SecondPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/ReferenceTables/LabelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/ReferenceTables/LabelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/ReferenceTables/OPTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/ReferenceTables/OPTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/ReferenceTables/OPTable_Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/ReferenceTables/OPTable_Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/ReferenceTables/ReferenceTables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/lab5_output/production/lab5/ReferenceTables/ReferenceTables.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Emulator/ReferenceTables/RegisterTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5/src/ReferenceTables/RegisterTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Utility/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/lab4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/src/makefile" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="136591120">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="Simulate" value="1" />
+          <entry key="asm" value="1" />
+          <entry key="class" value="13" />
+          <entry key="iml" value="2" />
+          <entry key="java" value="141" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="14" />
+          <entry key="IDEA_MODULE" value="2" />
+          <entry key="JAVA" value="141" />
+          <entry key="PLAIN_TEXT" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="42" />
+          <entry key="java" value="64127" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="64127" />
+          <entry key="PLAIN_TEXT" value="42" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.17" value="1" />
+          <entry key="project.opened" value="6" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/pipeLineRegs.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="226">
+              <caret line="171" selection-start-line="171" selection-end-line="171" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AssemblerActions/print.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/Simulate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3795">
+              <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/lab4.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="966">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/emulator/Modules/Memory.java" />
+        <option value="$PROJECT_DIR$/src/pipeLineRegs.java" />
+        <option value="$PROJECT_DIR$/src/Emulator/Instructions/Instruction.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/pipeLineRegs.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/Steppers/Clear.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/printPipeLineRegs.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/SimulatorTables/BinaryToMnemonic.java" />
+        <option value="$PROJECT_DIR$/src/Emulator/Instructions/nopInstruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/nopInstruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Delays/Delay.java" />
+        <option value="$PROJECT_DIR$/src/Emulator/ReferenceTables/OPTable.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Delays/nopInstruction.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/Steppers/printPipeLineRegs.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/pipeLineRegs.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Stall_Instructions/stall_Instruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Stall_Instructions/emptyInstruction.java" />
+        <option value="$PROJECT_DIR$/src/Emulator/Modules/Prog.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Stall_Instructions/EmptyInstruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Stall_Instructions/SquashInstruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Stall_Instructions/Stall_Instruction.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/SimulatorTables/BinaryToMnemonicTable.java" />
+        <option value="$PROJECT_DIR$/src/lab4.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Simulation/Simulate.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Simulation/ShadowInstruction.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/print.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/ActionGenerator.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/Steppers/Step.java" />
+        <option value="$PROJECT_DIR$/src/AssemblerActions/Steppers/Run.java" />
+        <option value="$PROJECT_DIR$/src/Simulator/Simulation/pipeLineRegs.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1678" />
+    <option name="y" value="-22" />
+    <option name="width" value="1684" />
+    <option name="height" value="1074" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Probable bugsJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>SuspiciousMethodCalls</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="Emulator" type="462c0819:PsiDirectoryNode" />
+              <item name="Instructions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="AssemblerActions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Simulator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="Simulation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Simulator" type="462c0819:PsiDirectoryNode" />
+              <item name="Stall_Instructions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lab4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="printp&#9;PSI&#9;JAVA://AssemblerActions.ActionGenerator.printPipeLineRegs&#10;print&#9;PSI&#9;JAVA://Simulator.Simulation.pipeLineRegs#printPipeLineRegs" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1557888205871" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lab5/src" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="lab4" />
+      <module name="lab4" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/Tests/inputs/asm/lab4_fib10.asm" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa66e82a-cdb3-4cc5-9419-9fb8effca545" name="Default Changelist" comment="" />
+      <created>1557525924486</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1557525924486</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1678" y="-22" width="1684" height="1074" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32359082" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37951806" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32985386" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32771084" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" visible="true" weight="0.37995824" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32881" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="7" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/lab4.java</url>
+          <line>46</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Tests/test1.asm" />
+    <entry file="file://$PROJECT_DIR$/src/Utility/Pair.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/Emulator/AssemblerActions/Modules/Prog.class" />
+    <entry file="file://$PROJECT_DIR$/out/Emulator/AssemblerActions/Modules/ALU.class" />
+    <entry file="file://$PROJECT_DIR$/lab4.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Passes/FirstPass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/pipeLineRegs.java" />
+    <entry file="file://$PROJECT_DIR$/src/Emulator/ReferenceTables/ReferenceTables.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/MemFetch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Help.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Steppers/Stepper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/ReferenceTables/LabelTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/Scanner.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="716" selection-start-line="716" selection-end-line="716" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Steppers/Clear.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/lang/Integer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6049">
+          <caret line="294" selection-start-line="294" selection-end-line="294" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/Arrays.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46621">
+          <caret line="2107" selection-start-line="2107" selection-end-line="2107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/ReferenceTables/RegisterTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Modules/Memory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/Simulate" />
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Delays/Delay.java" />
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/ErrorInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/JInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/io/PrintStream.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="344" selection-start-line="344" selection-end-line="344" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Stall_Instructions/EmptyInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Stall_Instructions/SquashInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Stall_Instructions/Stall_Instruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/SimulatorTables/BinaryToMnemonicTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/RegisterInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/RInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="35" column="26" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Modules/ALU.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Modules/RF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Steppers/printPipeLineRegs.java" />
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/RegisterInstructions/I_Instruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/ArrayList.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="192" selection-start-line="192" selection-end-line="192" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/lang/String.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="491" selection-start-line="491" selection-end-line="491" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar!/java/util/Hashtable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="117" selection-start-line="117" selection-end-line="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/ReferenceTables/OPTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/ReferenceTables/OPTable_Item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Modules/Prog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/Instruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/ShadowInstruction.java" />
+    <entry file="file://$PROJECT_DIR$/src/Emulator/Instructions/InstructionFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1288">
+          <caret line="66" selection-start-line="66" selection-end-line="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/ActionGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1150">
+          <caret line="57" selection-start-line="57" selection-end-line="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/print.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Dump.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/Simulate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3795">
+          <caret line="180" column="37" selection-start-line="180" selection-start-column="37" selection-end-line="180" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Steppers/Run.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="23" column="3" selection-start-line="23" selection-start-column="3" selection-end-line="23" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/lab4.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Steppers/Step.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AssemblerActions/Action.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Simulator/Simulation/pipeLineRegs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="171" selection-start-line="171" selection-end-line="171" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>lab4</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

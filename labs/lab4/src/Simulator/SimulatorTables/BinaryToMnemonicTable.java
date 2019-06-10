@@ -33,8 +33,11 @@ public class BinaryToMnemonicTable {
             /*JT*/
             opMap.put(0b000010, "j");
             opMap.put(0b000011, "jal" );
-            /*nop*/
-            opMap.put(0b111111, "empty");
+
+            /*stall Instructions*/
+            opMap.put(0b111100, "empty");
+            opMap.put(0b111110, "squash");
+            opMap.put(0b111111, "stall");
         }
 
      public static Map<Integer, String> getOpMap(){return opMap;}

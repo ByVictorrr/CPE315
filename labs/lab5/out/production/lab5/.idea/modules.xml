@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Instructions/Instructions.iml" filepath="$PROJECT_DIR$/Instructions/Instructions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modules/Modules.iml" filepath="$PROJECT_DIR$/Modules/Modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Passes/Passes.iml" filepath="$PROJECT_DIR$/Passes/Passes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ReferenceTables/ReferenceTables.iml" filepath="$PROJECT_DIR$/ReferenceTables/ReferenceTables.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/src.iml" filepath="$PROJECT_DIR$/.idea/src.iml" />
+    </modules>
+  </component>
+</project>

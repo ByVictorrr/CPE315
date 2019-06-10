@@ -4,15 +4,6 @@
  * Professor: John Seng
  */
 
-import AssemblerActions.Action;
-import AssemblerActions.ActionGenerator;
-import Utility.Pair;
-import Emulator.Instructions.Instruction;
-import Emulator.Modules.Prog;
-import Emulator.Passes.FirstPass;
-import Emulator.Passes.SecondPass;
-import Emulator.ReferenceTables.LabelTable;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -51,24 +42,23 @@ public class lab4 {
 
 
         /*This is where new code for Lab 3 Begins!!! */
+
         Prog prog = new Prog(instructionsList);
-        ActionGenerator actionGenerator = new ActionGenerator(prog);
+        ActionGenerator.initializeProg(prog);
+        PipelineRegisters.initializePipeLine();
 
         if(args.length == 2){
-            runActionScript(args[1], actionGenerator);
+            runActionScript(args[1]);
         }
         Scanner scanner;
-        for(;;){
+        for(;;){//Loop until the action to quit has been inputted
             System.out.print("mips> ");
             scanner = new Scanner(System.in);
             Pair<String, List<String>> actionParsed = ActionGenerator.parseAction(scanner.nextLine());
-
             try{
-                Action action = actionGenerator.generateAction(actionParsed.getKey(),
+                Action action = ActionGenerator.generateAction(actionParsed.getKey(),
                         actionParsed.getValue());
-
                 action.executeAction();
-
             } catch (Exception e){
                 System.out.println(e);
             }
@@ -80,7 +70,7 @@ public class lab4 {
         intermediateFile.delete();
     }
 
-    public static void runActionScript(String script, ActionGenerator actionGenerator){
+    public static void runActionScript(String script){
         try {
             Scanner input;
             File file = new File(script);
@@ -93,7 +83,7 @@ public class lab4 {
                     printString = printString + " " + param;
                 }//for
                 System.out.println(printString);
-                Action action = actionGenerator.generateAction(actionParsed.getKey(), actionParsed.getValue());
+                Action action = ActionGenerator.generateAction(actionParsed.getKey(), actionParsed.getValue());
                 action.executeAction();
             }
             input.close();

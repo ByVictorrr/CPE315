@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0c9bd297-02f8-4c86-a496-d82acc3dcb87" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test1.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test1Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test2.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test2Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test3Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/Test/test4Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ALU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ALU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Action.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ActionGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ActionGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Clear.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Clear.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Cycler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Cycler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Dump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Dump.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/EmptyInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/EmptyInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ErrorInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/ErrorInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/FirstPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/FirstPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Help.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Help.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/I_Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/I_Instruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Instruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/InstructionFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/InstructionFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/JInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/JInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/LabelTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/LabelTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/MemFetch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/MemFetch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Memory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/OPTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/OPTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/OPTable_Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/OPTable_Item.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Pass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineDump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineDump.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineRegisters.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineRegisters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineStall.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/PipelineStall.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Prog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Prog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Quit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Quit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RF$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RF.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RegisterInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RegisterInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RegisterTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RegisterTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Run.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Run.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RunCycle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/RunCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/SecondPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/StallInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/StallInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Step.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Step.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/StepCycle.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/StepCycle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Stepper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/Stepper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../lab4/src/lab4.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test1.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test1Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test2 copy.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test2.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test2Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test3.asm" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Tests/test3Script.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Action.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/ActionGenerator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Dump.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Help.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/MemFetch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Quit.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Steppers/Clear.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Steppers/Run.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Steppers/Step.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Steppers/Stepper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/AssemblerActions/Utility/Pair.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/ErrorInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/InstructionFactory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/JInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/RegisterInstructions/I_Instruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/RegisterInstructions/RInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/RegisterInstructions/RegisterInstruction.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/ALU.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/Memory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/Prog.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/RF$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/RF.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Passes/FirstPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Passes/Pass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Passes/SecondPass.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/ReferenceTables/LabelTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/ReferenceTables/OPTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/ReferenceTables/OPTable_Item.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/ReferenceTables/RegisterTable.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/lab5.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AssemblerActions/Utility/Pair.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Instructions/Instructions.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Instructions/RegisterInstructions/RInstruction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/BranchPredictor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Memory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Modules/Modules.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Passes/Pass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Passes/Passes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Passes/SecondPass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ReferenceTables/ReferenceTables.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lab5.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab3/src/Passes/FirstPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab3/src/Passes/FirstPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/Tests/inputs/asm/lab4_fib10.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/Test/test3.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/Tests/inputs/asm/lab4_fib20.asm" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/Test/test4.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/out/Simulator/Simulation/Simulate.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/out/Simulator/Simulation/Simulate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/ActionGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/ActionGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Dump.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Dump.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Help.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Help.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/MemFetch.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/MemFetch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Quit.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Quit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Steppers/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Steppers/Clear.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Steppers/Run.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Steppers/Run.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Steppers/Step.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Steppers/Step.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/AssemblerActions/Steppers/Stepper.java" beforeDir="false" afterPath="$PROJECT_DIR$/AssemblerActions/Steppers/Stepper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/ErrorInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/ErrorInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/InstructionFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/InstructionFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/Instructions.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Instructions/Instructions.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/JInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/JInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/RegisterInstructions/I_Instruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/RegisterInstructions/I_Instruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/RegisterInstructions/RInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/RInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Instructions/RegisterInstructions/RegisterInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Instructions/RegisterInstructions/RegisterInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Modules/ALU.java" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/ALU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Modules/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Modules/Modules.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Modules/Modules.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Modules/Prog.java" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/Prog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Modules/RF.java" beforeDir="false" afterPath="$PROJECT_DIR$/Modules/RF.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Passes/FirstPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/Passes/FirstPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Passes/Pass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/Pass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Passes/Passes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/Passes/Passes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/Passes/SecondPass.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/SecondPass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/ReferenceTables/LabelTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReferenceTables/LabelTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/ReferenceTables/OPTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReferenceTables/OPTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/ReferenceTables/OPTable_Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReferenceTables/OPTable_Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/ReferenceTables/ReferenceTables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab5_output/production/lab5/ReferenceTables/ReferenceTables.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Emulator/ReferenceTables/RegisterTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/ReferenceTables/RegisterTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/Utility/Pair.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/Pair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/lab4.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/lab4.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lab4/src/makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../lab4/src/makefile" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-1724239032">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="iml" value="1" />
+          <entry key="java" value="1" />
+          <entry key="xml" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="IDEA_MODULE" value="1" />
+          <entry key="JAVA" value="1" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Instructions/Instructions.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Instructions/Instruction.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Instructions/InstructionFactory.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Instructions/JInstruction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/ALU.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Memory.java">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/makefile">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lab5.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="414">
+              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#3381#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/lab3.java" />
+        <option value="$PROJECT_DIR$/Modules/RF.java" />
+        <option value="$PROJECT_DIR$/Modules/Prog.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/src.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="859" />
+    <option name="y" value="77" />
+    <option name="width" value="1684" />
+    <option name="height" value="1074" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Instructions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="src" type="b2602c69:ProjectViewProjectNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558587549392" />
+    <property name="last_opened_file_path" value="/usr/lib/jvm/java-8-openjdk" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
+      <option name="MAIN_CLASS_NAME" value="lab5" />
+      <option name="PROGRAM_PARAMETERS" value="$PROJECT_DIR$/../inputs/lab4_fib20.asm $PROJECT_DIR$/../scripts/lab5.script 8" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0c9bd297-02f8-4c86-a496-d82acc3dcb87" name="Default Changelist" comment="" />
+      <created>1556927644552</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556927644552</updated>
+      <workItem from="1556927645698" duration="60000" />
+      <workItem from="1556934708172" duration="667000" />
+      <workItem from="1557277427500" duration="3000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="730000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="859" y="77" width="1684" height="1074" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21062271" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="UI Designer" order="6" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32985386" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Modules/RF.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Prog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="942">
+          <caret line="131" column="27" selection-start-line="131" selection-start-column="27" selection-end-line="131" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab3.java" />
+    <entry file="file://$USER_HOME$/CPE315/labs/lab2/lab2.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Instructions/Instruction.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Instructions/InstructionFactory.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Instructions/JInstruction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/ALU.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Memory.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/modules.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Instructions/Instructions.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/makefile">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lab5.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#3381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8 (1)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Instructions</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
